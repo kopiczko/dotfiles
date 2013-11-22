@@ -1,3 +1,6 @@
-[submodule "rbenv"]
-	path = rbenv
+[submodule "ruby-build.git"]
+	path = ruby-build.git
+	url = https://github.com/sstephenson/ruby-build.git
+[submodule "rbenv.git"]
+	path = rbenv.git
 	url = https://github.com/sstephenson/rbenv.git
