@@ -3,7 +3,7 @@
 scriptdir=`cd "$(dirname $0)" ; pwd`
 
 function create_link {
-    source="$HOME/$1"
+    source="$HOME/.$1"
     target="$scriptdir/$1"
     if [[ -f $source ]] ; then
 	echo "Link $source already exists"
@@ -22,5 +22,5 @@ function append_line {
     fi
 }
 
-create_link ".local/bin/env.sh"
+create_link "local/bin/env.sh"
 append_line ".bashrc" "source ~/.local/bin/env.sh"
