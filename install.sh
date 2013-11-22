@@ -22,7 +22,7 @@ function create_link {
        	echo "Would create link: $source -> $target"
 	return
     fi
-    if [ -f $source ] ; then
+    if [ -h $source ] ; then
 	echo "Link $source already exists"
     else
 	ln -s $target $source
