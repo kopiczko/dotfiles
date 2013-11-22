@@ -18,14 +18,22 @@ function create_link {
     else
 	target="$scriptdir/$2"
     fi
-    if dry_run ; then
-       	echo "Would create link: $source -> $target"
-	return
+    # Check if source directory exists, create if not
+    source_dir=`dirname $source`
+    if [ ! -d $source_dir ] ; then
+	if dry_run ; then
+	    echo "Would create directory $source_dir"
+	else
+	    mkdir -p $source_dir
+	fi
     fi
-    if [ -h $source ] ; then
-	echo "Link $source already exists"
-    else
-	ln -s $target $source
+    # Create link
+    if [ ! -h $source ] ; then
+	if dry_run ; then
+       	    echo "Would create link: $source -> $target"
+	else
+	    ln -s $target $source
+	fi
     fi
 }
 
@@ -42,9 +50,6 @@ function append_line {
 }
 
 create_link "rbenv" "rbenv.git"
-if ! dry_run ; then
-    mkdir -p ~/.rbenv/plugins
-fi
 create_link "rbenv/plugins/ruby-build" "ruby-build"
 
 create_link "local/bin/env.sh"
