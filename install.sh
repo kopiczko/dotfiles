@@ -4,8 +4,12 @@ scriptdir=`cd "$(dirname $0)" ; pwd`
 
 function create_link {
     source="$HOME/.$1"
-    target="$scriptdir/$1"
-    if [[ -f $source ]] ; then
+    target=$2
+    if [ -z $2 ] ; then
+	target="$scriptdir/$1"
+    fi
+    echo "Creating link: $source -> $target"
+    if [ -f $source ] ; then
 	echo "Link $source already exists"
     else
 	ln -s $target $source
