@@ -50,7 +50,7 @@ function append_line {
 }
 
 create_link "rbenv" "rbenv.git"
-create_link "rbenv/plugins/ruby-build" "ruby-build"
+create_link "rbenv/plugins/ruby-build" "ruby-build.git"
 
 create_link "local/bin/env.sh"
 append_line ".bashrc" "source ~/.local/bin/env.sh"
