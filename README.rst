@@ -42,3 +42,19 @@ Install knife-solo: ::
   
   gem install knife-solo
   rbenv rehash
+
+Install berkshelf: ::
+
+  gem install berkshelf
+  rbenv rehash
+
+Initialize repository: ::
+
+  mkdir -p ~/repo
+  cd ~/repo
+  # clone repo form opscode
+  knife solo init .
+  berks init
+  
+  
+

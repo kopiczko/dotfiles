@@ -4,3 +4,6 @@
 [submodule "rbenv.git"]
 	path = rbenv.git
 	url = https://github.com/sstephenson/rbenv.git
+[submodule "rbenv-sudo.git"]
+	path = rbenv-sudo.git
+	url = git://github.com/dcarley/rbenv-sudo.git
