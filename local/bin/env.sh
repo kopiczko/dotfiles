@@ -45,3 +45,5 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 # rbenv: https://github.com/sstephenson/rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+alias e='emacs -nw -ib 0 -T emacs --no-site-file --no-splash'
