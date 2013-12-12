@@ -55,6 +55,11 @@ Initialize repository: ::
   # clone repo form opscode
   knife solo init .
   berks init
+
+Install bundler: ::
+
+  gem install bundler
+  rbenv rehash
   
   
 
