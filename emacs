@@ -44,38 +44,50 @@
    (:name flycheck
 	  :after (progn
 		   ;;(add-hook 'after-init-hook #'global-flycheck-mode) ;; enable Flycheck mode in all buffers, in which it can be used
-   		   (add-hook 'python-mode-hook 'flycheck-mode)
+		   (add-hook 'python-mode-hook 'flycheck-mode)
 		   (setq flycheck-flake8-maximum-line-length 120)))
    (:name buffer-move                        ; have to add your own keys
-         :after (lambda ()
-                 (global-set-key (kbd "<C-S-up>") 'buf-move-up)
-                 (global-set-key (kbd "<C-S-down>") 'buf-move-down)
-                 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
-                 (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
+	  :after (lambda ()
+		   (global-set-key (kbd "<C-S-up>") 'buf-move-up)
+		   (global-set-key (kbd "<C-S-down>") 'buf-move-down)
+		   (global-set-key (kbd "<C-S-left>") 'buf-move-left)
+		   (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
    (:name smex                                ; a better (ido like) M-x
-         :after (lambda ()
-                 (setq smex-save-file "~/.emacs.d/.smex-items")
-                 (global-set-key (kbd "M-x") 'smex)
-                 (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+	  :after (lambda ()
+		   (setq smex-save-file "~/.emacs.d/.smex-items")
+		   (global-set-key (kbd "M-x") 'smex)
+		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
    (:name magit                                ; git meet emacs, and a binding
-         :after (lambda ()
-                 (global-set-key (kbd "C-x C-z") 'magit-status)))
+	  :after (lambda ()
+		   (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name goto-last-change                ; move pointer back to last change
-         :after (lambda ()
-                 ;; when using AZERTY keyboard, consider C-x C-_
-                 (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
-
+	  :after (lambda ()
+		   ;; when using AZERTY keyboard, consider C-x C-_
+		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+ 
+                
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get                            ; el-get is self-hosting
-;;   escreen                         ; screen for emacs, C-\ C-h
-   switch-window                     ; takes over C-x o
-   goto-last-change
+   ;; escreen                         ; screen for emacs, C-\ C-h
+   switch-window                     ; takes over C-x 
+   ace-jump-mode
+   highlight-current-line
+   highlight-indentation
+   highlight-parentheses
+   rainbow-mode
+   rainbow-delimiters
+   grizzl
+   projectile
    auto-complete                     ; complete as you type with overlays
+   ag
+   enh-ruby-mode
+   robe-mode
+   smartparens
    flycheck
    jedi
-;;   zencoding-mode                  ; http://www.emacswiki.org/emacs/ZenCoding
+   ;; zencoding-mode                  ; http://www.emacswiki.org/emacs/ZenCoding
    bash-completion
    color-theme                       ; nice looking emacs
    color-theme-tangotango))          ; check out color-theme-solarized
@@ -86,6 +98,7 @@
 ;; -----------------------------------------------------------------------------
 ;; Look & Feel
 ;; -----------------------------------------------------------------------------
+
 ;; Remove bars
 (unless (string-match "apple-darwin" system-configuration)
   ;; on mac, there's always a menu bar drown, don't have it empty
@@ -100,6 +113,14 @@
     (if (string-match "apple-darwin" system-configuration)
 	(set-face-font 'default "Monaco-13")
       (set-face-font 'default "Monospace-11")))
+
+;; cursor colors
+(set-cursor-color "#ff0000")
+;; Display continuous lines
+(setq-default truncate-lines nil)
+;; Do not use tabs for indentation
+(setq-default indent-tabs-mode nil)
+
 
 ;; -----------------------------------------------------------------------------
 ;; Unique buffer names
@@ -137,7 +158,7 @@
   (let ((dir (buffer-dir-name)))
     `("-cd" ,dir)))
 
-(setq terminal-option-ranger '("-e" "ranger"))
+(setq terminal-option-ranger '("-e" terminal-fm-program))
 
 (defun run-terminal ()
   (interactive)
@@ -149,10 +170,43 @@
     (message (second args))
     (apply 'start-process "filemanager" "*Messages*" terminal-program args)))
 
+;; ACE jump
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; -----------------------------------------------------------------------------
-;; IDO Mode
-;; -----------------------------------------------------------------------------
+;; Smartparens
+(require 'smartparens-config)
+(require 'smartparens-ruby)
+(smartparens-global-mode 1)
+
+;; Rainbow Mode
+(require 'rainbow-mode)
+(rainbow-mode 1)
+
+;; Rainbow delimiters
+(require 'rainbow-delimiters)
+(global-rainbow-delimiters-mode 1)
+
+;; Projectile
+(require 'grizzl)
+(require 'projectile)
+(projectile-global-mode)
+(setq projectile-enable-caching t)
+(setq projectile-completion-system 'grizzl)
+;; Press Command-p for fuzzy find in project
+(global-set-key (kbd "M-p") 'projectile-find-file)
+;; Press Command-b for fuzzy switch buffer
+(global-set-key (kbd "C-x C-b") 'projectile-switch-to-buffer)
+
+;; AC mode
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-ignore-case t)
+(append ac-modes '('enh-ruby-mode
+                   'python-mode
+                   'web-mode))
+
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
