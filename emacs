@@ -78,6 +78,7 @@
    highlight-parentheses
    rainbow-mode
    rainbow-delimiters
+   magit
    grizzl
    projectile
    auto-complete                     ; complete as you type with overlays
