@@ -207,6 +207,17 @@
                    'python-mode
                    'web-mode))
 
+;; Exchange point and mark hack
+(defun exchange-point-and-mark-no-activate ()
+  "Identical to \\[exchange-point-and-mark] but will not activate the region."
+  (interactive)
+  (exchange-point-and-mark)
+  (deactivate-mark nil))
+;;(define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
+;;(global-unset-key (kbd "C-x C-x"))
+(global-set-key (kbd "C-x C-x") 'exchange-point-and-mark-no-activate)
+
+                
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
