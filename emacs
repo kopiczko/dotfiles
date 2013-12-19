@@ -73,6 +73,7 @@
    ;; escreen                         ; screen for emacs, C-\ C-h
    switch-window                     ; takes over C-x 
    ace-jump-mode
+   multiple-cursors
    highlight-current-line
    highlight-indentation
    highlight-parentheses
@@ -122,6 +123,10 @@
 ;; Do not use tabs for indentation
 (setq-default indent-tabs-mode nil)
 
+;; -----------------------------------------------------------------------------
+;; Remove whitespaces at the end of file
+;; -----------------------------------------------------------------------------
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; -----------------------------------------------------------------------------
 ;; Unique buffer names
@@ -207,6 +212,15 @@
 (append ac-modes '('enh-ruby-mode
                    'python-mode
                    'web-mode))
+
+;; Magit
+(magit-file-header ((t (:foreground "violet"))))
+(magit-hunk-header ((t (:foreground "blue"))))
+(magit-header ((t (:foreground "cyan"))))
+(magit-tag-label ((t (:background "blue" :foreground "orange"))))
+(magit-diff-add ((t (:foreground "MediumSlateBlue"))))
+(magit-diff-del ((t (:foreground "maroon"))))
+(magit-item-highlight ((t (:background "#000012"))))
 
 ;; Exchange point and mark hack
 (defun exchange-point-and-mark-no-activate ()
