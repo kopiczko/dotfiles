@@ -23,55 +23,55 @@
 (setq
  el-get-sources
  '((:name ctable                                 ; jedi dep
-	  :description "Table Component for elisp"
-	  :type github
-	  :pkgname "kiwanami/emacs-ctable")
+          :description "Table Component for elisp"
+          :type github
+          :pkgname "kiwanami/emacs-ctable")
    (:name epc                                    ; jedi dep
-	  :description "An RPC stack for Emacs Lisp"
-	  :type github
-	  :pkgname "kiwanami/emacs-epc"
-	  :depends (deferred ctable)) ; concurrent is in deferred package
+          :description "An RPC stack for Emacs Lisp"
+          :type github
+          :pkgname "kiwanami/emacs-epc"
+          :depends (deferred ctable)) ; concurrent is in deferred package
    (:name jedi                                   ; jedi
-	  :description "An awesome Python auto-completion for Emacs"
-	  :type github
-	  :pkgname "tkf/emacs-jedi"
-	  :build (("make" "requirements"))
-	  :depends (epc auto-complete)
-	  :after (progn
-		   (add-hook 'python-mode-hook 'jedi:setup)
-		   (setq jedi:setup-keys t)         ; optional                
-		   (setq jedi:complete-on-dot t)))  ; optional
+          :description "An awesome Python auto-completion for Emacs"
+          :type github
+          :pkgname "tkf/emacs-jedi"
+          :build (("make" "requirements"))
+          :depends (epc auto-complete)
+          :after (progn
+                   (add-hook 'python-mode-hook 'jedi:setup)
+                   (setq jedi:setup-keys t)         ; optional
+                   (setq jedi:complete-on-dot t)))  ; optional
    (:name flycheck
-	  :after (progn
-		   ;;(add-hook 'after-init-hook #'global-flycheck-mode) ;; enable Flycheck mode in all buffers, in which it can be used
-		   (add-hook 'python-mode-hook 'flycheck-mode)
-		   (setq flycheck-flake8-maximum-line-length 120)))
+          :after (progn
+                   ;;(add-hook 'after-init-hook #'global-flycheck-mode) ;; enable Flycheck mode in all buffers, in which it can be used
+                   (add-hook 'python-mode-hook 'flycheck-mode)
+                   (setq flycheck-flake8-maximum-line-length 120)))
    (:name buffer-move                        ; have to add your own keys
-	  :after (lambda ()
-		   (global-set-key (kbd "<C-S-up>") 'buf-move-up)
-		   (global-set-key (kbd "<C-S-down>") 'buf-move-down)
-		   (global-set-key (kbd "<C-S-left>") 'buf-move-left)
-		   (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
+          :after (lambda ()
+                   (global-set-key (kbd "<C-S-up>") 'buf-move-up)
+                   (global-set-key (kbd "<C-S-down>") 'buf-move-down)
+                   (global-set-key (kbd "<C-S-left>") 'buf-move-left)
+                   (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
    (:name smex                                ; a better (ido like) M-x
-	  :after (lambda ()
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
-		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+          :after (lambda ()
+                   (setq smex-save-file "~/.emacs.d/.smex-items")
+                   (global-set-key (kbd "M-x") 'smex)
+                   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
    (:name magit                                ; git meet emacs, and a binding
-	  :after (lambda ()
-		   (global-set-key (kbd "C-x C-z") 'magit-status)))
+          :after (lambda ()
+                   (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name goto-last-change                ; move pointer back to last change
-	  :after (lambda ()
-		   ;; when using AZERTY keyboard, consider C-x C-_
-		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
- 
-                
+          :after (lambda ()
+                   ;; when using AZERTY keyboard, consider C-x C-_
+                   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+
+
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get                            ; el-get is self-hosting
    ;; escreen                         ; screen for emacs, C-\ C-h
-   switch-window                     ; takes over C-x 
+   switch-window                     ; takes over C-x
    ace-jump-mode
    multiple-cursors
    highlight-current-line
@@ -232,7 +232,6 @@
 ;;(global-unset-key (kbd "C-x C-x"))
 (global-set-key (kbd "C-x C-x") 'exchange-point-and-mark-no-activate)
 
-                
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
