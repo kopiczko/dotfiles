@@ -232,6 +232,10 @@
 ;;(global-unset-key (kbd "C-x C-x"))
 (global-set-key (kbd "C-x C-x") 'exchange-point-and-mark-no-activate)
 
+;; magit
+(require 'magit)
+(global-set-key (kbd "C-x v g") 'magit-status)
+
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
