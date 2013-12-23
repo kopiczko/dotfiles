@@ -113,7 +113,7 @@
 ;; Font
 (if window-system
     (if (string-match "apple-darwin" system-configuration)
-	(set-face-font 'default "Monaco-13")
+        (set-face-font 'default "Monaco-13")
       (set-face-font 'default "Monospace-11")))
 
 ;; cursor colors
