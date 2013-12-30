@@ -71,6 +71,7 @@
  my:el-get-packages
  '(el-get                            ; el-get is self-hosting
    ;; escreen                         ; screen for emacs, C-\ C-h
+   rbenv
    switch-window                     ; takes over C-x
    ace-jump-mode
    multiple-cursors
@@ -235,6 +236,10 @@
 ;; magit
 (require 'magit)
 (global-set-key (kbd "C-x v g") 'magit-status)
+
+;; rbenv
+(require 'rbenv)
+(global-rbenv-mode)
 
 (require 'ido)
 (ido-mode t)
