@@ -19,7 +19,7 @@ PATH=${PATH}:${JAVA_HOME}/bin
 PATH=${PATH}:${SCALA_HOME}/bin
 PATH=${PATH}:${GRADLE_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
-PATH=${PATH}:${ANT_HOME}/bin 
+PATH=${PATH}:${ANT_HOME}/bin
 PATH=${PATH}:${GROOVY_HOME}/bin
 PATH=${PATH}:${LEIN_HOME}
 PATH=${PATH}:/home/pawel/dev/java/ide/intellij-idea/idea/bin
@@ -46,4 +46,5 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+alias emacs='emacs --no-site-file --no-splash'
 alias e='emacs -nw -ib 0 -T emacs --no-site-file --no-splash'
