@@ -85,6 +85,8 @@
    projectile
    auto-complete                     ; complete as you type with overlays
    ag
+   scala-mode2
+   ensime
    enh-ruby-mode
    robe-mode
    smartparens
@@ -236,6 +238,9 @@
 ;; magit
 (require 'magit)
 (global-set-key (kbd "C-x v g") 'magit-status)
+
+;; ensime
+(require 'ensime)
 
 ;; rbenv
 (require 'rbenv)
