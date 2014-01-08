@@ -249,3 +249,12 @@
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
+
+;; dired
+(require 'dired)
+(add-hook 'dired-mode-hook 'ensure-buffer-name-starts-with-dired)
+(defun ensure-buffer-name-starts-with-dired ()
+  "change buffer name to start with 'dired|'"
+  (let ((name (buffer-name)))
+    (if (not (string-match "/$" name))
+        (rename-buffer (concat "dired|" name)))))
