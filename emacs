@@ -246,6 +246,9 @@
 (require 'rbenv)
 (global-rbenv-mode)
 
+;; javascript-mode
+(setq js-indent-level 2)
+
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
