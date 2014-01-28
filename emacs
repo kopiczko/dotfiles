@@ -1,3 +1,5 @@
+;; -*- mode: emacs-lisp; fill-column: 79; -*-
+
 ;; emacs-kicker
 ;; https://github.com/dimitri/emacs-kicker/blob/master/init.el
 ;; emacs-prelude
@@ -22,7 +24,11 @@
 ;; set local recipes
 (setq
  el-get-sources
- '((:name ctable                                 ; jedi dep
+ '((:name keychain-environment
+          :description "Loads keychain environment variables into emacs"
+          :type github
+          :pkgname "tarsius/keychain-environment")
+   (:name ctable                                 ; jedi dep
           :description "Table Component for elisp"
           :type github
           :pkgname "kiwanami/emacs-ctable")
@@ -70,6 +76,9 @@
 (setq
  my:el-get-packages
  '(el-get                            ; el-get is self-hosting
+   frame-fns  ;; TODO required by frame-cmds
+   frame-cmds ;; TODO make pull req on GH: ^^^^^
+   keychain-environment   ;; TODO make pull req on GH: recipe: see local recipes
    ;; escreen                         ; screen for emacs, C-\ C-h
    rbenv
    switch-window                     ; takes over C-x
@@ -261,3 +270,12 @@
   (let ((name (buffer-name)))
     (if (not (string-match "/$" name))
         (rename-buffer (concat "dired|" name)))))
+
+;; set frame title
+(require 'frame-fns)
+(require 'frame-cmds)
+(setq frame-title-format '("" "%f @ emacs-" emacs-version))
+
+;; ssh-agent gnupg-agent
+(require 'keychain-environment)
+(keychain-refresh-environment)
