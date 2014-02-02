@@ -1,3 +1,5 @@
+;; -*- mode: emacs-lisp; fill-column: 79; -*-
+
 ;; emacs-kicker
 ;; https://github.com/dimitri/emacs-kicker/blob/master/init.el
 ;; emacs-prelude
@@ -22,7 +24,12 @@
 ;; set local recipes
 (setq
  el-get-sources
- '((:name ctable                                 ; jedi dep
+ '((:name keychain-environment
+          :description "Loads keychain environment variables into emacs"
+          :type github
+          :pkgname "tarsius/keychain-environment"
+          :post-init (keychain-refresh-environment)
+   (:name ctable                                 ; jedi dep
           :description "Table Component for elisp"
           :type github
           :pkgname "kiwanami/emacs-ctable")
@@ -47,29 +54,32 @@
                    (add-hook 'python-mode-hook 'flycheck-mode)
                    (setq flycheck-flake8-maximum-line-length 120)))
    (:name buffer-move                        ; have to add your own keys
-          :after (lambda ()
+          :after (progn
                    (global-set-key (kbd "<C-S-up>") 'buf-move-up)
                    (global-set-key (kbd "<C-S-down>") 'buf-move-down)
                    (global-set-key (kbd "<C-S-left>") 'buf-move-left)
                    (global-set-key (kbd "<C-S-right>") 'buf-move-right)))
    (:name smex                                ; a better (ido like) M-x
-          :after (lambda ()
+          :after (progn
                    (setq smex-save-file "~/.emacs.d/.smex-items")
                    (global-set-key (kbd "M-x") 'smex)
                    (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
    (:name magit                                ; git meet emacs, and a binding
-          :after (lambda ()
+          :after (progn
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name goto-last-change                ; move pointer back to last change
-          :after (lambda ()
+          :after (progn
                    ;; when using AZERTY keyboard, consider C-x C-_
-                   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+                   (global-set-key (kbd "C-x C-/") 'goto-last-change))))))
 
 
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get                            ; el-get is self-hosting
+   frame-fns  ;; TODO required by frame-cmds
+   frame-cmds ;; TODO make pull req on GH: ^^^^^
+   keychain-environment   ;; TODO make pull req on GH: recipe: see local recipes
    ;; escreen                         ; screen for emacs, C-\ C-h
    rbenv
    switch-window                     ; takes over C-x
@@ -248,6 +258,27 @@
 (require 'rbenv)
 (global-rbenv-mode)
 
+;; javascript-mode
+(setq js-indent-level 2)
+
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
+
+;; dired
+(require 'dired)
+(add-hook 'dired-mode-hook 'ensure-buffer-name-starts-with-dired)
+(defun ensure-buffer-name-starts-with-dired ()
+  "change buffer name to start with 'dired|'"
+  (let ((name (buffer-name)))
+    (if (not (string-match "/$" name))
+        (rename-buffer (concat "dired|" name)))))
+
+;; set frame title
+(require 'frame-fns)
+(require 'frame-cmds)
+(setq frame-title-format '("" "%f @ emacs-" emacs-version))
+
+;; ssh-agent gnupg-agent
+(require 'keychain-environment)
+(keychain-refresh-environment)

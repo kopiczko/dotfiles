@@ -1,0 +1,1 @@
+/home/pawel/Dropbox/config/home/pawel/.zshrc
