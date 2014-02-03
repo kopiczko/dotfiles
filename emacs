@@ -98,6 +98,7 @@
    scala-mode2
    ensime
    coffee-mode
+   web-mode
    flymake-coffee
    enh-ruby-mode
    robe-mode
@@ -261,6 +262,18 @@
 ;; javascript-mode
 (setq js-indent-level 2)
 
+;; web-mode
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scala\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(setq web-mode-engines-alist
+      '(("razor"  . "\\.scala\\.html\\'"))
+)
+
+;; ido-mode
 (require 'ido)
 (ido-mode t)
 (put 'upcase-region 'disabled nil)
