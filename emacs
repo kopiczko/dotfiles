@@ -97,6 +97,8 @@
    ag
    scala-mode2
    ensime
+   coffee-mode
+   flymake-coffee
    enh-ruby-mode
    robe-mode
    smartparens

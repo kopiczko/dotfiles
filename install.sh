@@ -55,6 +55,8 @@ create_link "rbenv/plugins/rbenv-sudo" "rbenv-sudo.git"
 
 create_link "emacs"
 
+create_link "zshrc"
+
 create_link "local/bin/env.sh"
 create_link "local/bin/e"
 append_line ".bashrc" "source ~/.local/bin/env.sh"
