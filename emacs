@@ -85,6 +85,7 @@
    switch-window                     ; takes over C-x
    ace-jump-mode
    multiple-cursors
+   expand-region
    highlight-current-line
    highlight-indentation
    highlight-parentheses
@@ -272,6 +273,10 @@
 (setq web-mode-engines-alist
       '(("razor"  . "\\.scala\\.html\\'"))
 )
+
+;; expand-region
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; ido-mode
 (require 'ido)
