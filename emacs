@@ -79,7 +79,7 @@
  '(el-get                            ; el-get is self-hosting
    frame-fns  ;; TODO required by frame-cmds
    frame-cmds ;; TODO make pull req on GH: ^^^^^
-   keychain-environment   ;; TODO make pull req on GH: recipe: see local recipes
+   keychain-environment
    ;; escreen                         ; screen for emacs, C-\ C-h
    rbenv
    switch-window                     ; takes over C-x
