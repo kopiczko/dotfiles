@@ -81,7 +81,7 @@
    frame-cmds ;; TODO make pull req on GH: ^^^^^
    keychain-environment
    ;; escreen                         ; screen for emacs, C-\ C-h
-   rbenv
+   rbenv      ;; using proper ruby version
    switch-window                     ; takes over C-x
    ace-jump-mode
    multiple-cursors
@@ -274,6 +274,13 @@
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 (global-set-key (kbd "C--") 'er/contract-region)
+
+;; highlight-indentation
+(require 'highlight-indentation)
+;;(highlight-indentation-mode 1)
+(add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+(set-face-background 'highlight-indentation-face "dim gray")
+(set-face-background 'highlight-indentation-current-column-face "azure4")
 
 ;; ido-mode
 (require 'ido)
