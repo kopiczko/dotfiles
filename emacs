@@ -99,10 +99,8 @@
    scala-mode2
    ensime
    coffee-mode
-   web-mode
    flymake-coffee
-   enh-ruby-mode
-   robe-mode
+   web-mode
    smartparens
    flycheck
    jedi
@@ -216,17 +214,15 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'grizzl)
-;; Press Command-p for fuzzy find in project
-(global-set-key (kbd "M-p") 'projectile-find-file)
-;; Press Command-b for fuzzy switch buffer
-(global-set-key (kbd "C-x C-b") 'projectile-switch-to-buffer)
+;;(setq projectile-completion-system 'ido)
+(global-set-key (kbd "C-S-b") 'projectile-find-file)
 
 ;; AC mode
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
 (setq ac-ignore-case t)
-(append ac-modes '('enh-ruby-mode
+(append ac-modes '('ruby-mode
                    'python-mode
                    'web-mode))
 
@@ -291,7 +287,7 @@
   "change buffer name to start with 'dired|'"
   (let ((name (buffer-name)))
     (if (not (string-match "/$" name))
-        (rename-buffer (concat "dired|" name)))))
+        (rename-buffer (concat name "/dired")))))
 
 ;; set frame title
 (require 'frame-fns)
