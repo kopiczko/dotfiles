@@ -96,6 +96,7 @@
    projectile
    auto-complete                     ; complete as you type with overlays
    ag
+   markdown-mode
    scala-mode2
    ensime
    coffee-mode
@@ -258,6 +259,14 @@
 
 ;; javascript-mode
 (setq js-indent-level 2)
+
+;; markdown-mode
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+
 
 ;; web-mode
 (require 'web-mode)
