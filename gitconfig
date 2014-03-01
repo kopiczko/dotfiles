@@ -1,0 +1,17 @@
+[user]
+	name = Paweł Kopiczko
+	email = kopiczko@gmail.com
+[core]
+	excludesfile = /home/pawel/.gitignore_global
+[alias]
+	co = checkout
+        cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+      lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+[github]
+	user = kopiczko
+
