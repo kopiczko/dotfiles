@@ -97,6 +97,7 @@
    auto-complete                     ; complete as you type with overlays
    ag
    markdown-mode
+   yaml-mode
    scala-mode2
    ensime
    coffee-mode
