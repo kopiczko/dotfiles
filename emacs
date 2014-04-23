@@ -82,7 +82,6 @@
    keychain-environment
    ;; escreen                         ; screen for emacs, C-\ C-h
    rbenv      ;; using proper ruby version
-   switch-window                     ; takes over C-x
    ace-jump-mode
    multiple-cursors
    expand-region
