@@ -51,6 +51,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 eval `keychain --eval --agents ssh id_rsa`
 
+setopt interactivecomments # activate the bash-style comments
+
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
