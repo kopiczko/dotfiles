@@ -20,7 +20,6 @@ URxvt.termName: rxvt
 
 !URxvt*font: xft:Inconsolata:pixelsize=14:antialias=true:hinting=true
 !URxvt*boldFont: xft:Inconsolata:bold:pixelsize=14:antialias=true:hinting=true
-
 URxvt*font: xft:monospace:pixelsize=12:antialias=true:hinting=true
 URxvt*boldFont: xft:monospace:bold:pixelsize=12:antialias=true:hinting=true
 
@@ -61,111 +60,74 @@ URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.clipboard.copycmd:  xsel -ib
 URxvt.clipboard.pastecmd: xsel -ob
 
-!! twilight
-!!   black / dark gray
-!URxvt*color0: #4D4D4D
-!URxvt*color8: #9E9E9E
-!!   red
-!URxvt*color1: #725631
-!URxvt*color9: #AC885B
-!!   green
-!URxvt*color2: #5F6C3F
-!URxvt*color10: #8F9D6A
-!!   yellow
-!URxvt*color3: #757575
-!URxvt*color11: #B8B8B8
-!!   blue
-!URxvt*color4: #39598E
-!URxvt*color12: #7587A6
-!!   magenta
-!URxvt*color5: #713B71
-!URxvt*color13: #9B859D
-!!   cyan
-!URxvt*color6: #404040
-!URxvt*color14: #404040
-!!   light gray / white
-!URxvt*color7: #B8B8B8
-!URxvt*color15: #757575
-!! [ urxvt ]
-!URxvt*background: #141414
-!URxvt*foreground: #F8F8F8
-!URxvt*cursorColor: #404040
 
-!! background (not tango), foreground, tint color (for inheritPixmap)
-!urxvt*background: #000000
-!urxvt*foreground: #babdb6
-!urxvt*tintColor: #d3d7cf
+! Solarized color scheme for the X Window System
 !
-!! Black (not tango) + DarkGrey
-!urxvt*color0: #000000
-!urxvt*color8: #555753
+! http://ethanschoonover.com/solarized
+! https://github.com/brantb/solarized/blob/master/xresources/solarized
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+! #define S_base03        #fdf6e3
+! #define S_base02        #eee8d5
+! #define S_base01        #93a1a1
+! #define S_base00        #839496
+! #define S_base0         #657b83
+! #define S_base1         #586e75
+! #define S_base2         #073642
+! #define S_base3         #002b36
+
+
+! To only apply colors to your terminal, for example, prefix
+! the color assignment statement with its name. Example:
 !
-!! DarkRed + Red
-!urxvt*color1: #a40000
-!urxvt*color9: #cc0000
-!
-!! DarkGreen + Green
-!urxvt*color2: #4e9a06
-!urxvt*color10: #73d216
-!
-!! DarkYellow + Yellow
-!urxvt*color3: #c4a000
-!urxvt*color11: #edd400
-!
-!! DarkBlue + Blue
-!urxvt*color4: #204a87
-!urxvt*color12: #3465a4
-!
-!! DarkMangenta + Mangenta
-!urxvt*color5: #ce5c00
-!urxvt*color13: #f57900
-!
-!DarkCyan + Cyan (both not tango)
-!urxvt*color6: #038e82
-!urxvt*color14: #05d2c1
-!
-!! LightGrey + White
-!urxvt*color7: #babdb6
-!urxvt*color15: #d3d7cf
+! URxvt*background:            S_base03
 
-!form: http://dotshare.it/dots/432/
-!      http://www.deviantart.com/art/Undeniable-324507196
-!Rounded
-!ObliviousGmn
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
 
- *foreground:   #F2C2CA
- *background:   #242424
-! *cursorColor:  #242424
- *colorUL:      #C5CCA3
-
-! Black
- *color0:       #4C4C4C
- *color8:       #333333
-
-! Red
- *color1:       #E65C73
- *color9:       #FF6680
-
-! Green
- *color2:       #C5CCA3
- *color10:      #C7E6B8
-
-! Yellow
- *color3:       #B8CCA3
- *color11:      #BBCC9A
-
-! Blue
- *color4:       #CC7AB1
- *color12:      #CC8FCC
-
-! Magenta
- *color5:       #E673AC
- *color13:      #CC52A3
-
-! Cyan
- *color6:       #CCA3B1
- *color14:      #CC8FA3
-
-! White
- *color7:       #F2C2CA
- *color15:      #F2E6E8
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
