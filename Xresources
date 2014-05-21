@@ -7,6 +7,9 @@ Xft.rgba:       rgb
 
 xterm*faceName: monospace:pixelsize=12:antialias=true:hinting=true
 
+! fix alt-d alt-f, etc.
+xterm*metaSendsEscape: true
+
 URxvt.termName: rxvt
 
 !URxvt*font: xft:monaco:pixelsize=12:antialias=true:hinting=true
