@@ -1,6 +1,38 @@
 #!/bin/sh
 
+# Creates new session or attaches to exisiting one.
+#
+# If session does not exists and session name is a directory path then it
+# change directory to that path and creates session named after that directory
+# basename. Creates session with given name otherwise.
+tmux_new_or_attach() {
+  if [ "$#" -ne 1 ] ; then
+  echo "Usage: $0 {<session_name>|<directory_path>}" >&2
+    return 1
+  fi
+  name=$1
+  shift
+  tmux has -t `basename $name` 2> /dev/null
+  if [ $? -eq 0 ] ; then
+    tmux attach -t `basename $name`
+  elif [ -d $name  ] ; then
+    currentdir=`pwd`
+    cd $name
+    tmux new -s `basename $name`
+    tmux attach -t `basename $name`
+    cd $currentdir
+  else
+    tmux new -s $name
+    tmux attach -t $name
+  fi
+  return 0
+}
+
 alias vi='vim'
+
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+alias t='tmux_new_or_attach'
 
 alias ll='ls -ls --group-directories-first'
 alias pp='vim ~/vimwiki/passwords.wiki'
