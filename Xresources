@@ -5,23 +5,19 @@ Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
 
-xterm*faceName: monospace:pixelsize=12:antialias=true:hinting=true
+!xterm*faceName: Literation Mono Powerline
+uxterm*faceName: InconsolataDZ for Powerline
+uxterm*faceSize: 10
 
 ! fix alt-d alt-f, etc.
 xterm*metaSendsEscape: true
 
 URxvt.termName: rxvt
 
-!URxvt*font: xft:monaco:pixelsize=12:antialias=true:hinting=true
-!URxvt*boldFont: xft:monaco:bold:pixelsize=12:antialias=true:hinting=true
-
 !URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*boldFont: xft:Droid Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-
-!URxvt*font: xft:Inconsolata:pixelsize=14:antialias=true:hinting=true
-!URxvt*boldFont: xft:Inconsolata:bold:pixelsize=14:antialias=true:hinting=true
-URxvt*font: xft:monospace:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:monospace:bold:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:Literation Mono Powerline:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Literation Mono Powerline:bold:pixelsize=12:antialias=true:hinting=true
 
 ! for mutt
 URxvt*urgentOnBell: true
