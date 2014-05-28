@@ -7,16 +7,16 @@ GROOVY_HOME=/home/pawel/dev/groovy/groovy-sdk-current
 LEIN_HOME=/home/pawel/dev/lein/lein-current
 SBT_HOME=/home/pawel/dev/sbt/sbt
 
-export JAVA_HOME
-export SCALA_HOME
+#export JAVA_HOME
+#export SCALA_HOME
 export GRADLE_HOME
 export M2_HOME
 export ANT_HOME
 export GROOVY_HOME
 
 PATH=${PATH}:/home/pawel/.local/bin:/home/pawel/bin
-PATH=${PATH}:${JAVA_HOME}/bin
-PATH=${PATH}:${SCALA_HOME}/bin
+#PATH=${PATH}:${JAVA_HOME}/bin
+#PATH=${PATH}:${SCALA_HOME}/bin
 PATH=${PATH}:${GRADLE_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${ANT_HOME}/bin
