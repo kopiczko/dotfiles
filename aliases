@@ -16,3 +16,5 @@ alias envs='vi ~/.envs'
 alias zshrc='vi ~/.zshrc'
 alias vimrc='vi ~/.vimrc'
 alias edit-backup='$EDITOR ~/.local/bin/backup'
+
+alias vpn='cd ~/.config/openvpn/osp ; sudo openvpn --config pfsense-udp-1194-pkopiczko.ovpn --auth-user-pass ~/.openvpn/osp'
