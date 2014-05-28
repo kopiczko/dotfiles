@@ -66,5 +66,7 @@ setopt interactivecomments # activate the bash-style comments
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+PATH=$PATH:$HOME/bin
 PATH=$PATH:$HOME/.local/bin
-source ~/.local/bin/env.sh
+source $HOME/.envs
+source $HOME/.aliases

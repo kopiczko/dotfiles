@@ -1,0 +1,18 @@
+#!/bin/sh
+
+alias vi='vim'
+
+alias ll='ls -ls --group-directories-first'
+alias pp='vim ~/vimwiki/passwords.wiki'
+
+alias cp='cp -a'
+alias rsync='rsync -a'
+
+alias ccd='cd `xsel -b`'
+alias cpwd='echo `pwd` | xsel -ib'
+
+alias aliases='vi ~/.aliases'
+alias envs='vi ~/.envs'
+alias zshrc='vi ~/.zshrc'
+alias vimrc='vi ~/.vimrc'
+alias edit-backup='$EDITOR ~/.local/bin/backup'
