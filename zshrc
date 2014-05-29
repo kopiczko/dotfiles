@@ -68,3 +68,6 @@ setopt interactivecomments # activate the bash-style comments
 
 source $HOME/.envs
 source $HOME/.aliases
+
+# powerline prompt
+. ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
