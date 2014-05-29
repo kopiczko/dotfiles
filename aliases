@@ -5,25 +5,30 @@
 # If session does not exists and session name is a directory path then it
 # change directory to that path and creates session named after that directory
 # basename. Creates session with given name otherwise.
+# If no argument given creates or attaches to session with name of current
+# directory basename.
 tmux_new_or_attach() {
-  if [ "$#" -ne 1 ] ; then
-  echo "Usage: $0 {<session_name>|<directory_path>}" >&2
+  if [ "$#" -eq 1 ] ; then
+    name=$1
+    shift
+  elif [ "$#" -eq 0 ] ; then
+    name=$(basename `pwd`)
+  else
+    echo "Usage: $0 [<session_name>|<directory_path>]" >&2
     return 1
   fi
-  name=$1
-  shift
   tmux has -t `basename $name` 2> /dev/null
   if [ $? -eq 0 ] ; then
-    tmux attach -t `basename $name`
+    tmux -2 attach -t `basename $name`
   elif [ -d $name  ] ; then
     currentdir=`pwd`
     cd $name
-    tmux new -s `basename $name`
-    tmux attach -t `basename $name`
+    tmux -2 new -s `basename $name`
+    tmux -2 attach -t `basename $name`
     cd $currentdir
   else
-    tmux new -s $name
-    tmux attach -t $name
+    tmux -2 new -s $name
+    tmux -2 attach -t $name
   fi
   return 0
 }
