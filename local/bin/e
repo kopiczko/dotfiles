@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Start emacs in shell so it has all the Environment Variables (for rbenv or rvm, jdk, scala etc.)
-$SHELL -c emacs
