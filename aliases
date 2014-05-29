@@ -35,8 +35,8 @@ tmux_new_or_attach() {
 
 alias vi='vim'
 
-alias ta='tmux attach -t'
-alias tn='tmux new -s'
+alias ta='tmux -2 attach -t'
+alias tn='tmux -2 new -s'
 alias t='tmux_new_or_attach'
 
 alias ll='ls -ls --group-directories-first'
