@@ -4,20 +4,37 @@
 Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
 
-!xterm*faceName: Literation Mono Powerline
-uxterm*faceName: InconsolataDZ for Powerline
-uxterm*faceSize: 10
+XTerm*faceName: InconsolataDZ for Powerline
+XTerm*faceSize: 10
+XTerm*loginshell: 1
+XTerm*locale: 1
+XTerm*utf8Title: 1
+XTerm*utf8: 1
+
+XTerm*bellIsUrgent: 1
+XTerm*borderWidth: 0
+XTerm*scrollBar: 0
+
+XTerm*xftAntialias: 1
+XTerm*cjkWidth: 0
 
 ! fix alt-d alt-f, etc.
-xterm*metaSendsEscape: true
+XTerm*metaSendsEscape: true
+
+!xterm*faceName: Literation Mono Powerline
+UXTerm*faceName: InconsolataDZ for Powerline
+UXTerm*faceSize: 10
 
 URxvt.termName: rxvt
 
 !URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*boldFont: xft:Droid Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-URxvt*font: xft:Literation Mono Powerline:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:Literation Mono Powerline:bold:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:Literation Mono Powerline:size=10:antialias=true:hinting=true
+URxvt*boldFont: xft:Literation Mono Powerline:bold:size=10:antialias=true:hinting=true
+URxvt.letterSpace: -1
 
 ! for mutt
 URxvt*urgentOnBell: true
