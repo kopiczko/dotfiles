@@ -49,8 +49,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-eval `keychain --eval --agents ssh id_rsa`
-
 setopt interactivecomments # activate the bash-style comments
 
 # # Preferred editor for local and remote sessions
@@ -71,3 +69,7 @@ source $HOME/.aliases
 
 # powerline prompt
 . ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+# keychain should be last command
+
+eval `keychain --eval --agents ssh id_rsa`
