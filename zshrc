@@ -49,6 +49,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export GOROOT=/opt/go
+export PATH=$GOROOT/bin:$PATH
+
 setopt interactivecomments # activate the bash-style comments
 
 # # Preferred editor for local and remote sessions
