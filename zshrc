@@ -49,6 +49,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export M2_HOME=$HOME/.local/maven
+export PATH=$M2_HOME/bin:$PATH
+
 export GOROOT=/opt/go
 export PATH=$GOROOT/bin:$PATH
 
