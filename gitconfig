@@ -5,15 +5,13 @@
   excludesfile = /home/pawel/.gitignore_global
 [alias]
   ca = commit --amend 	
-  st = status -uall
-  co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+  co = checkout
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  st = status -uall
 [color]
   diff = auto
   status = auto
   branch = auto
-[alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [github]
   user = kopiczko
-
