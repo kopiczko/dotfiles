@@ -54,6 +54,8 @@ alias zshrc='vi ~/.zshrc'
 alias vimrc='vi ~/.vimrc'
 alias edit-backup='$EDITOR ~/.local/bin/backup'
 
+alias dot='cd ~/.dotfiles'
+
 alias pesonodes='echo "$(for i in `seq 1 11` ; do printf "peso%03d.smm " $i ; done)"'
 
 alias vpn='cd ~/.config/openvpn/osp ; sudo openvpn --config pfsense-udp-1194-pkopiczko.ovpn --auth-user-pass ~/.openvpn/osp'
