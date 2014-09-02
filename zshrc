@@ -74,7 +74,7 @@ source $HOME/.envs
 source $HOME/.aliases
 
 # powerline prompt
-. ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+. $HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # keychain should be last command
 
