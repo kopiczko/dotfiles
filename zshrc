@@ -37,6 +37,10 @@ ZSH_THEME="robbyrussell"
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # HIST_STAMPS="yyyy-mm-dd"
 
+# Remove space on the right
+# http://superuser.com/questions/655607/removing-the-useless-space-at-the-end-of-the-right-prompt-of-zsh-rprompt
+ZLE_RPROMPT_INDENT=0
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
