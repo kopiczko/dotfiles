@@ -1,43 +1,26 @@
-JAVA_HOME=/home/pawel/dev/java/jdk/current
-SCALA_HOME=/home/pawel/dev/scala/current
-GRADLE_HOME=/home/pawel/dev/java/util/gradle/gradle-current
-ANT_HOME=/home/pawel/dev/java/util/ant/apache-ant-current
-GROOVY_HOME=/home/pawel/dev/groovy/groovy-sdk-current
-LEIN_HOME=/home/pawel/dev/lein/lein-current
-SBT_HOME=/home/pawel/dev/sbt/sbt
+#!/bin/bash
 
-#export JAVA_HOME
-#export SCALA_HOME
-export GRADLE_HOME
-export ANT_HOME
-export GROOVY_HOME
+export TERMINAL=xfce4-terminal
+export EDITOR=vim
+export BROWSER=google-chrome
 
-PATH=${PATH}:/home/pawel/.local/bin:/home/pawel/bin
-#PATH=${PATH}:${JAVA_HOME}/bin
-#PATH=${PATH}:${SCALA_HOME}/bin
-PATH=${PATH}:${GRADLE_HOME}/bin
-PATH=${PATH}:${ANT_HOME}/bin
-PATH=${PATH}:${GROOVY_HOME}/bin
-PATH=${PATH}:${LEIN_HOME}
-PATH=${PATH}:/home/pawel/dev/java/ide/intellij-idea/idea/bin
-PATH=${PATH}:${SBT_HOME}/bin
-
-export PATH
-
-TERMINAL=urxvt
-#TERMINAL=xfce4-terminal
-EDITOR=vim
-BROWSER=google-chrome
-
-export TERMINAL
-export EDITOR
-export BROWSER
-
-GTK2_RC_FILES=/usr/share/themes/zukitwo/gtk-2.0/gtkrc
-export GTK2_RC_FILES
-
+# java
+export JAVA_HOME=/opt/jdk
+export PATH=$JAVA_HOME/bin:$PATH
+export MANPATH=$JAVA_HOME/man:$MANPATH
 # anti alias fonts in java apps
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+
+# scala
+export SCALA_HOME=/opt/scala
+export PATH=$SCALA_HOME/bin:$PATH
+export MANPATH=$SCALA_HOME/man:$MANPATH
+
+# sbt
+export PATH=/opt/sbt/bin:$PATH
+
+# node-js
+export PATH="/opt/node/bin:$PATH"
 
 # rbenv: https://github.com/sstephenson/rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -47,6 +30,3 @@ eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-alias emacs='emacs --no-site-file --no-splash'
-alias e='emacs -nw -ib 0 -T emacs --no-site-file --no-splash'
