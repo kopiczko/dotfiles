@@ -30,3 +30,7 @@ eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# vim
+export PATH=/opt/vim/bin:$PATH
+export MANPATH=/opt/vim/share/man:$MANPATH
