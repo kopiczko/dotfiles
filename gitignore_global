@@ -126,3 +126,36 @@ com_crashlytics_export_strings.xml
 *.msi
 *.msm
 *.msp
+
+# -- Eclipse
+# https://github.com/github/gitignore/blob/master/Global/Eclipse.gitignore
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin 
+.target
+
+# TeXlipse plugin
+.texlipse
