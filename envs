@@ -34,3 +34,6 @@ eval "$(pyenv init -)"
 # vim
 export PATH=/opt/vim/bin:$PATH
 export MANPATH=/opt/vim/share/man:$MANPATH
+
+# protobuf
+export PATH=/opt/protobuf/bin:$PATH

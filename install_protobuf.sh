@@ -24,5 +24,3 @@ fi
 
 cd /opt
 sudo ln -s $file protobuf
-
-sudo stow --no-folding -v -d /opt -t /usr/local -S protobuf
