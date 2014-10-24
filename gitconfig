@@ -4,11 +4,17 @@
 [core]
   excludesfile = /home/pawel/.gitignore_global
 [alias]
+  c = commit
   ca = commit --amend 	
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   co = checkout
+  d = diff
+  dc = diff --cached
+  dw = diff -w
+  dcw = diff --cached -w
+  dwc = diff --cached -w
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  st = status -uall
+  s = status -uall
 [push]
   default = simple
 [color]
