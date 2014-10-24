@@ -21,6 +21,7 @@ export PATH=/opt/sbt/bin:$PATH
 
 # node-js
 export PATH="/opt/node/bin:$PATH"
+export MANPATH="/opt/node/share/man:$MANPATH"
 
 # rbenv: https://github.com/sstephenson/rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
