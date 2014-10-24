@@ -35,5 +35,9 @@ eval "$(pyenv init -)"
 export PATH=/opt/vim/bin:$PATH
 export MANPATH=/opt/vim/share/man:$MANPATH
 
+# ag
+export PATH=/opt/the_silver_searcher/bin:$PATH
+export MANPATH=/opt/the_silver_searcher/share/man:$MANPATH
+
 # protobuf
 export PATH=/opt/protobuf/bin:$PATH
