@@ -60,4 +60,7 @@ alias pesonodes='echo "$(for i in `seq 1 11` ; do printf "peso%03d.smm " $i ; do
 
 alias vpn='cd ~/.config/openvpn/osp ; sudo openvpn --config pfsense-udp-1194-pkopiczko.ovpn --auth-user-pass ~/.openvpn/osp'
 
+alias maybe='vim ~/Dropbox/org/maybe.md'
 alias todo='vim ~/Dropbox/org/todo.md'
+alias trigger='vim ~/Dropbox/org/trigger.md'
+alias waitfor='vim ~/Dropbox/org/waitfor.md'
