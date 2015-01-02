@@ -1,8 +1,8 @@
 [user]
-  name = Paweł Kopiczko
+  name = Pawel Kopiczko
   email = kopiczko@gmail.com
 [core]
-  excludesfile = /home/pawel/.gitignore_global
+  excludesfile = /Users/pawel.kopiczko/.gitignore_global
 [alias]
   c = commit
   ca = commit --amend 	
@@ -16,7 +16,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   s = status -uall
 [push]
-  default = simple
+  default = current
 [color]
   diff = auto
   status = auto
