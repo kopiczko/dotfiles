@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Creates new session or attaches to exisiting one.
 #
@@ -7,37 +7,45 @@
 # basename. Creates session with given name otherwise.
 # If no argument given creates or attaches to session with name of current
 # directory basename.
-tmux_new_or_attach() {
+t() {
+  if [[ $# -eq 0 ]]; then
+    tmux list-sessions
+    return 0
+  fi
   if [ "$#" -eq 1 ] ; then
-    name=$1
+    local name=$1
     shift
-  elif [ "$#" -eq 0 ] ; then
-    name=$(basename `pwd`)
   else
     echo "Usage: $0 [<session_name>|<directory_path>]" >&2
     return 1
   fi
+
+  if [[ "x$TMUX" != "x" ]]; then
+    local TMUX_OLD=$TMUX
+    unset TMUX
+  fi
   tmux has -t `basename $name` 2> /dev/null
   if [ $? -eq 0 ] ; then
-    tmux -2 attach -t `basename $name`
+    local target=$(basename $name)
   elif [ -d $name  ] ; then
-    currentdir=`pwd`
-    cd $name
-    tmux -2 new -s `basename $name`
-    tmux -2 attach -t `basename $name`
-    cd $currentdir
+    local target=$(basename $name)
+    tmux new $new_opts -s $target -c $name
   else
-    tmux -2 new -s $name
-    tmux -2 attach -t $name
+    local target=$name
+    tmux new $new_opts -s $target
   fi
-  return 0
+  export TMUX=$TMUX_OLD
+  if [[ "x$TMUX" == "x" ]]; then
+    tmux -2 attach -t $target
+  else
+    tmux -2 choose-session -t $target
+  fi
 }
 
 alias vi='vim'
 
 alias ta='tmux -2 attach -t'
 alias tn='tmux -2 new -s'
-alias t='tmux_new_or_attach'
 
 alias ll='ls -ls --group-directories-first'
 alias pp='vim ~/vimwiki/passwords.wiki'
@@ -56,14 +64,18 @@ alias edit-backup='$EDITOR ~/.local/bin/backup'
 
 alias dot='cd ~/.dotfiles'
 
+alias vagrant-ubuntu-14.04='vagrant init ubuntu/trusty64'
 alias chef-zsh-init='eval $(chef shell-init zsh)'
 
-alias pesonodes='echo "$(for i in `seq 1 11` ; do printf "peso%03d.smm " $i ; done)"'
+alias tar-xfz='tar xfz'
 
-alias vpn='cd ~/.config/openvpn/osp ; sudo openvpn --config pfsense-udp-1194-pkopiczko.ovpn --auth-user-pass ~/.openvpn/osp'
+alias git-mail-allegro='git config user.email "pawel.kopiczko@allegro.pl"'
 
 alias asap='vim ~/Dropbox/org/asap.md'
 alias maybe='vim ~/Dropbox/org/maybe.md'
 alias todo='vim ~/Dropbox/org/todo.md'
 alias trigger='vim ~/Dropbox/org/trigger.md'
 alias waitfor='vim ~/Dropbox/org/waitfor.md'
+alias notes='vim ~/Dropbox/org/notes.md'
+
+alias dockershell='$(boot2docker shellinit)'
