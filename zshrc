@@ -40,7 +40,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vagrant rbenv pyenv)
+plugins=(git jenv vagrant rbenv pyenv brew docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,9 +59,6 @@ source $HOME/.shellprompt.sh
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
-
-export M2_HOME=$HOME/.local/maven
-export PATH=$M2_HOME/bin:$PATH
 
 export GOROOT=/opt/go
 export PATH=$GOROOT/bin:$PATH
@@ -86,4 +83,8 @@ source $HOME/.aliases
 
 # keychain should be last command
 
-eval `keychain --eval --agents ssh id_rsa`
+#eval `keychain --eval --agents ssh id_rsa`
+
+echo "  * calendar"
+echo "  * waitfor"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
