@@ -23,3 +23,5 @@
   branch = auto
 [github]
   user = kopiczko
+[init]
+  templatedir = ~/.git_template
