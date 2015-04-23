@@ -18,7 +18,14 @@ ISSUE_NUM="${a[0]}"
 # check if ISSUE_NUM is a number
 re='^[0-9]+$'
 if [[ $ISSUE_NUM =~ $re ]] ; then
-  echo "[#$ISSUE_NUM] $(cat $COMMIT_EDITMSG)" >$COMMIT_EDITMSG
+  msg="$(cat $COMMIT_EDITMSG)"
+  # if message already starts with the issue num do nothing
+  re="^\[#$ISSUE_NUM\].*"
+  if [[ $msg =~ $re ]]; then
+    exit 0
+  else
+    echo "[#$ISSUE_NUM] $msg" >$COMMIT_EDITMSG
+  fi
 elif [[ $BRANCH_EXCLUDED -ne 1 ]]; then
   echo "prepare-commit-msg: Branch does not contain issue number: '$BRANCH_NAME'" 1>&2
   exit 1
