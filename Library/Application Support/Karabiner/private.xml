@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<root>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_chrome</name>
+    <url type="file">/Applications/Google Chrome.app</url>
+  </vkopenurldef>
+
+  <item>
+    <name>OPTION_L + 1: Open/Hide Google Chrome</name>
+    <identifier>private.open_google_chrome</identifier>
+    <block>
+      <only>GOOGLE_CHROME</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_1, ModifierFlag::OPTION_L,
+        KeyCode::H, ModifierFlag::COMMAND_L,
+      </autogen>
+    </block>
+    <autogen>
+      __KeyToKey__
+      KeyCode::KEY_1, ModifierFlag::OPTION_L,
+      KeyCode::VK_OPEN_URL_chrome,
+    </autogen>
+  </item>
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_iterm</name>
+    <url type="file">/Applications/iTerm.app</url>
+  </vkopenurldef>
+
+  <item>
+    <name>OPTION_L + 2: Open/Hide iTerm</name>
+    <identifier>private.open_iterm</identifier>
+    <block>
+      <only>TERMINAL</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_2, ModifierFlag::OPTION_L,
+        KeyCode::H, ModifierFlag::COMMAND_L,
+      </autogen>
+    </block>
+    <autogen>
+      __KeyToKey__
+      KeyCode::KEY_2, ModifierFlag::OPTION_L,
+      KeyCode::VK_OPEN_URL_iterm,
+    </autogen>
+  </item>
+
+  <appdef>
+    <appname>IDEA</appname>
+    <equal>com.jetbrains.intellij.ce</equal>
+  </appdef>	
+
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_idea</name>
+    <url type="file">/Applications/IntelliJ IDEA 14 CE.app</url>
+  </vkopenurldef>
+
+  <item>
+    <name>OPTION_L + 3: Open/Hide IntellJ IDEA</name>
+    <identifier>private.open_idea</identifier>
+    <block>
+      <only>IDEA</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::KEY_3, ModifierFlag::OPTION_L,
+        KeyCode::H, ModifierFlag::COMMAND_L,
+      </autogen>
+    </block>
+    <autogen>
+      __KeyToKey__
+      KeyCode::KEY_3, ModifierFlag::OPTION_L,
+      KeyCode::VK_OPEN_URL_idea,
+    </autogen>
+  </item>
+
+  <appdef>
+    <appname>BROWSER</appname>
+    <!-- Chrome -->
+    <equal>com.google.Chrome</equal>
+    <equal>com.google.Chrome.canary</equal>
+    <!-- Chromium -->
+    <prefix>org.chromium.Chromium</prefix>
+    <!-- Firefox -->
+    <equal>org.mozilla.firefox</equal>
+    <equal>org.mozilla.aurora</equal>
+    <equal>org.mozilla.nightly</equal>
+    <equal>org.mozilla.firefoxdeveloperedition</equal>
+    <!-- Safari -->
+    <equal>equal>com.apple.Safari</equal>
+  </appdef>
+
+  <item>
+    <name>COMMAND_L + J/K: Switch tabs in browser (does not work in Safari)</name>
+    <identifier>private.browser_tab_switch</identifier>
+    <only>BROWSER</only>
+    <autogen>__KeyToKey__ 
+      KeyCode::K, ModifierFlag:: COMMAND_L,
+      KeyCode::TAB, ModifierFlag::CONTROL_L
+    </autogen>
+    <autogen>__KeyToKey__ 
+      KeyCode::J, ModifierFlag:: COMMAND_L,
+      KeyCode::TAB, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+    </autogen>
+  </item>
+
+  <item>
+    <name>OPTION_R + F10, F11, F12: Mute, Volume Down, Volume Up</name>
+    <identifier>private.volume</identifier>
+    <autogen>__KeyToKey__ 
+      KeyCode::F10, ModifierFlag:: OPTION_R,
+      ConsumerKeyCode::RawValue::0x0007,
+    </autogen>
+    <autogen>__KeyToKey__ 
+      KeyCode::F11, ModifierFlag:: OPTION_R,
+      ConsumerKeyCode::RawValue::0x0001,
+    </autogen>
+    <autogen>__KeyToKey__ 
+      KeyCode::F12, ModifierFlag:: OPTION_R,
+      ConsumerKeyCode::RawValue::0x0000,
+    </autogen>
+  </item>
+</root>
