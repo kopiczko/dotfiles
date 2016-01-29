@@ -1,15 +1,20 @@
 <?xml version="1.0"?>
 <root>
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_chrome</name>
+    <url type="file">/Applications/Google Chrome.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_firefox</name>
     <url type="file">/Applications/Firefox.app</url>
   </vkopenurldef>
 
   <item>
-    <name>OPTION_L + 1: Open/Hide Firefox</name>
-    <identifier>private.open_google_firefox</identifier>
+    <name>OPTION_L + 1: Open/Hide Google Chrome</name>
+    <identifier>private.open_google_chrome</identifier>
     <block>
-      <only>FIREFOX</only>
+      <only>GOOGLE_CHROME</only>
       <autogen>
         __KeyToKey__
         KeyCode::KEY_1, ModifierFlag::OPTION_L,
@@ -19,7 +24,7 @@
     <autogen>
       __KeyToKey__
       KeyCode::KEY_1, ModifierFlag::OPTION_L,
-      KeyCode::VK_OPEN_URL_firefox,
+      KeyCode::VK_OPEN_URL_chrome,
     </autogen>
   </item>
 
@@ -119,5 +124,11 @@
       KeyCode::F12, ModifierFlag:: OPTION_R,
       ConsumerKeyCode::RawValue::0x0000,
     </autogen>
+  </item>
+
+  <item>
+    <name>Disable COMMAND+H</name>
+    <identifier>test</identifier>
+    <autogen>__KeyToKey__ KeyCode::H, VK_COMMAND | ModifierFlag::NONE, KeyCode::VK_NONE</autogen>
   </item>
 </root>
