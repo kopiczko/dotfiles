@@ -36,6 +36,11 @@ tramp
 
 .vagrant/
 
+# Scala #
+#######
+
+# I use such a file for quick tests
+___Main.scala
 
 # SBT #
 #######

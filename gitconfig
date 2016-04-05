@@ -1,8 +1,10 @@
 [user]
-  name = Pawel Kopiczko
+	name = Paweł Kopiczko
   email = kopiczko@gmail.com
 [core]
-  excludesfile = /Users/pawel.kopiczko/.gitignore_global
+	excludesfile = /Users/pawel/.gitignore_global
+	editor = vim
+	pager = less -+F
 [alias]
   c = commit
   ca = commit --amend 	
@@ -25,3 +27,9 @@
   user = kopiczko
 [init]
   templatedir = ~/.git_template
+[diff]
+	tool = nvim -d
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
