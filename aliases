@@ -78,4 +78,9 @@ alias trigger='vim ~/Dropbox/org/trigger.md'
 alias waitfor='vim ~/Dropbox/org/waitfor.md'
 alias notes='vim ~/Dropbox/org/notes.md'
 
-alias dockershell='$(boot2docker shellinit)'
+docker_machine="dev"
+if docker-machine status $docker_machine | grep "Running" &> /dev/null; then
+  eval "$(docker-machine env $docker_machine)"
+else
+  docker-machine start $docker_machine && eval "$(docker-machine env $docker_machine)"
+fi
