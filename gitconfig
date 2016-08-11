@@ -9,16 +9,16 @@
   b = branch
   c = commit
   ca = commit --amend 	
+  clean-branches = !git branch | grep -v master | xargs git branch -D
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
   co = checkout
   d = diff
   dc = diff --cached
-  dw = diff -w
   dcw = diff --cached -w
+  dw = diff -w
   dwc = diff --cached -w
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   s = status -uall
-  clean-branches = !git branch | grep -v master | xargs git branch -D
 [push]
   default = current
 [color]
