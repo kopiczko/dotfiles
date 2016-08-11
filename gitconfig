@@ -6,6 +6,7 @@
 	editor = vim
 	pager = less -+F
 [alias]
+  b = branch
   c = commit
   ca = commit --amend 	
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -17,6 +18,7 @@
   dwc = diff --cached -w
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   s = status -uall
+  clean-branches = !git branch | grep -v master | xargs git branch -D
 [push]
   default = current
 [color]
