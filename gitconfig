@@ -27,8 +27,12 @@
   user = kopiczko
 [init]
   templatedir = ~/.git_template
+[difftool]
+  prompt = true
 [diff]
-	tool = nvim -d
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
