@@ -1,3 +1,4 @@
 # format: hostname:port:database:username:password
 # Fields can be replaced with * to match everything.
 # doc: https://www.postgresql.org/docs/current/static/libpq-pgpass.html
+# Remember to: chmod 0600 ~/.pgpass
