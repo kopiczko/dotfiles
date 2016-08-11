@@ -40,6 +40,7 @@ tramp
 #######
 
 # I use such a file for quick tests
+___Main.java
 ___Main.scala
 
 # SBT #
