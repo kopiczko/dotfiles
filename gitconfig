@@ -3,8 +3,8 @@
 	email = kopiczko@gmail.com
 [core]
 	excludesfile = /Users/pawel/.gitignore_global
-	editor = vim
-	pager = less -+F
+	editor = nvim -c 'set spell'
+	pager = nvim -c 'AnsiEsc' -R -
 [alias]
 	b = branch
 	c = commit
