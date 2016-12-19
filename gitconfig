@@ -22,6 +22,7 @@
   ss = stash save
 [push]
   default = current
+	followTags = true
 [color]
   diff = auto
   status = auto
