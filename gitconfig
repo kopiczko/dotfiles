@@ -19,6 +19,7 @@
   dwc = diff --cached -w
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   s = status -uall
+  ss = stash save
 [push]
   default = current
 [color]
