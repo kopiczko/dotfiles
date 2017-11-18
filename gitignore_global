@@ -1,5 +1,13 @@
 # -*- mode: gitignore; -*-
 
+*pawel*
+tmp
+
+# pyenv
+.python-version
+
+.vscode
+
 # Emacs #
 #########
 
@@ -42,6 +50,8 @@ tramp
 # I use such a file for quick tests
 ___Main.java
 ___Main.scala
+
+.ensime*
 
 # SBT #
 #######

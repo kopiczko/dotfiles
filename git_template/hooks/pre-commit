@@ -1,0 +1,13 @@
+#!/bin/bash
+
+branch=`git symbolic-ref HEAD`
+if [ "$branch" = "refs/heads/master" ]; then
+    if [[ $ALLOW_DIRECT_COMMIT_TO_MASTER -eq 1 ]]; then
+        echo "ALLOW_DIRECT_COMMIT_TO_MASTER=1"
+        echo "Allowing commit to master branch"
+        exit 0
+    fi
+
+    echo "Direct commits to the branch master are not allowed"
+    exit 1
+fi
