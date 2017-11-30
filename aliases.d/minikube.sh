@@ -1,14 +1,33 @@
 alias minikube-time-sync='minikube ssh -- docker run -i --rm --privileged --pid=host debian nsenter -t 1 -m -u -n -i date -u $(date -u +%m%d%H%M%Y)'
+alias minikube-proxy='minikube-init && kubectl --context minikube proxy'
 
 minikube-init() {
-    minikube status | grep -q 'minikube: Running'
+    if [[ $# -ne 1 ]]; then
+        echo "usage: minikube-init KUBERNETES_VERSION" >&2
+        return 1
+    fi
+    local version=$1; shift
+    command minikube status | grep -q 'minikube: Running'
     if [[ $? -ne 0 ]]; then
-        minikube start --vm-driver xhyve --kubernetes-version 'v1.8.0'
+        command minikube start --vm-driver xhyve --kubernetes-version "${version}"
         #--extra-config=apiserver.Authorization.Mode=RBAC
     fi
-    minikube addons enable ingress
-    eval $(minikube docker-env)
+    command minikube addons enable ingress
+    eval $(command minikube docker-env)
     env | grep 'DOCKER\w\+'
-    minikube status
+    command minikube status
     kubectl config use-context minikube
+}
+
+minikube() {
+    if [ $# -eq 1 ]; then
+        case "$1" in
+            start7) minikube-init "v1.7.5" ; return $? ;;
+            start8) minikube-init "v1.8.0" ; return $? ;;
+            proxy7) minikube start7 && kubectl --context minikube proxy ; return $? ;;
+            proxy8) minikube start8 && kubectl --context minikube proxy ; return $? ;;
+        esac
+    fi
+
+    command minikube $@
 }
