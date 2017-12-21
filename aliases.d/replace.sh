@@ -1,7 +1,7 @@
 replace() {
-    local dir=$1; shift
     local a=$1; shift
     local b=$1; shift
+    local dir=$1; shift
     # escape backshashes
     local a="${a//\//\\/}"
     local b="${b//\//\\/}"
