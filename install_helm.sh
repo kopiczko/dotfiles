@@ -19,5 +19,18 @@ chmod +x /tmp/helm/helm
 sudo mv /tmp/helm/helm /usr/local/bin/
 rm -rf /tmp/helm
 
+# -----------------------------------------------------------------------------
+# Install registry plugin
+
+mkdir -p ~/.helm/plugins/
+
+if [[ -d ~/.helm/plugins/registry/.git ]]; then
+    cd ~/.helm/plugins/registry && git pull origin master
+    helm registry upgrade-plugin
+else
+    cd ~/.helm/plugins/ && git clone https://github.com/app-registry/appr-helm-plugin.git registry
+fi
+
+# -----------------------------------------------------------------------------
 # Uninstall:
 #rm -rf /usr/local/bin/helm
