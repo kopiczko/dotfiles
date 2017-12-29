@@ -17,6 +17,10 @@ minikube-init() {
     env | grep 'DOCKER\w\+'
     command minikube status
     kubectl config use-context minikube
+
+    if command -v helm >/dev/null; then
+        helm --kube-context minikube init --upgrade
+    fi
 }
 
 minikube() {
