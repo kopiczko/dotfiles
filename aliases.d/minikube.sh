@@ -9,7 +9,7 @@ minikube-init() {
     local version=$1; shift
     command minikube status | grep -q 'minikube: Running'
     if [[ $? -ne 0 ]]; then
-        command minikube start --vm-driver xhyve --kubernetes-version "${version}"
+        command minikube start --vm-driver hyperkit --kubernetes-version "${version}"
         #--extra-config=apiserver.Authorization.Mode=RBAC
     fi
     command minikube addons enable ingress

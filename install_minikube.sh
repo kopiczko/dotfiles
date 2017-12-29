@@ -7,14 +7,14 @@ fi
 
 set -ex
 
-brew install xhyve docker-machine-driver-xhyve
+rm -rf /tmp/install_minikube
+mkdir -p /tmp/install_minikube
 
-sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+curl -Lo /tmp/install_minikube/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 chmod +x minikube
-sudo mv minikube /usr/local/bin/
+sudo mv /tmp/install_minikube/minikube /usr/local/bin/
+
+rm -rf /tmp/install_minikube
 
 # Uninstall:
 #rm -rf /usr/local/bin/minikube
