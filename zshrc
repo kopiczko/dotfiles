@@ -28,8 +28,10 @@ done
 # Enable completion.
 autoload compinit && compinit
 
-#export PATH=$HOME/bin:/usr/local/bin:$PATH
-#export MANPATH="/usr/local/man:$MANPATH"
+if [[ "$(uname)" == "Darwin" ]]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
