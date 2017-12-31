@@ -1,0 +1,33 @@
+if ! command -v rbenv >/dev/null; then
+    return 0
+fi
+
+if [[ -z ${KOPICZKO_RBENV_LOADED+x} ]]; then
+    # Make sure sh-$commands didn't changed.
+    cases="$(command rbenv init - | grep ')$' | xargs)"
+    if [[ "$cases" != "rehash|shell) *)" ]]; then
+        echo 'ERROR rbenv: expected to eval only "rehash" and "shell" commands' >&2
+        echo >&2
+        echo "$(command rbenv init - | sed  's/^/\t/')" >&2
+        echo >&2
+        echo 'inspect `rbenv init -` output (above)' >&2
+        echo "and compare with content of $(command -V rbenv | awk 'NF>1{print $NF}')" >&2
+        return 1
+    fi
+
+    command rbenv rehash 2>/dev/null
+    export KOPICZKO_RBENV_LOADED=1
+fi
+
+local command
+command="$1"
+if [ "$#" -gt 0 ]; then
+    shift
+fi
+
+case "$command" in
+    rehash|shell)
+        eval "$(rbenv "sh-$command" "$@")";;
+    *)
+        command rbenv "$command" "$@";;
+esac

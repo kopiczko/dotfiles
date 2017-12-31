@@ -1,0 +1,33 @@
+if ! command -v pyenv >/dev/null; then
+    return 0
+fi
+
+if [[ -z ${MY_PYENV_LOADED+x} ]]; then
+    # Make sure sh-$commands didn't changed.
+    cases="$(command pyenv init - | grep ')$' | xargs)"
+    if [[ "$cases" != "rehash|shell) *)" ]]; then
+        echo 'ERROR pyenv: expected to eval only "rehash" and "shell" commands' >&2
+        echo >&2
+        echo "$(command pyenv init - | sed  's/^/\t/')" >&2
+        echo >&2
+        echo 'inspect `pyenv init -` output (above)' >&2
+        echo "and compare with content of $(command -V pyenv | awk 'NF>1{print $NF}')" >&2
+        return 1
+    fi
+
+    command pyenv rehash 2>/dev/null
+    export MY_PYENV_LOADED=1
+fi
+
+local command
+command="$1"
+if [ "$#" -gt 0 ]; then
+    shift
+fi
+
+case "$command" in
+    rehash|shell)
+        eval "$(pyenv "sh-$command" "$@")";;
+    *)
+        command pyenv "$command" "$@";;
+esac

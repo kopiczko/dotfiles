@@ -46,5 +46,19 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# Enable pyenv.
+if [[ -d ~/.pyenv ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    export PATH="${PYENV_ROOT}/shims:${PATH}"
+fi
+
+# Enable rbenv.
+if [[ -d ~/.rbenv ]]; then
+    export RBENV_ROOT="$HOME/.rbenv"
+    export PATH="${RBENV_ROOT}/bin:${PATH}"
+    export PATH="${RBENV_ROOT}/shims:${PATH}"
+fi
+
 source $HOME/.aliases
 source $HOME/.envs
