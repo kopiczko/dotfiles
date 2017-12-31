@@ -1,11 +1,12 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+#
+#ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
+#ZSH_THEME="steeef"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -35,14 +36,46 @@ ZSH_THEME="steeef"
 
 # Uncomment following line if you want to  shown in the command execution time stamp
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
-HIST_STAMPS="yy/mm/dd"
+#HIST_STAMPS="yy/mm/dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git docker vagrant kubectl)
+#plugins=(git docker vagrant)
 
-source $ZSH/oh-my-zsh.sh
+# Debug startup time.
+#
+#     for in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
+#     zsh -i -x -c exit
+
+# Emacs mode.
+bindkey -e
+
+# Autoload functions from:
+#     - $HOME/.config/zsh/funcs
+#     - $HOME/.config/zsh/funcs_ephemenral
+fpath=($HOME/.config/zsh/funcs $fpath)
+fpath=($HOME/.config/zsh/funcs_ephemeral $fpath)
+for f in $(find $HOME/.config/zsh/funcs* -not -name '\.*' -type f); do
+    autoload -Uz $(basename $f)
+done
+
+autoload compinit && compinit
+#autoload -Uz compinit
+#if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+#  compinit
+#else
+#  compinit -C
+#fi
+
+#source $ZSH/oh-my-zsh.sh
+
+# One history for all open shells; store 10 000 entries. Use ^R and Alt-P
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt incappendhistory
+setopt sharehistory
+setopt extendedhistory
 
 # User configuration
 
