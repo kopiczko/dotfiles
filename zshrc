@@ -6,6 +6,16 @@
 # Emacs mode.
 bindkey -e
 
+# One history for all open shells; store 10 000 entries. Use ^R and Alt-P.
+HISTFILE=~/.zhistory
+HISTSIZE=SAVEHIST=10000
+setopt incappendhistory
+setopt sharehistory
+setopt extendedhistory
+
+# Activate the bash-style comments.
+setopt interactivecomments
+
 # Autoload functions from:
 #     - $HOME/.config/zsh/funcs
 #     - $HOME/.config/zsh/funcs_ephemenral
@@ -18,18 +28,8 @@ done
 # Enable completion.
 autoload compinit && compinit
 
-# One history for all open shells; store 10 000 entries. Use ^R and Alt-P.
-HISTFILE=~/.zhistory
-HISTSIZE=SAVEHIST=10000
-setopt incappendhistory
-setopt sharehistory
-setopt extendedhistory
-
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export MANPATH="/usr/local/man:$MANPATH"
-
-# Activate the bash-style comments.
-setopt interactivecomments
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
