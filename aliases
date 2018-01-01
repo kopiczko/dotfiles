@@ -1,51 +1,8 @@
 #!/bin/bash
 
-# Creates new session or attaches to exisiting one.
-#
-# If session does not exists and session name is a directory path then it
-# change directory to that path and creates session named after that directory
-# basename. Creates session with given name otherwise.
-# If no argument given creates or attaches to session with name of current
-# directory basename.
-t() {
-  if [[ $# -eq 0 ]]; then
-    tmux list-sessions
-    return 0
-  fi
-  if [ "$#" -eq 1 ] ; then
-    local name=$1
-    shift
-  else
-    echo "Usage: $0 [<session_name>|<directory_path>]" >&2
-    return 1
-  fi
-
-  if [[ "x$TMUX" != "x" ]]; then
-    local TMUX_OLD=$TMUX
-    unset TMUX
-  fi
-  tmux has -t `basename $name` 2> /dev/null
-  if [ $? -eq 0 ] ; then
-    local target=$(basename $name)
-  elif [ -d $name  ] ; then
-    local target=$(basename $name)
-    tmux new $new_opts -s $target -c $name
-  else
-    local target=$name
-    tmux new $new_opts -s $target
-  fi
-  export TMUX=$TMUX_OLD
-  if [[ "x$TMUX" == "x" ]]; then
-    tmux -2 attach -t $target
-  else
-    tmux -2 choose-session -t $target
-  fi
-}
 
 alias vi='vim'
 
-alias ta='tmux -2 attach -t'
-alias tn='tmux -2 new -s'
 
 alias ll='ls -ls --group-directories-first'
 alias pp='vim ~/vimwiki/passwords.wiki'
