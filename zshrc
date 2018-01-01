@@ -16,6 +16,9 @@ setopt extendedhistory
 # Activate the bash-style comments.
 setopt interactivecomments
 
+# Highlight selected completion.
+zstyle ':completion:*' menu select
+
 # Autoload functions from:
 #     - $HOME/.config/zsh/funcs
 #     - $HOME/.config/zsh/funcs_ephemenral
