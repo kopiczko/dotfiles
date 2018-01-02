@@ -31,13 +31,16 @@ prompt_git_current_branch() {
     echo ${ref#refs/heads/}
 }
 
-# Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
 prompt() {
+    # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
+    # Fancy prompt symbol: ❯
+    # Nice grey color: %F{242}
+
     local branch=$(prompt_git_current_branch)
     local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
 
     # Prompt turns red if the previous command didn't exit with 0.
-    echo "%(?.%F{242}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n%(?.%F{green}.%F{red})❯%f "
+    echo "\n%(?.%F{green}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n$ "
 }
 
 PROMPT=$(prompt)
