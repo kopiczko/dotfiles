@@ -37,7 +37,7 @@ prompt() {
     local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
 
     # Prompt turns red if the previous command didn't exit with 0.
-    echo "%(?.%F{blue}.%F{red})%~%f %F{242}($branch) ($kubectx)%f\n%(?.%F{green}.%F{red})❯%f "
+    echo "%(?.%F{242}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n%(?.%F{green}.%F{red})❯%f "
 }
 
 PROMPT=$(prompt)
