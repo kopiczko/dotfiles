@@ -1,14 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -e
 
 dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-set -e
+mk_link() {
+    if [[ $# -ne 2 ]]; then
+        echo "usage: mk_link SRC DST" >&2
+        exit 1
+    fi
 
-mkdir -p $HOME/.config
+    local s=$1; shift
+    local t=$1; shift
 
-for f in $(ls ${dir}/config); do
-    s="$dir/config/$f"
-    t="$HOME/.config/$f"
     if [[ -h $t ]] && [[ "$(readlink $t)" == "$s" ]]; then
         echo "I $t exists and links to $s"
         continue
@@ -23,4 +25,28 @@ for f in $(ls ${dir}/config); do
     fi
     echo "I $t creating a link to $s"
     ln -s $s $t
+}
+
+mkdir -p $HOME/.config
+
+for f in $(ls ${dir}/config); do
+    s="$dir/config/$f"
+    t="$HOME/.config/$f"
+
+    mk_link $s $t
+done
+
+files="$files aliases"
+files="$files aliases.d"
+files="$files envs"
+files="$files git_template"
+files="$files gitconfig"
+files="$files gitignore_global"
+files="$files zshrc"
+
+for f in $files; do
+    s="$dir/$f"
+    t="$HOME/.$f"
+
+    mk_link $s $t
 done
