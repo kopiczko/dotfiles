@@ -16,7 +16,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
 # go
-export GOROOT=$install_dir/go
+export GOROOT=/usr/local/opt/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
