@@ -1,5 +1,16 @@
 #!/bin/bash
 
+git_current_branch() {
+    local ref
+    ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+    local ret=$?
+    if [[ $ret != 0 ]]; then
+        [[ $ret == 128 ]] && return  # no git repo.
+        ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo ${ref#refs/heads/}
+}
+
 # fix mac LC_CTYPE issue
 # see: http://sourabhbajaj.com/python/2014/03/31/fix-valueerror-unknown-locale-utf-8/
 if [[ "$LC_CTYPE" == 'UTF-8' ]]; then
@@ -9,68 +20,13 @@ fi
 install_dir=/usr/local/opt
 
 #export TERMINAL=xfce4-terminal
-export EDITOR=vim
+export EDITOR=nvim
 export BROWSER=google-chrome
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
-# java
-export PATH=$JAVA_HOME/bin:$PATH
-export MANPATH=$JAVA_HOME/man:$MANPATH
-#export JAVA_HOME=$install_dir/jdk
-# jenv # to export JAVA_HOME: jenv enable-plugin export
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-. $HOME/.jenv.completion.zsh # https://github.com/gcuisinier/jenv/blob/master/completions/jenv.zsh
-# anti alias fonts in java apps
-#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-
-# maven
-export M2_HOME=$install_dir/maven
-export PATH=$M2_HOME/bin:$PATH
-
-# scala
-export SCALA_HOME=$install_dir/scala
-export PATH=$SCALA_HOME/bin:$PATH
-export MANPATH=$SCALA_HOME/man:$MANPATH
-
-# sbt
-export PATH=$install_dir/sbt/bin:$PATH
-
 # go
 export GOROOT=$install_dir/go
-export PATH=$GOROOT/bin:$PATH
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-
-# node-js
-export PATH="$install_dir/node/bin:$PATH"
-export MANPATH="$install_dir/node/share/man:$MANPATH"
-
-# mysql
-export PATH="$install_dir/mysql/bin:$PATH"
-export MANPATH="$install_dir/mysql/man:$MANPATH"
-
-# rbenv: https://github.com/sstephenson/rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# pyenv: https://github.com/yyuu/pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# vim
-export PATH=$install_dir/vim/bin:$PATH
-export MANPATH=$install_dir/vim/share/man:$MANPATH
-
-# ag
-export PATH=$install_dir/the_silver_searcher/bin:$PATH
-export MANPATH=$install_dir/the_silver_searcher/share/man:$MANPATH
-
-# protobuf
-export PATH=$install_dir/protobuf/bin:$PATH
-
-# cassandra
-export PATH=$install_dir/apache-cassandra/bin:$PATH
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

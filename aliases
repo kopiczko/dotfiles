@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-alias vi='vim'
-
+alias vi='nvim'
 
 alias ll='ls -ls --group-directories-first'
 alias pp='vim ~/vimwiki/passwords.wiki'
@@ -15,29 +13,3 @@ alias cpwd='echo `pwd` | xsel -ib'
 
 alias aliases='vi ~/.aliases'
 alias envs='vi ~/.envs'
-alias zshrc='vi ~/.zshrc'
-alias vimrc='vi ~/.vimrc'
-alias edit-backup='$EDITOR ~/.local/bin/backup'
-
-alias dot='cd ~/.dotfiles'
-
-alias vagrant-ubuntu-14.04='vagrant init ubuntu/trusty64'
-alias chef-zsh-init='eval $(chef shell-init zsh)'
-
-alias tar-xfz='tar xfz'
-
-alias git-mail-allegro='git config user.email "pawel.kopiczko@allegro.pl"'
-
-alias asap='vim ~/Dropbox/org/asap.md'
-alias maybe='vim ~/Dropbox/org/maybe.md'
-alias todo='vim ~/Dropbox/org/todo.md'
-alias trigger='vim ~/Dropbox/org/trigger.md'
-alias waitfor='vim ~/Dropbox/org/waitfor.md'
-alias notes='vim ~/Dropbox/org/notes.md'
-
-docker_machine="dev"
-if docker-machine status $docker_machine | grep "Running" &> /dev/null; then
-  eval "$(docker-machine env $docker_machine)"
-else
-  docker-machine start $docker_machine && eval "$(docker-machine env $docker_machine)"
-fi
