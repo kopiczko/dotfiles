@@ -1,16 +1,5 @@
 #!/bin/bash
 
-git_current_branch() {
-    local ref
-    ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-    local ret=$?
-    if [[ $ret != 0 ]]; then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/heads/}
-}
-
 # fix mac LC_CTYPE issue
 # see: http://sourabhbajaj.com/python/2014/03/31/fix-valueerror-unknown-locale-utf-8/
 if [[ "$LC_CTYPE" == 'UTF-8' ]]; then
@@ -30,3 +19,25 @@ export MANPATH="/usr/local/man:$MANPATH"
 export GOROOT=$install_dir/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+prompt_git_current_branch() {
+    local ref
+    ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+    local ret=$?
+    if [[ $ret != 0 ]]; then
+        [[ $ret == 128 ]] && return  # no git repo.
+        ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo ${ref#refs/heads/}
+}
+
+# Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
+prompt() {
+    local branch=$(prompt_git_current_branch)
+    local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+
+    # Prompt turns red if the previous command didn't exit with 0.
+    echo "%(?.%F{blue}.%F{red})%~%f %F{242}($branch) ($kubectx)%f\n%(?.%F{green}.%F{red})❯%f "
+}
+
+PROMPT=$(prompt)
