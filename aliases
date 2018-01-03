@@ -12,7 +12,7 @@ alias vi='nvim'
 # substitution when the alias is expanded.
 alias watch='watch --color '
 
-alias ll='ls -ls --group-directories-first'
+alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 alias pp='vim ~/vimwiki/passwords.wiki'
 
 alias cp='cp -a'
