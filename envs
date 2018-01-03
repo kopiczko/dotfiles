@@ -43,4 +43,5 @@ prompt() {
     echo "\n%(?.%F{green}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n$ "
 }
 
-PROMPT=$(prompt)
+setopt PROMPT_SUBST
+PROMPT='$(prompt)'
