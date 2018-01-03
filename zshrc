@@ -63,5 +63,9 @@ if [[ -d ~/.rbenv ]]; then
     export PATH="${RBENV_ROOT}/shims:${PATH}"
 fi
 
+# Enable fzf.
+[[ -f ~/src/github.com/junegunn/fzf/shell/completion.zsh ]] && source ~/src/github.com/junegunn/fzf/shell/completion.zsh
+[[ -f ~/src/github.com/junegunn/fzf/shell/key-bindings.zsh ]] && source ~/src/github.com/junegunn/fzf/shell/key-bindings.zsh
+
 source $HOME/.aliases
 source $HOME/.envs
