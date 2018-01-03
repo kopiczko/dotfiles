@@ -32,3 +32,5 @@ fi
 
 [[ -d "$GOPATH/src/github.com/$session" ]] && session_dir="$GOPATH/src/github.com/$session" || session_dir=$(pwd)
 tmux new-session -c $session_dir -d -s $session && tmux $change -t "$session"
+
+# ex: ts=4 sw=4 et ft=sh

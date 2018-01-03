@@ -31,3 +31,5 @@ case "$command" in
     *)
         command pyenv "$command" "$@";;
 esac
+
+# ex: ts=4 sw=4 et ft=sh
