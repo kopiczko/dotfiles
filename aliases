@@ -6,6 +6,12 @@ done
 
 alias vi='nvim'
 
+# From bash's help alias:
+#
+# A trailing space in VALUE causes the next word to be checked for alias
+# substitution when the alias is expanded.
+alias watch='watch --color '
+
 alias ll='ls -ls --group-directories-first'
 alias pp='vim ~/vimwiki/passwords.wiki'
 
