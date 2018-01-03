@@ -19,3 +19,17 @@ dutyend() {
     docker run --rm -ti -e SLACK_TOKEN=$(cat /keybase/private/kopiczko/token/slack) giantswarm/slackutil mute --include "support.*" 
     docker run --rm -ti -e SLACK_TOKEN=$(cat /keybase/private/kopiczko/token/slack) giantswarm/slackutil mute --include "project.*"
 } 
+
+vault-decrypt() {
+        echo ===================================================================;echo
+        echo $1 | xxd -r -p | keybase pgp decrypt
+        echo;echo
+        echo ===================================================================
+}
+
+vault-decrypt2() {
+        echo ====================================================================;echo
+        echo $1 | base64 -d | keybase pgp decrypt
+        echo;echo
+        echo ====================================================================
+}
