@@ -4,10 +4,10 @@ for f in $(find ~/.aliases.d/ -type f); do
     source $f
 done
 
-alias vi='nvim '
+alias vi='nvim'
 
-alias aliases='vi ~/.aliases'
-alias envs='vi ~/.envs'
+alias aliases='nvim ~/.aliases'
+alias envs='nvim ~/.envs'
 
 # From bash's help alias:
 #
@@ -24,5 +24,9 @@ alias ccd='cd `xsel -b`'
 alias cpwd='echo `pwd` | xsel -ib'
 
 alias gp='git pull'
+
+alias agv='ag --ignore=vendor'
+
+alias gotest='go test ./...'
 
 alias k='kubectl'
