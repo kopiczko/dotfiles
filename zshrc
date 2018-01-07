@@ -64,8 +64,9 @@ if [[ -d ~/.rbenv ]]; then
 fi
 
 # Enable fzf.
-[[ -f ~/src/github.com/junegunn/fzf/shell/completion.zsh ]] && source ~/src/github.com/junegunn/fzf/shell/completion.zsh
-[[ -f ~/src/github.com/junegunn/fzf/shell/key-bindings.zsh ]] && source ~/src/github.com/junegunn/fzf/shell/key-bindings.zsh
+[[ -d ~/go/src/github.com/junegunn/fzf/bin ]] && export PATH="${PATH}:${HOME}/go/src/github.com/junegunn/fzf/bin"
+[[ -f ~/go/src/github.com/junegunn/fzf/shell/completion.zsh ]] && source ~/go/src/github.com/junegunn/fzf/shell/completion.zsh
+[[ -f ~/go/src/github.com/junegunn/fzf/shell/key-bindings.zsh ]] && source ~/go/src/github.com/junegunn/fzf/shell/key-bindings.zsh
 
 source $HOME/.aliases
 source $HOME/.envs
