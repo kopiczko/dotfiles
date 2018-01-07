@@ -42,6 +42,7 @@ files="$files envs"
 files="$files git_template"
 files="$files gitconfig"
 files="$files gitignore_global"
+files="$files karabiner"
 files="$files tmux.conf"
 files="$files zshrc"
 
