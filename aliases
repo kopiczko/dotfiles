@@ -15,6 +15,7 @@ alias envs='nvim ~/.envs'
 # substitution when the alias is expanded.
 alias watch='watch --color '
 
+alias ls='ls --group-directories-first --color=auto'
 alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 
 alias cp='cp -a'
