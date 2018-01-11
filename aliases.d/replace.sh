@@ -5,7 +5,7 @@ replace() {
     # escape backshashes
     local a="${a//\//\\/}"
     local b="${b//\//\\/}"
-    for file in $(find $dir -type d \( -path ./.git -o -path ./vendor \)  -prune -o -print | grep '.*\.go'); do
+    for file in $(find $dir \( -path ./.git -o -path ./vendor \)  -prune -o -type f -print); do
         sed -i -e "s/${a}/${b}/g" $file
     done
 }
