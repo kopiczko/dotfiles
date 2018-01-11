@@ -21,6 +21,7 @@
 	dwc = diff --cached -w --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%cn%Creset %C(yellow)%d%Creset %s %Cgreen%cr%Creset' --abbrev-commit --date=relative
 	s = status -uall
+	sp = --paginate status -uall
 	ss = stash save
 [push]
 	default = current
