@@ -70,3 +70,5 @@ fi
 
 source $HOME/.aliases
 source $HOME/.envs
+
+source $GOPATH/src/keybase.io/kopiczo/dotfiles/shrc
