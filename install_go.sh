@@ -7,9 +7,9 @@ case $OSTYPE in
     *) echo "ERROR unsuported OS $OSTYPE" >&2 ; exit 1 ;;
 esac
 
-version="1.9.2"
+version="1.10"
 arch="amd64"
-url="https://redirector.gvt1.com/edgedl/go/go${version}.${os}-${arch}.tar.gz"
+url="https://dl.google.com/go/go${version}.${os}-${arch}.tar.gz"
 
 if [[ -z $GOROOT ]]; then
     echo "ERROR GOROOT env var must be set" >&2
@@ -19,6 +19,13 @@ fi
 if [[ -z $GOPATH ]]; then
     echo "ERROR GOPATH env var must be set" >&2
     exit 1
+fi
+
+if [[ -n $GOCACHE ]] && [[ ! -d $GOCACHE ]]; then
+    mkdir -p $GOCACHE
+fi
+if [[ -n $GOTMPDIR ]] && [[ ! -d $GOTMPDIR ]]; then
+    mkdir -p $GOTMPDIR
 fi
 
 set -ex
