@@ -10,13 +10,15 @@ install_dir=/usr/local/opt
 
 #export TERMINAL=xfce4-terminal
 export EDITOR=nvim
-export BROWSER=google-chrome
+#export BROWSER=google-chrome
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
 # go
 export GOROOT=/usr/local/opt/go
+export GOTMPDIR=$HOME/go/tmp
+export GOCACHE=$HOME/go/cache
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
