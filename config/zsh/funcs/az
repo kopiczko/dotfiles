@@ -1,4 +1,6 @@
 docker run -it --rm \
+    -w "/root" \
+    -v "$(pwd):/root" \
     -v "${HOME}/.azure:/root/.azure" \
     --log-driver none \
     --name azure \
