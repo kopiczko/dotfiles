@@ -1,0 +1,27 @@
+# Make sure ~/.aws/credentials look like this:
+#
+#        [giantswarm-permanent]
+#        aws_access_key_id = <insert your access key>
+#        aws_secret_access_key = <insert your secret key>
+#        [giantswarm]
+#        aws_access_key_id = foo
+#        aws_secret_access_key = foo
+#        aws_session_token = foo
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: create-aws-session MFA_TOKEN"
+    return 1
+fi
+
+local mfa_token=$1
+local mfa_arn="arn:aws:iam::084190472784:mfa/pawel@giantswarm.io"
+
+credentials=$(aws sts --profile giantswarm-permanent get-session-token --serial-number "$mfa_arn" --token-code $mfa_token)
+
+local access_key=$(echo $credentials|jq --raw-output  ".Credentials.AccessKeyId")
+local secret_key=$(echo $credentials|jq --raw-output  ".Credentials.SecretAccessKey")
+local session_token=$(echo $credentials|jq --raw-output  ".Credentials.SessionToken")
+
+sed -i '/^\[giantswarm\]$/,/^\[/ s#^aws_access_key_id = .*#aws_access_key_id = '"$access_key"'#' ~/.aws/credentials
+sed -i '/^\[giantswarm\]$/,/^\[/ s#^aws_secret_access_key = .*#aws_secret_access_key = '"$secret_key"'#' ~/.aws/credentials
+sed -i '/^\[giantswarm\]$/,/^\[/ s#^aws_session_token = .*#aws_session_token = '"$session_token"'#' ~/.aws/credentials
