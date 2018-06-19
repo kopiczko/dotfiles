@@ -10,7 +10,10 @@ set -ex
 rm -rf /tmp/install_minikube
 mkdir -p /tmp/install_minikube
 
-curl -Lo /tmp/install_minikube/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+#version=latest
+version=v0.25.2
+
+curl -Lo /tmp/install_minikube/minikube https://storage.googleapis.com/minikube/releases/${version}/minikube-darwin-amd64
 chmod +x /tmp/install_minikube/minikube
 sudo mv /tmp/install_minikube/minikube /usr/local/bin/
 
