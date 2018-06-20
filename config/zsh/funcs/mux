@@ -15,22 +15,25 @@ fi
 
 local sessions
 [[ -n "$TMUX" ]] && sessions="$(tmux list-sessions -F "#{session_name}")\n"
-sessions="$sessions$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^.\///')"
+sessions="$sessions$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./github.com/')"
+sessions="$sessions$(cd $GOPATH/src/keybase.io && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./keybase.io/')"
 
 local session=$(echo $sessions | fzf-tmux -d 80%)
+local session_name=$(echo $session | tr '.' '-')
 
 if [[ -z ${session} ]]; then
     return $?
 fi
 
-[[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+[[ -n "$TMUX" ]] && change="switch-client" || change="attach"
 
 
-if tmux $change -t "$session" 2>/dev/null; then
+if tmux $change -t "$session_name" 2>/dev/null; then
     return
 fi
 
-[[ -d "$GOPATH/src/github.com/$session" ]] && session_dir="$GOPATH/src/github.com/$session" || session_dir=$(pwd)
-tmux new-session -c $session_dir -d -s $session && tmux $change -t "$session"
+[[ -d "$GOPATH/src/$session" ]] && session_dir="$GOPATH/src/$session" || session_dir=$(pwd)
+echo "tmux new-session -c $session_dir -d -s $session_name && tmux $change -t \"$session\""
+tmux new-session -c $session_dir -d -s $session_name && tmux $change -t "$session_name"
 
 # ex: ts=4 sw=4 et ft=sh
