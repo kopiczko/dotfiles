@@ -31,3 +31,5 @@ alias agv='ag --ignore=vendor'
 alias gotest='go test ./...'
 
 alias k='kubectl'
+
+alias yq='docker run -it --rm --log-driver none --name yq kopiczko/yq'
