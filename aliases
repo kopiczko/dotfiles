@@ -27,9 +27,29 @@ alias cpwd='echo `pwd` | xsel -ib'
 alias gp='git pull'
 
 alias agv='ag --ignore=vendor'
+alias agvt="agv --ignore=vendor --ignore '*_test.go'"
 
 alias gotest='go test ./...'
 
 alias k='kubectl'
 
-alias yq='docker run -it --rm --log-driver none --name yq kopiczko/yq'
+alias yq='docker run -i --rm --log-driver none --name yq kopiczko/yq . | jq'
+
+clean-path() {
+    if [[ $# -ne 1 ]]; then
+        echo "usage: clean-path CONTENT" >&2
+        return 1
+    fi
+    local r=$(echo $1 | awk -v RS=':' -v ORS=':' '!a[$1]++' | head -1)
+    echo ${r%:}
+}
+clean-path-test() {
+    local p='App/bin:/usr/local/opt/go/bin:/usr/local/bin:App/bin:/bin:/bin:/usr/local/bin'
+    local want='App/bin:/usr/local/opt/go/bin:/usr/local/bin:/bin'
+    local got="$(clean-path $p)"
+    if [[ $want != $got ]]; then
+        echo "ERROR clean-path-test:\n\twant: $want\n\t got: $got" >&2
+        return 1
+    fi
+}
+clean-path-test
