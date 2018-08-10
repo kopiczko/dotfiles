@@ -7,7 +7,7 @@ case $OSTYPE in
     *) echo "ERROR unsuported OS $OSTYPE" >&2 ; exit 1 ;;
 esac
 
-version="v0.4.1"
+version="v0.5.0"
 arch="amd64"
 
 url="https://github.com/golang/dep/releases/download/${version}/dep-${os}-${arch}"
