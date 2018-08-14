@@ -27,7 +27,10 @@ dutyend() {
 } 
 
 pluigi() {
-    pbpaste | luigi --no-color
+    local content=$(pbpaste | luigi --no-color)
+    local fd
+    exec {fd}<<< $content
+    nvim /dev/fd/$fd
 }
 
 vault-decrypt() {
