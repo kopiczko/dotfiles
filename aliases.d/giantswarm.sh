@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-alias deployer='GITHUB_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/github) deployer'
-alias opsctl='OPSCTL_GITHUB_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/github) opsctl'
-
 onduty() {
     local token="$GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack"
     if [[ ! -f $token ]]; then
@@ -28,6 +25,10 @@ dutyend() {
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "support.*"
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "project.*"
 } 
+
+pluigi() {
+    pbpaste | luigi --no-color
+}
 
 vault-decrypt() {
         echo ===================================================================;echo
