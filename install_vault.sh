@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-version="0.9.1"
+version="0.11.1"
 os="darwin"
 arch="amd64"
 bin="vault"
