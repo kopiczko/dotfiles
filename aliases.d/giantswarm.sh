@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+
+alias luigi='command luigi --no-color'
+alias pluigi='pbpaste | command luigi --no-color | vi -'
+
 onduty() {
     local token="$GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack"
     if [[ ! -f $token ]]; then
@@ -25,13 +29,6 @@ dutyend() {
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "support.*"
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "project.*"
 } 
-
-pluigi() {
-    local content=$(pbpaste | luigi --no-color)
-    local fd
-    exec {fd}<<< $content
-    nvim /dev/fd/$fd
-}
 
 vault-decrypt() {
         echo ===================================================================;echo
