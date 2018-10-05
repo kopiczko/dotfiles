@@ -1,18 +1,58 @@
 minikube-init() {
     if [[ $# -ne 1 ]]; then
         echo "usage: minikube-init KUBERNETES_VERSION" >&2
-        return 1
+        return 2
     fi
     local version=$1; shift
+
+    echo "--> starting minikbe"
     command minikube status | grep -q 'minikube: Running'
     if [[ $? -ne 0 ]]; then
-        command minikube start --vm-driver hyperkit --kubernetes-version "${version}" --extra-config=apiserver.Authorization.Mode=RBAC
+        command minikube start --vm-driver hyperkit --kubernetes-version "${version}" --extra-config=apiserver.Authorization.Mode=RBAC --feature-gates=CustomResourceSubresources=true,MountPropagation=false
+        if [[ $? -ne 0 ]]; then
+            echo "--> failed to start minikube" >&2
+            return 1
+        fi
+
+        echo "--> started minikube"
+    else
+        echo "--> mnikube is already started"
     fi
-    command minikube addons enable ingress
+
+    # addon-manager doesn't work for me with 0.25.2 and K8s 1.10. Fails with
+    # `Not elected leader, going back to sleep`. Because of that install
+    # coredns manually.
+    #
+    #command minikube addons enable addon-manager
+    #command minikube addons enable coredns
+    #command minikube addons enable ingress
+    echo "--> installing coredns"
+    command kubectl --context minikube apply -f $HOME/.minikube/addons/coredns.yaml
+        if [[ $? -ne 0 ]]; then
+            echo "--> failed to install coredns" >&2
+            return 1
+        fi
+    echo "--> installed coredns"
+
+    echo "--> enabling docker-env (only this session)"
     eval $(command minikube docker-env)
-    env | grep 'DOCKER\w\+'
+        if [[ $? -ne 0 ]]; then
+            echo "--> failed to enable docker-env" >&2
+            return 1
+        fi
+        env | grep 'DOCKER\w\+'
+    echo "--> enabled docker-env (only this session)"
+
+    echo "--> switching context to minikube"
+    command kubectl config use-context minikube
+        if [[ $? -ne 0 ]]; then
+            echo "--> failed to switch context to minikube" >&2
+            return 1
+        fi
+    echo "--> switched context to minikube"
+
     command minikube status
-    kubectl config use-context minikube
+    echo "--> OK"
 }
 
 if [ $# -eq 1 ]; then
