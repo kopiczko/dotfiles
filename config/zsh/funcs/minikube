@@ -34,14 +34,14 @@ minikube-init() {
         fi
     echo "--> installed coredns"
 
-    echo "--> enabling docker-env (only this session)"
-    eval $(command minikube docker-env)
-        if [[ $? -ne 0 ]]; then
-            echo "--> failed to enable docker-env" >&2
-            return 1
-        fi
-        env | grep 'DOCKER\w\+'
-    echo "--> enabled docker-env (only this session)"
+    #echo "--> enabling docker-env (only this session)"
+    #eval $(command minikube docker-env)
+    #    if [[ $? -ne 0 ]]; then
+    #        echo "--> failed to enable docker-env" >&2
+    #        return 1
+    #    fi
+    #    env | grep 'DOCKER\w\+'
+    #echo "--> enabled docker-env (only this session)"
 
     echo "--> switching context to minikube"
     command kubectl config use-context minikube
