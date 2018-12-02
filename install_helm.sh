@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-version="2.7.0"
+version="2.8.2"
 download_url="https://kubernetes-helm.storage.googleapis.com/helm-v${version}-darwin-amd64.tar.gz"
 
 if [[ "$(uname)" != "Darwin" ]]; then
