@@ -67,6 +67,10 @@ if [[ -d ~/.rbenv ]]; then
     export PATH="${RBENV_ROOT}/shims:${PATH}"
 fi
 
+# Enable brew installed ruby.
+[[ -d /usr/local/opt/ruby/bin ]] && export PATH="/usr/local/opt/ruby/bin:$PATH"
+[[ -d $HOME/.gem/ruby/2.6.0/bin ]] && export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
+
 # Enable fzf.
 [[ -d ~/go/src/github.com/junegunn/fzf/bin ]] && export PATH="${PATH}:${HOME}/go/src/github.com/junegunn/fzf/bin"
 [[ -f ~/go/src/github.com/junegunn/fzf/shell/completion.zsh ]] && source ~/go/src/github.com/junegunn/fzf/shell/completion.zsh
