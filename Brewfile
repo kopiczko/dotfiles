@@ -20,6 +20,7 @@ brew "awscli"
 brew "bash"
 brew "bash-completion"
 brew "binutils", link: true
+brew "cmake" # For YouCompleteMe.
 brew "diff-so-fancy"
 brew "git"
 brew "htop"
