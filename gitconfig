@@ -4,7 +4,7 @@
 [core]
 	excludesfile = /Users/pawel/.gitignore_global
 	editor = nvim -c 'set spell'
-	pager = less -+F
+	pager = less --tabs=8 -+F
 [alias]
 	b = branch
 	c = commit
@@ -12,17 +12,16 @@
 	clean-branches = !git branch | grep -v master | xargs git branch -D
 	cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
 	co = checkout
-        d = diff -- ':!/vendor'
-        dc = diff --cached -- ':!/vendor'
-        #d = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
-        #dc = diff --cached --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
-	dcw = diff --cached -w --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
-	dw = diff -w --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
-	dwc = diff --cached -w --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
+	d = diff -- . ':!/vendor'
+	dc = diff --cached -- . ':!/vendor'
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%cn%Creset %C(yellow)%d%Creset %s %Cgreen%cr%Creset' --abbrev-commit --date=relative
 	s = status -uall
 	sp = --paginate status -uall
 	ss = stash save
+	patch = !git --no-pager diff --no-color
+	patch-cached = !git --no-pager diff --cached --no-color
+[pager]
+	diff = diff-so-fancy | less --tabs=8 -+FX --pattern '^(Date|added|deleted|modified|renamed): '
 [push]
 	default = current
 	followTags = true
@@ -30,6 +29,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = true
 [github]
 	user = kopiczko
 [init]
@@ -49,3 +49,22 @@
 	process = git-lfs filter-process
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	stripLeadingSymbols = false
+	markEmptyLines = false
+	changeHunkIndicators = false
+	useUnicodeRuler = false
+
+# vim: tabstop=8 shiftwidth=8 noexpandtab
