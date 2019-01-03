@@ -3,6 +3,10 @@
 version=
 bin="rbenv"
 
+echo "skipping installing ${bin}"
+echo "use brew ruby instead"
+exit 1
+
 git_url="git@github.com:rbenv/rbenv.git"
 
 if [[ -d ~/.$bin ]]; then

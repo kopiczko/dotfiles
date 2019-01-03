@@ -2,6 +2,10 @@
 
 bin="pyenv"
 
+echo "skipping installing ${bin}"
+echo "use brew python instead"
+exit 1
+
 git_url="git@github.com:pyenv/pyenv.git"
 
 if [[ -d ~/.$bin/.git ]]; then
