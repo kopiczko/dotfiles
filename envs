@@ -20,6 +20,9 @@ export GOROOT=/usr/local/opt/go
 export GOTMPDIR=$HOME/go/tmp
 export GOCACHE=$HOME/go/cache
 export GOPATH=$HOME/go
+export GOBIN="$GOPATH/bin"
+export GO111MODULE=auto
+
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 prompt_git_current_branch() {
