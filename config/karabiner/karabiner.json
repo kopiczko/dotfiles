@@ -114,7 +114,7 @@
                         ]
                     },
                     {
-                        "description": "GoTo Slack",
+                        "description": "GoTo Station",
                         "manipulators": [
                             {
                                 "from": {
@@ -129,7 +129,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Slack.app'"
+                                        "shell_command": "open -a 'Station.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -145,7 +145,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -a 'Slack.app'"
+                                        "shell_command": "open -a 'Station.app'"
                                     }
                                 ],
                                 "type": "basic"
