@@ -15,23 +15,17 @@ alias envs='nvim ~/.envs'
 # substitution when the alias is expanded.
 alias watch='watch --color '
 
-alias ls='ls --group-directories-first --color=auto'
-alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
-
-alias cp='cp -a'
-alias rsync='rsync -a'
-
-alias ccd='cd `xsel -b`'
-alias cpwd='echo `pwd` | xsel -ib'
-
-alias gp='git pull'
-
 alias agv='ag --ignore=vendor'
 alias agvt="agv --ignore=vendor --ignore '*_test.go'"
-
+alias brewup="brew update && brew upgrade && brew cleanup"
+alias cp='cp -a'
+alias cpwd='echo $(pwd) | pbcopy'
 alias gotest='go test ./...'
-
+alias gp='git pull'
 alias k='kubectl'
+alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
+alias ls='ls --group-directories-first --color=auto'
+alias rsync='rsync -a'
 
 alias yq='docker run -i --rm --log-driver none --name yq kopiczko/yq . | jq'
 
