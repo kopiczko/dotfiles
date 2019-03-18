@@ -64,8 +64,9 @@ minikube-init() {
 
 if [ $# -eq 1 ]; then
     case "$1" in
-        start) minikube start10; return $? ;;
+        start) minikube start13; return $? ;;
         start10) minikube-init "v1.10.0" ; return $? ;;
+        start13) minikube-init "v1.13.3" ; return $? ;;
     esac
 fi
 
