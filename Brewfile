@@ -17,6 +17,7 @@ tap "homebrew/cask"
 tap "neovim/neovim"
 
 brew "awscli"
+brew "azure-cli"
 brew "bash"
 brew "bash-completion"
 brew "binutils", link: true
@@ -36,6 +37,16 @@ brew "tmux"
 brew "tree"
 brew "youtube-dl"
 brew "zsh"
+
+# -----------------------------------------------------------------------------
+# Kubernetes
+# -----------------------------------------------------------------------------
+
+brew "kubectx"
+
+# -----------------------------------------------------------------------------
+# Cask
+# -----------------------------------------------------------------------------
 
 cask "station"
 cask "vagrant"

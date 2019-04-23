@@ -1,9 +1,0 @@
-docker run -it --rm \
-    -w "/root" \
-    -v "$(pwd):/root" \
-    -v "${HOME}/.azure:/root/.azure" \
-    --log-driver none \
-    --name azure \
-    azuresdk/azure-cli-python:2.0.23 az "$@"
-
-# ex: ts=4 sw=4 et ft=sh
