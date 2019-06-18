@@ -38,6 +38,7 @@ brew "tree"
 brew "youtube-dl"
 brew "zsh"
 brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 # -----------------------------------------------------------------------------
 # Kubernetes
