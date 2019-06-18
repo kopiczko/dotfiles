@@ -37,6 +37,7 @@ brew "tmux"
 brew "tree"
 brew "youtube-dl"
 brew "zsh"
+brew "zsh-autosuggestions"
 
 # -----------------------------------------------------------------------------
 # Kubernetes

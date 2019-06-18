@@ -76,6 +76,9 @@ fi
 [[ -f ~/go/src/github.com/junegunn/fzf/shell/completion.zsh ]] && source ~/go/src/github.com/junegunn/fzf/shell/completion.zsh
 [[ -f ~/go/src/github.com/junegunn/fzf/shell/key-bindings.zsh ]] && source ~/go/src/github.com/junegunn/fzf/shell/key-bindings.zsh
 
+# Enable autosuggestions.
+[[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 source $HOME/.aliases
 source $HOME/.envs
 
