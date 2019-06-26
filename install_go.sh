@@ -45,8 +45,10 @@ rm -rf /tmp/install_go
 # Link k8s.io to github.com/kubernetes.
 mkdir -p $GOPATH/src
 rm -rf $GOPATH/src/k8s.io
+rm -rf $GOPATH/src/sigs.k8s.io
 mkdir -p $GOPATH/src/github.com/kubernetes
 ln -s $GOPATH/src/github.com/kubernetes $GOPATH/src/k8s.io
+ln -s $GOPATH/src/kubernetes-sigs $GOPATH/src/sigs.k8s.io
 
 # Uninstall:
 #rm -rf $GOROOT/go

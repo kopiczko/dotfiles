@@ -21,7 +21,7 @@ export GOTMPDIR=$HOME/go/tmp
 export GOCACHE=$HOME/go/cache
 export GOPATH=$HOME/go
 export GOBIN="$GOPATH/bin"
-export GO111MODULE=auto
+export GO111MODULE=off
 
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 

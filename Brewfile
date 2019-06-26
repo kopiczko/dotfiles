@@ -51,6 +51,7 @@ brew "kubectx"
 # -----------------------------------------------------------------------------
 
 cask "station"
+cask "brave-browser"
 cask "vagrant"
 cask "virtualbox"
 cask "vlc"
