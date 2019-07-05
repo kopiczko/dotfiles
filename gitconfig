@@ -22,6 +22,8 @@
 	patch-cached = !git --no-pager diff --cached --no-color
 [pager]
 	diff = diff-so-fancy | less --tabs=8 -+FX --pattern '^(Date|added|deleted|modified|renamed): '
+[pull]
+	default = current
 [push]
 	default = current
 	followTags = true
