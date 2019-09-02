@@ -15,8 +15,9 @@ fi
 
 local sessions
 [[ -n "$TMUX" ]] && sessions="$(tmux list-sessions -F "#{session_name}")\n"
-sessions="$sessions$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./github.com/')"
-sessions="$sessions$(cd $GOPATH/src/keybase.io && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./keybase.io/')"
+sessions="$sessions\n$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./github.com/')"
+sessions="$sessions\n$(cd $GOPATH/src/keybase.io && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./keybase.io/')"
+sessions="$sessions\n$(cd $GOPATH/src/sigs.k8s.io && find . -mindepth 1 -maxdepth 1 -type d | sed 's/^./sigs.k8s.io/')"
 
 local session=$(echo $sessions | fzf-tmux -d 80%)
 local session_name=$(echo $session | tr '.' '-')
