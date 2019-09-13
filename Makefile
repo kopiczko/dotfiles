@@ -1,4 +1,7 @@
-brew: brew-up brew-post
+brew: brew-bundle brew-post
+
+brew-bundle:
+	brew bundle
 
 brew-up:
 	brew update
