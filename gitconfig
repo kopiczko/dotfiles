@@ -7,6 +7,7 @@
 	pager = less --tabs=8 -+F
 [alias]
 	b = branch
+	bu = !git branch -u origin/$(git rev-parse --abbrev-ref HEAD)
 	c = commit
 	ca = commit --amend
 	clean-branches = !git branch | grep -v master | xargs git branch -D
@@ -22,8 +23,6 @@
 	patch-cached = !git --no-pager diff --cached --no-color
 [pager]
 	diff = diff-so-fancy | less --tabs=8 -+FX --pattern '^(Date|added|deleted|modified|renamed): '
-[pull]
-	default = current
 [push]
 	default = current
 	followTags = true
