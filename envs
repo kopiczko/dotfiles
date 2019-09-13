@@ -12,11 +12,16 @@ install_dir=/usr/local/opt
 export EDITOR=nvim
 #export BROWSER=google-chrome
 
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
 
+# For coreutils and other GNU tools on macOS.
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
 # go
-export GOROOT=/usr/local/opt/go
+export GOROOT=/usr/local/opt/go/libexec
 export GOTMPDIR=$HOME/go/tmp
 export GOCACHE=$HOME/go/cache
 export GOPATH=$HOME/go
@@ -42,7 +47,9 @@ prompt() {
     # Nice grey color: %F{242}
 
     local branch=$(prompt_git_current_branch)
-    local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+    if [[ -e  ~/.kube/config ]]; then
+        local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+    fi
 
     # Prompt turns red if the previous command didn't exit with 0.
     echo "\n%(?.%F{green}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n$ "
