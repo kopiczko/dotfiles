@@ -12,18 +12,18 @@ mk_link() {
     local t=$1; shift
 
     if [[ -h $t ]] && [[ "$(readlink $t)" == "$s" ]]; then
-        echo "I $t exists and links to $s"
+        printf "I %-40s exists and links to %s\n" "$t" "$s"
         return 0
     fi
     if [[ -h $t ]]; then
-        echo "E $t exists but links to $(readlink $t), needs to be FIXED manually"
+        printf "E %-40s exists but links to $(readlink $t), needs to be FIXED manually\n" "$t"
         return 1
     fi
     if [[ -e $t ]]; then
-        echo "E $t exists but it is not a link, needs to be FIXED manually"
+        printf "E %-40s exists but it is not a link, needs to be FIXED manually\n" "$t"
         return 1
     fi
-    echo "I $t creating a link to $s"
+    echo "I $t		creating a link to $s"
     ln -s $s $t
 }
 
@@ -42,7 +42,6 @@ files="$files envs"
 files="$files git_template"
 files="$files gitconfig"
 files="$files gitignore_global"
-files="$files karabiner"
 files="$files tmux.conf"
 files="$files zshrc"
 
