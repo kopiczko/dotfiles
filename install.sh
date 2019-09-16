@@ -38,6 +38,7 @@ done
 
 files="$files aliases"
 files="$files aliases.d"
+files="$files ctags"
 files="$files envs"
 files="$files git_template"
 files="$files gitconfig"
