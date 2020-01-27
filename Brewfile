@@ -24,6 +24,7 @@ brew "binutils", link: true
 brew "ctags"
 brew "diff-so-fancy"
 brew "dep"
+brew "findutils"
 brew "fzf"
 brew "git"
 brew "gnu-sed"
