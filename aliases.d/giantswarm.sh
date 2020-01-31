@@ -12,9 +12,9 @@ onduty() {
     fi
 
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil join --include "support.*"
-    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil join --include "project.*"
+    #docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil join --include "project.*"
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil unmute --include "support.*"
-    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil unmute --include "project.*"
+    #docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil unmute --include "project.*"
     #docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil star --include "support.*"
 }
 
@@ -26,9 +26,9 @@ dutyend() {
     fi
 
     docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil unstar --include "support.*"
-    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "support.*"
-    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil mute --include "project.*"
-} 
+    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil leave --include "support-.*"
+    docker run --rm -ti -e SLACK_TOKEN=$(cat $GOPATH/src/keybase.io/kopiczko/dotfiles/token/slack) giantswarm/slackutil leave --include "project.*"
+}
 
 vault-decrypt() {
         echo ===================================================================;echo
