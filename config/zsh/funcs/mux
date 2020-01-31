@@ -15,12 +15,13 @@ fi
 
 local sessions
 [[ -n "$TMUX" ]] && sessions="$(tmux list-sessions -F "#{session_name}")\n"
-sessions="$sessions\n$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./github.com/')"
-sessions="$sessions\n$(cd $GOPATH/src/keybase.io && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./keybase.io/')"
-sessions="$sessions\n$(cd $GOPATH/src/sigs.k8s.io && find . -mindepth 1 -maxdepth 1 -type d | sed 's/^./sigs.k8s.io/')"
+local sessions="$sessions\n$(cd $GOPATH/src/github.com && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./github.com/')"
+local sessions="$sessions\n$(cd $GOPATH/src/keybase.io && find . -mindepth 2 -maxdepth 2 -type d | sed 's/^./keybase.io/')"
+local sessions="$sessions\n$(cd $GOPATH/src/sigs.k8s.io && find . -mindepth 1 -maxdepth 1 -type d | sed 's/^./sigs.k8s.io/')"
 
 local session=$(echo $sessions | fzf-tmux -d 80%)
 local session_name=$(echo $session | tr '.' '-')
+
 
 if [[ -z ${session} ]]; then
     return $?
@@ -34,7 +35,6 @@ if tmux $change -t "$session_name" 2>/dev/null; then
 fi
 
 [[ -d "$GOPATH/src/$session" ]] && session_dir="$GOPATH/src/$session" || session_dir=$(pwd)
-echo "tmux new-session -c $session_dir -d -s $session_name && tmux $change -t \"$session\""
 tmux new-session -c $session_dir -d -s $session_name && tmux $change -t "$session_name"
 
 # ex: ts=4 sw=4 et ft=sh
