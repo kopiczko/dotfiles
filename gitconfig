@@ -2,7 +2,7 @@
 	name = Paweł Kopiczko
 	email = kopiczko@gmail.com
 [core]
-	excludesfile = /Users/pawel/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nvim -c 'set spell'
 	pager = less --tabs=8 -+F
 [alias]
