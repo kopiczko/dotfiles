@@ -28,8 +28,6 @@ alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 alias ls='ls --group-directories-first --color=auto'
 alias rsync='rsync -a'
 
-alias yq='docker run -i --rm --log-driver none --name yq kopiczko/yq . | jq'
-
 clean-path() {
     if [[ $# -ne 1 ]]; then
         echo "usage: clean-path CONTENT" >&2
