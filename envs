@@ -1,12 +1,12 @@
 #!/bin/bash
 
+# {{{ env
+
 # fix mac LC_CTYPE issue
 # see: http://sourabhbajaj.com/python/2014/03/31/fix-valueerror-unknown-locale-utf-8/
 if [[ "$LC_CTYPE" == 'UTF-8' ]]; then
   export LC_CTYPE="en_US.UTF-8"
 fi
-
-install_dir=/usr/local/opt
 
 #export TERMINAL=xfce4-terminal
 export EDITOR=nvim
@@ -20,7 +20,10 @@ export MANPATH="/usr/local/man:$MANPATH"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
-# go
+# }}}
+
+# {{{ env: go
+
 export GOROOT=/usr/local/opt/go/libexec
 export GOTMPDIR=$HOME/go/tmp
 export GOCACHE=$HOME/go/cache
@@ -30,30 +33,44 @@ export GO111MODULE="auto"
 
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-prompt_git_current_branch() {
-    local ref
-    ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-    local ret=$?
-    if [[ $ret != 0 ]]; then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/heads/}
-}
+# }}}
 
-prompt() {
+# {{{ prompt
+
+PROMPT=''
+
+prompt_init() {
     # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
     # Fancy prompt symbol: ❯
     # Nice grey color: %F{242}
 
-    local branch=$(prompt_git_current_branch)
-    if [[ -e  ~/.kube/config ]]; then
-        local kubectx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+    readonly newline=$'\n'
+
+    local newline_prefix=${newline}
+    if [ -z ${PROMPT} ] ; then
+        newline_prefix=''
     fi
 
-    # Prompt turns red if the previous command didn't exit with 0.
-    echo "\n%(?.%F{green}.%F{red})%~%f (%F{blue}$branch%f) (%F{blue}$kubectx%f)\n$ "
+    local git_ref
+    git_ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+    local ret=$?
+    if [[ $ret != 0 ]]; then
+        [[ $ret == 128 ]] && return  # no git repo.
+        git_ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    git_ref=${git_ref#refs/heads/}
+
+    local kube_ctx=''
+    if [[ -e  ~/.kube/config ]]; then
+        kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+    fi
+
+    PROMPT="${newline_prefix}%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
 }
 
 setopt PROMPT_SUBST
-PROMPT='$(prompt)'
+precmd() { prompt_init }
+
+# }}}
+
+# vim: fdm=marker
