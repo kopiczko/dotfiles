@@ -54,14 +54,13 @@ prompt_init() {
     local git_ref
     git_ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
     local ret=$?
-    if [[ $ret != 0 ]]; then
-        [[ $ret == 128 ]] && return  # no git repo.
-        git_ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    if [ $ret -ne 0 ] && [ $ret -ne 128 ] ; then
+        git_ref=$(command git rev-parse --short HEAD 2> /dev/null)
     fi
-    git_ref=${git_ref#refs/heads/}
+    git_ref="${git_ref#refs/heads/}"
 
     local kube_ctx=''
-    if [[ -e  ~/.kube/config ]]; then
+    if [ -e  ~/.kube/config ] ; then
         kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
     fi
 
