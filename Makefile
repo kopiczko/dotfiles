@@ -1,4 +1,8 @@
-brew: brew-bundle brew-post
+default:
+	@echo 'Run "make links" or "make brew[{-bundle,-up,-post}]".'
+
+links:
+	./install.sh
 
 brew-bundle:
 	sudo true # So it doesn't ask later on.
