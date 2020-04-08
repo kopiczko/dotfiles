@@ -15,6 +15,7 @@
 
 tap "homebrew/cask"
 tap "neovim/neovim"
+tap "github/gh"
 
 brew "awscli"
 brew "azure-cli"
@@ -22,13 +23,13 @@ brew "bash"
 brew "bash-completion"
 brew "binutils", link: true
 brew "ctags"
-brew "diff-so-fancy"
 brew "dep"
+brew "diff-so-fancy"
 brew "ffmpeg"
 brew "findutils"
 brew "fzf"
 brew "git"
-#brew "parallel"
+brew "github/gh/gh"
 brew "gnu-sed"
 brew "go"
 brew "htop"

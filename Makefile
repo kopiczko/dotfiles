@@ -4,6 +4,8 @@ default:
 links:
 	./install.sh
 
+brew: brew-up brew-bundle brew-post
+
 brew-bundle:
 	sudo true # So it doesn't ask later on.
 	brew bundle
