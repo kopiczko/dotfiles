@@ -1,0 +1,40 @@
+if ! command -v gh >/dev/null ; then
+    echo "error: gh is not installed" >&2
+fi
+if ! command -v hub >/dev/null ; then
+    echo "error: hub is not installed" >&2
+fi
+
+if [[ $# -ne 1 ]] ; then
+    echo "Usage:"
+    echo "  $(basename $0) [command]"
+    echo
+    echo "Available Commands:"
+    echo "  c    Create a pull request."
+    echo "  s    Display pull requests status."
+    echo "  v    View a pull request."
+    return 1
+fi
+
+pr_create() {
+    hub pull-request -pda kopiczko
+}
+
+pr_status() {
+    gh pr status
+}
+
+pr_view() {
+    gh pr view -w
+}
+
+local command=$1
+
+case $command in
+    c) pr_create ;;
+    s) pr_status ;;
+    v) pr_view ;;
+    *) echo "error: unrecognised command $1" 1>&2 ; return 1 ;;
+esac
+
+# ex: ts=4 sw=4 et ft=sh
