@@ -11,13 +11,18 @@ if [[ $# -ne 1 ]] ; then
     echo
     echo "Available Commands:"
     echo "  c    Create a pull request."
+    echo "  r    View the repository in the browser."
     echo "  s    Display pull requests status."
-    echo "  v    View a pull request."
+    echo "  v    View the pull request in the browser."
     return 1
 fi
 
 pr_create() {
     hub pull-request -pda kopiczko
+}
+
+pr_repo_view() {
+    gh repo view -w
 }
 
 pr_status() {
@@ -32,6 +37,7 @@ local command=$1
 
 case $command in
     c) pr_create ;;
+    r) pr_repo_view ;;
     s) pr_status ;;
     v) pr_view ;;
     *) echo "error: unrecognised command $1" 1>&2 ; return 1 ;;
