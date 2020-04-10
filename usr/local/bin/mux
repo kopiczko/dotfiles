@@ -22,17 +22,22 @@ fi
 
 readonly sessions_file='/tmp/mux-sessions'
 readonly sessions_file_current='/tmp/mux-sessions-current'
-rm -rf "$sessions_file" "$sessions_file_current"
+readonly sessions_file_giantswarm='/tmp/mux-sessions-giantswarm'
+rm -rf /tmp/mux-*
 [[ -n "$TMUX" ]] && tmux list-sessions -F "#{session_name}" >> "$sessions_file_current"
 [[ -d $GOPATH/src/github.com ]] && find $GOPATH/src/github.com -mindepth 2 -maxdepth 2 -type d | sed 's/.*\/src\/github\.com/github.com/' >> "$sessions_file"
 [[ -d $GOPATH/src/keybase.io ]] && find $GOPATH/src/keybase.io -mindepth 2 -maxdepth 2 -type d | sed 's/.*\/src\/keybase\.io/keybase.io/' >> "$sessions_file"
 [[ -d $GOPATH/src/sigs.k8s.io ]] && find $GOPATH/src/sigs.k8s.io -mindepth 2 -maxdepth 2 -type d | sed 's/.*\/src\/sigs\.k8s\.io/sigs.k8s.io/' >> "$sessions_file"
 
-#sort -o $sessions_file_current $sessions_file_current
-sort -o $sessions_file $sessions_file
-session=$(cat "$sessions_file_current" "$sessions_file" | fzf)
+grep 'github.com/giantswarm/' $sessions_file  > "$sessions_file_giantswarm"
+sed -i '/github\.com\/giantswarm/d' "$sessions_file"
+
+sort -fo $sessions_file_current $sessions_file_current
+sort -fo $sessions_file $sessions_file
+sort -fo $sessions_file_giantswarm $sessions_file_giantswarm
+session=$(cat "$sessions_file_current" "$sessions_file_giantswarm" "$sessions_file" | fzf)
 session_name=$(echo $session | tr '.' '-')
-rm -rf "$sessions_file" "$sessions_file_current"
+rm -rf /tmp/mux-*
 
 if [[ -z ${session} ]]; then
     return $?
