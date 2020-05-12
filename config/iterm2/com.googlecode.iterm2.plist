@@ -3709,7 +3709,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>155 473 592 584 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1057 0 0 1920 1057 </string>
+	<string>0 0 1920 1057 0 0 1920 1080 </string>
 	<key>NeverWarnAboutShortLivedSessions_71BEE12D-B268-4F68-9432-A56F6E72E429</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_71BEE12D-B268-4F68-9432-A56F6E72E429_selection</key>
@@ -6719,13 +6719,13 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.3.2</string>
-		<string>3.3.3beta2</string>
+		<string>3.3.10beta3</string>
 		<string>3.3.4beta1</string>
-		<string>3.3.5beta1</string>
 		<string>3.3.5beta3</string>
 		<string>3.3.7beta2</string>
-		<string>3.3.10beta3</string>
+		<string>3.3.5beta1</string>
+		<string>3.3.2</string>
+		<string>3.3.3beta2</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -6750,7 +6750,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>4DB2DD44-BC73-4741-A6FB-EF27439BE5D3</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>60</integer>
+	<integer>62</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -7565,7 +7565,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-07T11:05:38Z</date>
+	<date>2020-04-10T12:12:52Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -7617,7 +7617,7 @@
 	<key>UseCompactLabel</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
-	<false/>
+	<true/>
 	<key>UseTmuxStatusBar</key>
 	<true/>
 	<key>VisualIndicatorForEsc</key>
