@@ -18,7 +18,11 @@ if [[ $# -ne 1 ]] ; then
 fi
 
 pr_create() {
-    hub pull-request -pda kopiczko
+    if [[ -f pawel.pr.md ]] ; then
+        hub pull-request -pda kopiczko -F pawel.pr.md --edit
+    else
+        hub pull-request -pda kopiczko
+    fi
 }
 
 pr_repo_view() {
