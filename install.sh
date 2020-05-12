@@ -54,3 +54,4 @@ for f in $files; do
 done
 
 mk_link $dir/usr/local/bin/mux /usr/local/bin/mux
+mk_link $dir/usr/local/bin/p /usr/local/bin/p
