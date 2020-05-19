@@ -17,6 +17,21 @@ if [[ $# -ne 1 ]] ; then
     return 1
 fi
 
+_pr_get_repo() {
+    local toplevel="$(git rev-parse --show-toplevel)"
+    local ret=$?
+    if [[ $ret -ne 0 ]] ; then
+        echo "error: not a git repo?" >&2
+        return $ret
+    fi
+
+    local owner="$(dirname "$toplevel")"
+    local owner="$(basename "$owner")"
+    local repo="$(basename "$toplevel")"
+
+    echo -n "$owner/$repo"
+}
+
 pr_create() {
     if [[ -f pawel.pr.md ]] ; then
         hub pull-request -pda kopiczko -F pawel.pr.md --edit
@@ -26,15 +41,30 @@ pr_create() {
 }
 
 pr_repo_view() {
-    gh repo view -w
+    local repo="$(_pr_get_repo)"
+    local ret=$?
+    if [[ $ret -ne 0 ]] ; then
+        return $ret
+    fi
+    gh -R "$repo" repo view -w
 }
 
 pr_status() {
-    gh pr status
+    local repo="$(_pr_get_repo)"
+    local ret=$?
+    if [[ $ret -ne 0 ]] ; then
+        return $ret
+    fi
+    gh -R "$repo" pr status
 }
 
 pr_view() {
-    gh pr view -w
+    local repo="$(_pr_get_repo)"
+    local ret=$?
+    if [[ $ret -ne 0 ]] ; then
+        return $ret
+    fi
+    gh -R "$repo" pr view -w
 }
 
 local command=$1
