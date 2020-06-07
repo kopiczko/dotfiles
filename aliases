@@ -20,6 +20,8 @@ alias agvt="agv --ignore=vendor --ignore '*_test.go'"
 alias brewup="brew update && brew upgrade && brew cleanup"
 alias cp='cp -a'
 alias cpwd='echo $(pwd) | pbcopy'
+alias ct='docker run -it --rm -v $(pwd):/wd:ro --workdir=/wd --name ct quay.io/giantswarm/helm-chart-testing:v2.4.0 ct'
+alias golint='golangci-lint run -E gosec -E goconst'
 alias gotest='go test ./...'
 alias gp='git pull'
 alias k='kubectl'
