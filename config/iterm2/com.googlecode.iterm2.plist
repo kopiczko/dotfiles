@@ -3711,7 +3711,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>155 473 592 584 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 528 576 529 0 0 1920 1057 </string>
+	<string>0 0 576 529 0 0 1920 1080 </string>
 	<key>NeverWarnAboutShortLivedSessions_71BEE12D-B268-4F68-9432-A56F6E72E429</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_71BEE12D-B268-4F68-9432-A56F6E72E429_selection</key>
@@ -4390,7 +4390,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.0</real>
+			<real>0.70114968039772729</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -4467,7 +4467,7 @@
 			<key>Silence Bell</key>
 			<false/>
 			<key>Smart Cursor Color</key>
-			<true/>
+			<false/>
 			<key>Smart Selection Rules</key>
 			<array>
 				<dict>
@@ -6724,6 +6724,7 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.10beta3</string>
+		<string>3.3.11beta1</string>
 		<string>3.3.4beta1</string>
 		<string>3.3.5beta3</string>
 		<string>3.3.7beta2</string>
@@ -6755,7 +6756,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>4DB2DD44-BC73-4741-A6FB-EF27439BE5D3</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>77</integer>
+	<integer>79</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -7570,7 +7571,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-06-01T13:09:51Z</date>
+	<date>2020-06-07T05:55:19Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -7646,7 +7647,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.10beta4</string>
+	<string>3.3.11beta1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>1</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
