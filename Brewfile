@@ -64,6 +64,7 @@ brew "kubectx"
 # Cask
 # -----------------------------------------------------------------------------
 
+cask "alacritty"
 cask "brave-browser"
 cask "docker"
 cask "fantastical"
