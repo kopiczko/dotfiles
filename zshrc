@@ -68,3 +68,13 @@ source $HOME/.aliases
 source $HOME/.envs
 
 source $GOPATH/src/keybase.io/kopiczko/dotfiles/shrc
+
+# Start tmux
+function () {
+    [[ -n $TMUX ]] && return 0
+    local session_name="home"
+    local session_dir="$HOME"
+    tmux attach-session -t "$session_name" 2>/dev/null && return 0
+    tmux new-session -c $session_dir -d -s $session_name
+    tmux attach-session -t $session_name
+} ""
