@@ -63,7 +63,6 @@ my_git_repo() {
     local repo=$(basename "$toplevel")
     echo "$owner/$repo"
 }
-
 prompt_init() {
     # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
     # Fancy prompt symbol: ❯
@@ -73,20 +72,6 @@ prompt_init() {
 
     local git_ref=$(my_git_ref)
 
-    #local window_title
-    #{
-    #    local git_repo
-    #    git_repo=$(my_git_repo)
-    #    local ret=$?
-    #
-    #    # "\e]<;...\a" is the escape sequence for setting terminal window title.
-    #    if [[ $ret -ne 0 ]]; then
-    #        window_title="\e]<;$(dirs)\a"
-    #    else
-    #        window_title="\e]<;$git_repo@$git_ref\a"
-    #    fi
-    #}
-
     local kube_ctx=''
     if [[ -e  ~/.kube/config ]] ; then
         kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
@@ -95,12 +80,25 @@ prompt_init() {
     PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
 }
 
+tmux_title_init() {
+    local git_repo
+    git_repo=$(my_git_repo)
+    local ret=$?
+
+    if [[ $ret -ne 0 ]]; then
+        printf '\033]2;%s\033\\' "$(dirs)"
+        return 0
+    fi
+
+    printf '\033]2;%s\033\\' "$git_repo"
+}
+
 setopt PROMPT_SUBST
 precmd() {
     # Print empty line between each prompt bunt not before the first one.
     [[ -n "${PROMPT}" ]] && echo
     prompt_init
-    #title_init
+    tmux_title_init
 }
 
 # }}}
