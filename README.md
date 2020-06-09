@@ -2,10 +2,8 @@
 
 My personal dotfiles.
 
-To install on macOS:
+To install on macOS check:
 
 ```
-make brew
-
-install.sh
+make help
 ```
