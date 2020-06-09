@@ -39,6 +39,31 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 PROMPT=''
 
+my_git_ref() {
+    local git_ref
+    git_ref=$(command git symbolic-ref --short --quiet HEAD 2> /dev/null)
+    local ret=$?
+
+    [[ $ret -eq 0 ]] && { echo $git_ref ; exit 0 }
+    [[ $ret -eq 128 ]] && return $ret # 128 means not a git repo.
+
+    command git rev-parse --short HEAD 2> /dev/null
+}
+
+my_git_repo() {
+    local toplevel
+    toplevel=$(git rev-parse --show-toplevel 2> /dev/null)
+    local ret=$?
+
+    [[ $ret -ne 0 ]] && return $ret
+
+    # Take last 2 segments.
+    local d=$(dirname "$toplevel")
+    local owner=$(basename "$d")
+    local repo=$(basename "$toplevel")
+    echo "$owner/$repo"
+}
+
 prompt_init() {
     # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
     # Fancy prompt symbol: ❯
@@ -46,29 +71,37 @@ prompt_init() {
 
     readonly newline=$'\n'
 
-    local newline_prefix=${newline}
-    if [[ -z "${PROMPT}" ]] ; then
-        newline_prefix=''
-    fi
+    local git_ref=$(my_git_ref)
 
-    local git_ref
-    git_ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-    local ret=$?
-    if [[ $ret -ne 0 ]] && [[ $ret -ne 128 ]] ; then
-        git_ref=$(command git rev-parse --short HEAD 2> /dev/null)
-    fi
-    git_ref="${git_ref#refs/heads/}"
+    #local window_title
+    #{
+    #    local git_repo
+    #    git_repo=$(my_git_repo)
+    #    local ret=$?
+    #
+    #    # "\e]<;...\a" is the escape sequence for setting terminal window title.
+    #    if [[ $ret -ne 0 ]]; then
+    #        window_title="\e]<;$(dirs)\a"
+    #    else
+    #        window_title="\e]<;$git_repo@$git_ref\a"
+    #    fi
+    #}
 
     local kube_ctx=''
     if [[ -e  ~/.kube/config ]] ; then
         kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
     fi
 
-    PROMPT="${newline_prefix}%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
+    PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
 }
 
 setopt PROMPT_SUBST
-precmd() { prompt_init }
+precmd() {
+    # Print empty line between each prompt bunt not before the first one.
+    [[ -n "${PROMPT}" ]] && echo
+    prompt_init
+    #title_init
+}
 
 # }}}
 
