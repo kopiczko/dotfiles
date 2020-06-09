@@ -2,7 +2,9 @@
 default: help
 
 .PHONY: links
+## links: create symlinks
 links:
+	@echo "====> $@"
 	./install.sh
 
 .PHONY: brew
