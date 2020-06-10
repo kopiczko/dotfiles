@@ -136,7 +136,7 @@ font:
   use_thin_strokes: false
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 colors:
   # Default colors
@@ -172,23 +172,26 @@ colors:
   #  text: '#eaeaea'
   #  background: '#404040'
 
+  # Taken from https://primer.style/css/support/color-system.
+  # For "normal" "$*-600", e.g. "$red-600".
+  # For "bright" "$*-400", e.g. "$red-400".
   normal:
-    black: '#4f4f4f'
-    red: '#a91b1b'
-    green: '#009532'
-    yellow: '#d6d339'
-    blue: '#00529b'
-    magenta: '#ef61a2'
-    cyan: '#98d9ef'
+    black: '#586069'
+    red: '#cb2431'
+    green: '#22863a'
+    yellow: '#f9c513'
+    blue: '#005cc5'
+    magenta: '#d03592'
+    cyan: '#5a32a3'
     white: '#feffff'
   bright:
-    black: '#797979'
-    red: '#e62000'
+    black: '#959da5'
+    red: '#ea4a5a'
     green: '#7ab18f'
-    yellow: '#f4d600'
-    blue: '#3981c6'
-    magenta: '#ffb3ae'
-    cyan: '#00f9fe'
+    yellow: '#ffdf5d'
+    blue: '#2188ff'
+    magenta: '#ec6cb9'
+    cyan: '#8a63d2'
     white: '#feffff'
 
   # Normal colors
