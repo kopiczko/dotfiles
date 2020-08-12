@@ -82,11 +82,15 @@ cask "vlc"
 # Mas
 # -----------------------------------------------------------------------------
 
-mas "HP Easy Scan", id: 967004861
-mas "Todoist", id: 585829637
-mas "Todoist", id: 585829637
+mas "AdGuard for Safari", id: 1440147259
+mas "Cyph", id: 1480070821
+mas "Cyph", id: 803453959
+#mas "Duplicate Photos Fixer Pro", id: 963642514
 mas "Enpass", id: 732710998
+mas "HP Easy Scan", id: 967004861
 mas "Slack", id: 803453959
+mas "Todoist", id: 585829637
+mas "Todoist", id: 585829637
 
 # -----------------------------------------------------------------------------
 # Keyboard
