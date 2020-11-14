@@ -35,6 +35,12 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # }}}
 
+# {{{ env: fzf
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# }}}
+
 # {{{ prompt
 
 PROMPT=''
@@ -44,7 +50,7 @@ my_git_ref() {
     git_ref=$(command git symbolic-ref --short --quiet HEAD 2> /dev/null)
     local ret=$?
 
-    [[ $ret -eq 0 ]] && { echo $git_ref ; exit 0 }
+    [[ $ret -eq 0 ]] && { echo $git_ref ; return 0 }
     [[ $ret -eq 128 ]] && return $ret # 128 means not a git repo.
 
     command git rev-parse --short HEAD 2> /dev/null
@@ -57,11 +63,13 @@ my_git_repo() {
 
     [[ $ret -ne 0 ]] && return $ret
 
-    # Take last 2 segments.
-    local d=$(dirname "$toplevel")
-    local owner=$(basename "$d")
-    local repo=$(basename "$toplevel")
-    echo "$owner/$repo"
+    ## Take last 2 segments.
+    #local d=$(dirname "$toplevel")
+    #local owner=$(basename "$d")
+    #local repo=$(basename "$toplevel")
+    #echo "$owner/$repo"
+
+    echo $(basename "$toplevel")
 }
 prompt_init() {
     # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
