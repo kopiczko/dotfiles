@@ -46,7 +46,7 @@ pr_repo_view() {
     if [[ $ret -ne 0 ]] ; then
         return $ret
     fi
-    gh -R "$repo" repo view -w
+    gh repo view -w "$repo"
 }
 
 pr_status() {
@@ -64,7 +64,7 @@ pr_view() {
     if [[ $ret -ne 0 ]] ; then
         return $ret
     fi
-    gh -R "$repo" pr view -w
+    gh pr view --web
 }
 
 local command=$1
