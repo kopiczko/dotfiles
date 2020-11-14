@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 
-alias luigi='command luigi --no-color'
 alias pluigi='pbpaste | command luigi --no-color | vi -'
 
 onduty() {

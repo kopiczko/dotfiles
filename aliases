@@ -22,13 +22,22 @@ alias cp='cp -a'
 alias cpwd='echo $(pwd) | pbcopy'
 alias ct='docker run -it --rm -v $(pwd):/wd:ro --workdir=/wd --name ct quay.io/giantswarm/helm-chart-testing:v2.4.0 ct'
 alias golint='golangci-lint run -E gosec -E goconst'
-alias gotest='go test ./...'
 alias gp='git pull'
 alias k='kubectl'
+alias kg='kubectl --namespace giantswarm'
 alias kc='kubectx'
 alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 alias ls='ls --group-directories-first --color=auto'
 alias rsync='rsync -a'
+
+function gotest() {
+    if [[ -f Makefile ]] ; then
+        make test
+    else
+        go test ./...
+
+    fi
+}
 
 clean-path() {
     if [[ $# -ne 1 ]]; then
