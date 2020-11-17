@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Check not pushing to master branch.
 branch=`git symbolic-ref HEAD`
 if [ "$branch" = "refs/heads/master" ]; then
     if [[ $ALLOW_DIRECT_COMMIT_TO_MASTER -eq 1 ]]; then
@@ -10,4 +11,16 @@ if [ "$branch" = "refs/heads/master" ]; then
 
     echo "Direct commits to the branch master are not allowed"
     exit 1
+fi
+
+# Run gitleaks.
+gitleaksEnabled=$(git config --bool hooks.gitleaks)
+if [ "$gitleaksEnabled" = "true" ]; then
+    gitleaks --verbose --redact --pretty
+    if [ \$? -eq 1 ]; then
+        echo >&2 "Error: gitleaks has detected sensitive information in your changes."
+        echo >&2 "If you know what you are doing you can disable this check using:"
+        echo >&2 "      git config hooks.gitleaks false"
+        exit 1
+    fi
 fi
