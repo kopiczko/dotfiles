@@ -127,12 +127,6 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  #
-  # NOTE: I set:
-  #
-  #     defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-  # 
-  # anyways and it had a good effect.
   use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
