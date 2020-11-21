@@ -14,8 +14,6 @@
 # -----------------------------------------------------------------------------
 
 tap "homebrew/cask"
-tap "neovim/neovim"
-tap "github/gh"
 
 brew "awscli"
 brew "azure-cli"
@@ -30,7 +28,7 @@ brew "findutils"
 brew "fzf"
 brew "git"
 brew "gitleaks"
-brew "github/gh/gh"
+brew "gh"
 brew "gnu-sed"
 brew "go"
 brew "helm"
@@ -41,7 +39,6 @@ brew "jq"
 brew "kind"
 brew "neovim"
 brew "python"
-brew "python@2"
 brew "reattach-to-user-namespace"
 brew "ruby"
 brew "terraform"
@@ -100,5 +97,5 @@ mas "Todoist", id: 585829637
 # Keyboard
 # -----------------------------------------------------------------------------
 
-tap homebrew/cask-drivers
-cask install qmk-toolbox
+tap "homebrew/cask-drivers"
+cask "qmk-toolbox"

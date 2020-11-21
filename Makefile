@@ -33,7 +33,6 @@ brew-post: BREW_PREFIX := $(shell brew --prefix)
 brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "====> $@"
 	@echo "----> Setup python"
-	brew link --overwrite python@2
 	brew link --overwrite python
 	@echo "----> Update completions for fzf"
 	$(BREW_PREFIX)/opt/fzf/install --completion --key-bindings --update-rc --no-fish
@@ -42,7 +41,7 @@ brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "----> Allow natural key press-and-hold" 
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-/usr/local/bin/helm: /usr/local/bin/helm3
+/usr/local/bin/helm:
 	@echo "====> $@"
 	ln -s $< $@
 
@@ -52,7 +51,7 @@ brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 
 /usr/local/bin/helm3:
 	@echo "====> $@"
-	ln -s $(shell brew --prefix)/opt/helm@3/bin/helm $@
+	ln -s $(shell brew --prefix)/opt/helm/bin/helm $@
 
 
 .PHONY: completions
