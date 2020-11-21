@@ -100,11 +100,5 @@ mas "Todoist", id: 585829637
 # Keyboard
 # -----------------------------------------------------------------------------
 
-#tap "osx-cross/avr"
-#tap "PX4/homebrew-px4"
-#
-#brew "avr-gcc@7", link: true, force: true
-#brew "dfu-programmer"
-#brew "dfu-util"
-#brew "gcc-arm-none-eabi"
-#brew "avrdude"
+tap homebrew/cask-drivers
+cask install qmk-toolbox
