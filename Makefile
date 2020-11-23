@@ -61,6 +61,7 @@ completions:
 	@echo "====> $@"
 	opsctl completion zsh > $(dir)/_opsctl
 	gsctl completion zsh --stdout > $(dir)/_gsctl
+	devctl completion zsh > $(dir)/_devctl
 	rm -f ~/.zcompdump
 	@echo
 	@echo '----> Now run "compinit" from your shell'
