@@ -4101,6 +4101,15 @@
 					<key>Text</key>
 					<string>0x7f</string>
 				</dict>
+				<key>0x64-0x100000-0x2</key>
+				<dict>
+					<key>Action</key>
+					<integer>13</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string></string>
+				</dict>
 				<key>0x68-0x100000-0x4</key>
 				<dict>
 					<key>Action</key>
