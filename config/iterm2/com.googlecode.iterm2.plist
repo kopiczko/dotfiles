@@ -4797,6 +4797,8 @@
 			<false/>
 			<key>Use Custom Tab Title</key>
 			<true/>
+			<key>Use Custom Window Title</key>
+			<false/>
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
@@ -4808,7 +4810,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>1</integer>
+			<integer>12</integer>
 			<key>Working Directory</key>
 			<string>/Users/pawel</string>
 		</dict>
