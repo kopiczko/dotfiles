@@ -21,7 +21,6 @@ brew "bash"
 brew "bash-completion"
 brew "binutils", link: true
 brew "ctags"
-brew "dep"
 brew "diff-so-fancy"
 brew "ffmpeg"
 brew "findutils"
@@ -32,7 +31,6 @@ brew "gh"
 brew "gnu-sed"
 brew "go"
 brew "helm"
-brew "helm@2"
 brew "htop"
 brew "hub"
 brew "jq"
@@ -66,6 +64,7 @@ brew "kustomize"
 # -----------------------------------------------------------------------------
 
 cask "alacritty"
+cask "alt-tab"
 cask "brave-browser"
 cask "docker"
 cask "fantastical"
@@ -90,8 +89,8 @@ mas "Cyph", id: 803453959
 #mas "Duplicate Photos Fixer Pro", id: 963642514
 mas "Enpass", id: 732710998
 mas "HP Easy Scan", id: 967004861
+mas "Hidden Bar", id: 1452453066 
 mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
 mas "Todoist", id: 585829637
 
 # -----------------------------------------------------------------------------

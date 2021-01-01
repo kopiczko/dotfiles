@@ -15,14 +15,12 @@ brew: brew-up brew-bundle brew-post
 ## brew-bundle: calls "brew bundle"
 brew-bundle: .sudo
 	@echo "====> $@"
-	sudo true # So it doesn't ask later on.
 	brew bundle
 
 .PHONY: brew-up
 ## brew-bundle: update, upgrade and cleanup brew
 brew-up: .sudo
 	@echo "====> $@"
-	sudo true # So it doesn't ask later on.
 	brew update
 	brew upgrade
 	brew cleanup
@@ -36,10 +34,15 @@ brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	brew link --overwrite python
 	@echo "----> Update completions for fzf"
 	$(BREW_PREFIX)/opt/fzf/install --completion --key-bindings --update-rc --no-fish
-	@echo "----> Set font rendering for Alacritty"
-	defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
-	@echo "----> Allow natural key press-and-hold" 
+	@#echo "----> Set font rendering for Alacritty"
+	@#defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+	@echo "----> Allow natural key press-and-hold"
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+	@echo "----> Setup dock size and Rectangle app"
+	defaults write com.apple.dock tilesize -int 40 && killall Dock
+	defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int -57 \
+	    && killall Rectangle \
+	    && open /Applications/Rectangle.app
 
 /usr/local/bin/helm:
 	@echo "====> $@"
