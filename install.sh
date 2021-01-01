@@ -30,6 +30,12 @@ mk_link() {
 mkdir -p $HOME/.config
 
 for f in $(ls ${dir}/config); do
+    if [[ "$f" == "iterm2" ]] ; then
+        # iTerm2 adds AppSupport link to its config directory making it huge so
+        # link single file instead.
+        mkdir -p "$HOME/.config/$f"
+        f="$f/com.googlecode.iterm2.plist"
+    fi
     s="$dir/config/$f"
     t="$HOME/.config/$f"
 
