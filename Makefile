@@ -39,10 +39,11 @@ brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "----> Allow natural key press-and-hold"
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 	@echo "----> Setup dock size and Rectangle app"
-	defaults write com.apple.dock tilesize -int 40 && killall Dock
-	defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int -57 \
-	    && killall Rectangle \
-	    && open /Applications/Rectangle.app
+	defaults write com.apple.dock tilesize -int 40
+	killall Dock
+	defaults write com.knollsoft.Rectangle screenEdgeGapTop -int -4
+	defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int -57
+	killall Rectangle && open /Applications/Rectangle.app
 
 /usr/local/bin/helm:
 	@echo "====> $@"
