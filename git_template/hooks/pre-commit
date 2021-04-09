@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Check not pushing to master branch.
+# Check not pushing to master/main branch.
 branch=`git symbolic-ref HEAD`
-if [ "$branch" = "refs/heads/master" ]; then
+if [ "$branch" = "refs/heads/master" ] || [ "$branch" = "refs/heads/main" ]; then
     if [[ $ALLOW_DIRECT_COMMIT_TO_MASTER -eq 1 ]]; then
         echo "ALLOW_DIRECT_COMMIT_TO_MASTER=1"
-        echo "Allowing commit to master branch"
+        echo "Allowing commit to master/main branch"
         exit 0
     fi
 
-    echo "Direct commits to the branch master are not allowed"
+    echo "Direct commits to the branch master/main are not allowed"
     exit 1
 fi
 
