@@ -5,6 +5,7 @@ for f in $(find ~/.aliases.d/ -type f); do
 done
 
 alias vi='nvim'
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh='TERM=xterm-256color ssh'
 
 alias aliases='nvim ~/.aliases'
 alias envs='nvim ~/.envs'
@@ -26,9 +27,13 @@ alias gp='git pull'
 alias k='kubectl'
 alias kg='kubectl --namespace giantswarm'
 alias kc='kubectx'
+alias klean="yq e 'del(.metadata.managedFields)' -"
+alias kleaner="yq e 'del(.metadata.managedFields, .metadata.annotations.\"kubectl.kubernetes.io/last-applied-configuration\", .metadata.uid, .metadata.selfLink, .metadata.resourceVersion, .metadata.creationTimestamp)' -"
 alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 alias ls='ls --group-directories-first --color=auto'
 alias rsync='rsync -a'
+
+alias youtube-dl-mp3='youtube-dl --extract-audio --audio-format mp3'
 
 function gotest() {
     if [[ -f Makefile ]] ; then

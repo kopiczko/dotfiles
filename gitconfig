@@ -35,6 +35,7 @@
 	user = kopiczko
 [init]
 	templatedir = ~/.git_template
+	defaultBranch = main
 [diff]
 	tool = code
 [difftool]

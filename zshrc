@@ -66,6 +66,7 @@ fi
 
 source $HOME/.aliases
 source $HOME/.envs
+[ -f $HOME/.envs_volatile ] && source $HOME/.envs_volatile
 
 source $GOPATH/src/keybase.io/kopiczko/dotfiles/shrc
 
@@ -79,3 +80,4 @@ function init_tmux () {
 }
 
 init_tmux
+if [ -e /Users/kopiczko/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/kopiczko/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

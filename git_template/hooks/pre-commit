@@ -5,11 +5,11 @@ branch=`git symbolic-ref HEAD`
 if [ "$branch" = "refs/heads/master" ] || [ "$branch" = "refs/heads/main" ]; then
     if [[ $ALLOW_DIRECT_COMMIT_TO_MASTER -eq 1 ]]; then
         echo "ALLOW_DIRECT_COMMIT_TO_MASTER=1"
-        echo "Allowing commit to master/main branch"
+        echo "Allowing commit to main/master branch"
         exit 0
     fi
 
-    echo "Direct commits to the branch master/main are not allowed"
+    echo "Direct commits to the branch main/master are not allowed"
     exit 1
 fi
 

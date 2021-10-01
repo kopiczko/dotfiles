@@ -13,8 +13,8 @@ export EDITOR=nvim
 #export BROWSER=google-chrome
 
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export MANPATH="/usr/local/man:$MANPATH"
+export PATH=$HOME/.local/bin:$PATH
+export MANPATH="$HOME/.local/man:$MANPATH"
 
 # For coreutils and other GNU tools on macOS.
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -38,6 +38,12 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # {{{ env: fzf
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# }}}
+
+# {{{ env: krew
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # }}}
 
@@ -88,17 +94,20 @@ prompt_init() {
     PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
 }
 
-tmux_title_init() {
+my_title() {
     local git_repo
     git_repo=$(my_git_repo)
     local ret=$?
 
-    if [[ $ret -ne 0 ]]; then
-        printf '\033]2;%s\033\\' "$(dirs)"
-        return 0
-    fi
+    local t="$git_repo ($(my_git_ref))"
+    [[ $ret -ne 0 ]] && t="$(dirs)"
+    [[ $# -gt 0 ]] && t="$t - $@"
 
-    printf '\033]2;%s\033\\' "$git_repo"
+    echo -n "$t"
+}
+
+tmux_title_init() {
+    printf '\033]2;%s\033\\' "$(my_title)"
 }
 
 setopt PROMPT_SUBST
