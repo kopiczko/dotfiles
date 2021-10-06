@@ -12,33 +12,28 @@ mk_link() {
     local t=$1; shift
 
     if [[ -h $t ]] && [[ "$(readlink $t)" == "$s" ]]; then
-        printf "I %-40s exists and links to %s\n" "$t" "$s"
+        printf "I %-60s exists and links to %s\n" "$t" "$s"
         return 0
     fi
     if [[ -h $t ]]; then
-        printf "E %-40s exists but links to $(readlink $t), needs to be FIXED manually\n" "$t"
+        printf "E %-60s exists but links to $(readlink $t), needs to be FIXED manually\n" "$t"
         return 1
     fi
     if [[ -e $t ]]; then
-        printf "E %-40s exists but it is not a link, needs to be FIXED manually\n" "$t"
+        printf "E %-60s exists but it is not a link, needs to be FIXED manually\n" "$t"
         return 1
     fi
-    echo "I $t		creating a link to $s"
+    printf "I %-60s does not exist, creating link to %s\n" "$s" "$t"
     ln -s $s $t
 }
 
 mkdir -p $HOME/.config
 
-for f in $(ls ${dir}/config); do
-    if [[ "$f" == "iterm2" ]] ; then
-        # iTerm2 adds AppSupport link to its config directory making it huge so
-        # link single file instead.
-        mkdir -p "$HOME/.config/$f"
-        f="$f/com.googlecode.iterm2.plist"
-    fi
-    s="$dir/config/$f"
-    t="$HOME/.config/$f"
+for f in $(git ls-files ${dir}/config); do
+    s="$dir/$f"
+    t="$HOME/.$f"
 
+    mkdir -p $(dirname $t)
     mk_link $s $t
 done
 
