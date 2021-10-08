@@ -1,6 +1,6 @@
 #!/usr/bin/env bash -e
 
-dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+readonly dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 mk_link() {
     if [[ $# -ne 2 ]]; then
@@ -24,16 +24,24 @@ mk_link() {
         return 1
     fi
     printf "I %-60s does not exist, creating link to %s\n" "$s" "$t"
+
+    [[ ! -e $(dirname $t) ]] && mkdir -p $(dirname $t)
     ln -s $s $t
 }
 
 mkdir -p $HOME/.config
 
-for f in $(git ls-files ${dir}/config); do
+for f in $(git ls-files ${dir}/config | xargs dirname | sort | uniq); do
     s="$dir/$f"
     t="$HOME/.$f"
 
-    mkdir -p $(dirname $t)
+    mk_link $s $t
+done
+
+for f in $(git ls-files ${dir}/local/bin); do
+    s="$dir/$f"
+    t="$HOME/.$f"
+
     mk_link $s $t
 done
 
@@ -55,4 +63,3 @@ for f in $files; do
 done
 
 mk_link $dir/usr/local/bin/mux /usr/local/bin/mux
-mk_link $dir/usr/local/bin/p /usr/local/bin/p
