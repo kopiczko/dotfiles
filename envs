@@ -87,7 +87,9 @@ prompt_init() {
     local git_ref=$(my_git_ref)
 
     local kube_ctx=''
-    if [[ -e  ~/.kube/config ]] ; then
+    if command -v kubectx >/dev/null ; then
+        kube_ctx="$(kubectx --current)"
+    elif [[ -e  ~/.kube/config ]] ; then
         kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
     fi
 

@@ -91,27 +91,27 @@ window:
 font:
   normal:
     family: SF Mono
-    style: Regular
+    style: Light
   bold:
     family: SF Mono
-    style: Bold
+    style: Regular
   italic:
     family: SF Mono
     style: Italic
   bold_italic:
     family: SF Mono
     style: Bold Italic
-  size: 13
+  size: 13.5
   offset:
-    x: 0  # Can be thought of as modifying letter spacing.
-    y: 12  # Can be thought of as modifying line spacing.
+    x: 1  # Can be thought of as modifying letter spacing.
+    y: 8  # Can be thought of as modifying line spacing.
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
-    y: 5
+    y: 0
 
   # Thin stroke font rendering (macOS only)
   #
@@ -130,7 +130,7 @@ font:
   use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 colors:
   # Default colors

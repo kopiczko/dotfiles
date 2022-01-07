@@ -79,5 +79,11 @@ function init_tmux () {
     tmux attach-session -t $session_name
 }
 
+# zoxide
+# To warm it up:
+#
+#       find ~/src -type d -depth 2 | xargs zoxide add
+#
+command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
+
 init_tmux
-if [ -e /Users/kopiczko/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/kopiczko/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
