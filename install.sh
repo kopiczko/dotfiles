@@ -54,6 +54,7 @@ files="$files gitconfig"
 files="$files gitignore_global"
 files="$files tmux.conf"
 files="$files zshrc"
+files="$files lima"
 
 for f in $files; do
     s="$dir/$f"
