@@ -13,8 +13,32 @@ brew: brew-up brew-bundle brew-post
 
 .PHONY: brew-bundle
 ## brew-bundle: calls "brew bundle"
+brew-bundle: BREW_PREFIX := $(shell brew --prefix)
 brew-bundle: .sudo
 	@echo "====> $@"
+	brew install -q binutils coreutils findutils gnu-sed
+	brew link -q --overwrite binutils
+	brew install -q bash bash-completion
+	brew install -q zsh zsh-autosuggestions zsh-syntax-highlighting
+	brew install -q tmux reattach-to-user-namespace
+	brew install -q git git-delta gitleaks gh
+	brew install -q ctags htop watch wget tree
+	brew install -q the_silver_searcher jq yq
+	brew install -q fzf
+	$(BREW_PREFIX)/opt/fzf/install --completion --key-bindings --update-rc --no-fish
+	brew install -q node corepack
+	corepack enable
+	corepack prepare pnpm@latest --activate
+	brew install -q python
+	brew link -q --overwrite python
+	brew install -q ruby
+	brew install -q go
+	brew install -q neovim
+	brew install -q awscli azure-cli
+	brew install -q helm kind kubectx kustomize
+	brew install -q ansible terraform
+	brew install -q vault
+	brew install -q youtube-dl
 	brew bundle
 
 .PHONY: brew-up
@@ -30,10 +54,8 @@ brew-up: .sudo
 brew-post: BREW_PREFIX := $(shell brew --prefix)
 brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "====> $@"
-	@echo "----> Setup python"
-	brew link --overwrite python
+	@echo "----> Setup node pnpm"
 	@echo "----> Update completions for fzf"
-	$(BREW_PREFIX)/opt/fzf/install --completion --key-bindings --update-rc --no-fish
 	@#echo "----> Set font rendering for Alacritty"
 	@#defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 	@echo "----> Allow natural key press-and-hold"
@@ -41,9 +63,9 @@ brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "----> Setup dock size and Rectangle app"
 	defaults write com.apple.dock tilesize -int 40
 	killall Dock
-	defaults write com.knollsoft.Rectangle screenEdgeGapTop -int -4
-	defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int -57
-	killall Rectangle && open /Applications/Rectangle.app
+	#defaults write com.knollsoft.Rectangle screenEdgeGapTop -int -4
+	#defaults write com.knollsoft.Rectangle screenEdgeGapLeft -int -57
+	#killall Rectangle && open /Applications/Rectangle.app
 
 /usr/local/bin/helm:
 	@echo "====> $@"

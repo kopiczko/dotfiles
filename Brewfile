@@ -15,49 +15,11 @@
 
 tap "homebrew/cask"
 
-brew "awscli"
-brew "azure-cli"
-brew "bash"
-brew "bash-completion"
-brew "binutils", link: true
-brew "ctags"
-brew "diff-so-fancy"
-brew "ffmpeg"
-brew "findutils"
-brew "fzf"
-brew "git"
-brew "gitleaks"
-brew "gh"
-brew "gnu-sed"
-brew "go"
-brew "helm"
-brew "htop"
-brew "hub"
-brew "jq"
-brew "kind"
-brew "neovim"
-brew "python"
-brew "reattach-to-user-namespace"
-brew "ruby"
-brew "terraform"
-brew "the_silver_searcher"
-brew "tmux"
-brew "tree"
-brew "vault"
-brew "watch"
-brew "wget"
-brew "youtube-dl"
-brew "yq"
-brew "zsh"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
+# node
 
 # -----------------------------------------------------------------------------
 # Kubernetes
 # -----------------------------------------------------------------------------
-
-brew "kubectx"
-brew "kustomize"
 
 # -----------------------------------------------------------------------------
 # Cask
@@ -67,7 +29,7 @@ cask "alacritty"
 cask "alt-tab"
 cask "brave-browser"
 cask "docker"
-cask "fantastical"
+#cask "fantastical"
 cask "flycut"
 cask "iterm2"
 cask "karabiner-elements"
@@ -83,9 +45,9 @@ cask "vlc"
 # Mas
 # -----------------------------------------------------------------------------
 
-mas "AdGuard for Safari", id: 1440147259
-mas "Cyph", id: 1480070821
-mas "Cyph", id: 803453959
+#mas "AdGuard for Safari", id: 1440147259
+#mas "Cyph", id: 1480070821
+#mas "Cyph", id: 803453959
 #mas "Duplicate Photos Fixer Pro", id: 963642514
 mas "Enpass", id: 732710998
 mas "HP Easy Scan", id: 967004861
