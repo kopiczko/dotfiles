@@ -91,17 +91,17 @@ window:
 font:
   normal:
     family: SF Mono
-    style: Light
+    style: Regular
   bold:
     family: SF Mono
-    style: Regular
+    style: Bold
   italic:
     family: SF Mono
     style: Italic
   bold_italic:
     family: SF Mono
     style: Bold Italic
-  size: 13.5
+  size: 13
   offset:
     x: 1  # Can be thought of as modifying letter spacing.
     y: 8  # Can be thought of as modifying line spacing.

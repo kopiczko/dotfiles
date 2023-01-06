@@ -212,7 +212,7 @@
                             {
                                 "description": "L-CMD to mission control if pressed alone",
                                 "from": {
-                                    "key_code": "left_command",
+                                    "key_code": "left_option",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -221,7 +221,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_command"
+                                        "key_code": "left_option"
                                     }
                                 ],
                                 "to_if_alone": [

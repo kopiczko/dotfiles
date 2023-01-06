@@ -31,7 +31,13 @@ alias klean="yq e 'del(.metadata.managedFields)' -"
 alias kleaner="yq e 'del(.metadata.managedFields, .metadata.annotations.\"kubectl.kubernetes.io/last-applied-configuration\", .metadata.uid, .metadata.selfLink, .metadata.resourceVersion, .metadata.creationTimestamp)' -"
 alias ll='ls -Ghls --color=auto --group-directories-first --time-style=long-iso'
 alias ls='ls --group-directories-first --color=auto'
+alias grep='grep --color=auto'
 alias rsync='rsync -a'
+
+alias gcloud-reset='docker container rm gcloud-config'
+alias gcloud-init='docker run -ti --name gcloud-config gcr.io/google.com/cloudsdktool/google-cloud-cli:alpine gcloud auth login'
+# Check ~/.local/bin/gcloud
+#alias gcloud=...
 
 alias youtube-dl-mp3='youtube-dl --extract-audio --audio-format mp3'
 

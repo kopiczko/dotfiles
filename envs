@@ -34,6 +34,13 @@ export GO111MODULE="auto"
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # }}}
+#
+# {{{ env: node + pnpm
+
+export PNPM_HOME="${HOME}/.local/lib/pnpm/bin"
+export PATH=${PNPM_HOME}:$PATH
+
+# }}}
 
 # {{{ env: fzf
 
@@ -41,15 +48,19 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # }}}
 
-# {{{ env: krew
+# {{{ env: LastPass
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export LPASS_AGENT_TIMEOUT=0
 
 # }}}
 
 # {{{ prompt
 
-PROMPT=''
+if ! command -v starship >/dev/null ; then
+    echo "${0}: Error: starship command not found" >&2
+else
+    eval $(starship init zsh)
+fi
 
 my_git_ref() {
     local git_ref
@@ -77,24 +88,28 @@ my_git_repo() {
 
     echo $(basename "$toplevel")
 }
-prompt_init() {
-    # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
-    # Fancy prompt symbol: ❯
-    # Nice grey color: %F{242}
 
-    readonly newline=$'\n'
-
-    local git_ref=$(my_git_ref)
-
-    local kube_ctx=''
-    if command -v kubectx >/dev/null ; then
-        kube_ctx="$(kubectx --current)"
-    elif [[ -e  ~/.kube/config ]] ; then
-        kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
-    fi
-
-    PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
-}
+#PROMPT=''
+#setopt PROMPT_SUBST
+#
+#prompt_init() {
+#    # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
+#    # Fancy prompt symbol: ❯
+#    # Nice grey color: %F{242}
+#
+#    readonly newline=$'\n'
+#
+#    local git_ref=$(my_git_ref)
+#
+#    local kube_ctx=''
+#    if command -v kubectx >/dev/null ; then
+#        kube_ctx="$(kubectx --current)"
+#    elif [[ -e  ~/.kube/config ]] ; then
+#        kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
+#    fi
+#
+#    PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
+#}
 
 my_title() {
     local git_repo
@@ -112,11 +127,14 @@ tmux_title_init() {
     printf '\033]2;%s\033\\' "$(my_title)"
 }
 
-setopt PROMPT_SUBST
+__my_init_newline=0
 precmd() {
-    # Print empty line between each prompt bunt not before the first one.
-    [[ -n "${PROMPT}" ]] && echo
-    prompt_init
+    # Print empty line between each prompt but not before the first one.
+    #[[ -n "${PROMPT}" ]] && echo
+    [[ __my_init_newline -eq 1 ]] && echo
+    __my_init_newline=1
+
+    #prompt_init
     tmux_title_init
 }
 

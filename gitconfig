@@ -10,12 +10,13 @@
 	bu = !git branch -u origin/$(git rev-parse --abbrev-ref HEAD)
 	c = commit
 	ca = commit --amend
-	clean-branches = !git branch | grep -v master | xargs git branch -D
+	clean-branches = !git branch | grep -v 'master|main' | xargs git branch -D
 	cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
 	co = checkout
 	d = diff
 	dc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%cn%Creset %C(yellow)%d%Creset %s %Cgreen%cr%Creset' --abbrev-commit --date=relative
+	main = !git checkout "$(git branch -l main master | sed 's/.* //')"
 	s = status -uall
 	sp = --paginate status -uall
 	ss = stash save
