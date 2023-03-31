@@ -1,0 +1,47 @@
+add_newline = false
+
+format = '''$time( \($status\)) $directory \($git_branch$git_commit( \[$git_state\])\) \($kubernetes\)
+$character'''
+
+[character]
+success_symbol = '\$'
+#error_symbol = '[\$](red)'
+error_symbol = '\$'
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+#style = 'bold cyan'
+truncation_length = 0
+truncate_to_repo = false
+
+[git_commit]
+format = '[$hash$tag]($style)'
+style = 'green'
+only_detached = true
+tag_disabled = false
+
+[git_branch]
+#format="on [$symbol$branch]($style) "
+format='[$branch]($style)'
+#symbol = " "
+only_attached = true
+style = "blue"
+
+[git_state]
+format='[$state( $progress_current/$progress_total)]($style)'
+
+[time]
+disabled = false
+format = '$time'
+time_format = "%T"
+
+[kubernetes]
+#format = '[$symbol$context( \($namespace\))]($style) in '
+format = '[$context( \($namespace\))]($style)'
+disabled = false
+style = "blue"
+
+[status]
+format = '[$symbol](bold red)[$status]($style)'
+symbol = 'err:'
+disabled = false

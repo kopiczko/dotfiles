@@ -29,20 +29,9 @@ mk_link() {
     ln -s $s $t
 }
 
-mkdir -p $HOME/.config
-
-for f in $(git ls-files ${dir}/config | xargs dirname | sort | uniq); do
-    s="$dir/$f"
-    t="$HOME/.$f"
-
-    mk_link $s $t
-done
-
-for f in $(git ls-files ${dir}/local/bin); do
-    s="$dir/$f"
-    t="$HOME/.$f"
-
-    mk_link $s $t
+mkdir -p "${HOME}/.config"
+for f in config/* ; do
+    mk_link "${dir}/${f}" "${HOME}/.${f}"
 done
 
 files="$files aliases"
