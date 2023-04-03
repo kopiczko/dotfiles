@@ -4,7 +4,10 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim -c 'set spell'
-	pager = less --tabs=8 -+F
+	pager = delta
+[init]
+	templatedir = ~/.git_template
+	defaultBranch = main
 [alias]
 	b = branch
 	bu = !git branch -u origin/$(git rev-parse --abbrev-ref HEAD)
@@ -22,29 +25,16 @@
 	ss = stash save
 	patch = !git --no-pager diff --no-color
 	patch-cached = !git --no-pager diff --cached --no-color
-[pager]
-	diff = diff-so-fancy | less --tabs=8 -+FX --pattern '^(Date|added|deleted|modified|renamed): '
-[push]
-	default = current
-	followTags = true
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	ui = true
+[push]
+	default = current
+	followTags = true
 [github]
 	user = kopiczko
-[init]
-	templatedir = ~/.git_template
-	defaultBranch = main
-[diff]
-	tool = code
-[difftool]
-        prompt = false
-[difftool "code"]
-	cmd = "code --wait --diff $LOCAL $REMOTE"
-[difftool "nvimdiff"]
-	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
@@ -52,25 +42,17 @@
 	process = git-lfs filter-process
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green
-	newHighlight = green bold 22
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[diff-so-fancy]
-	stripLeadingSymbols = false
-	markEmptyLines = false
-	changeHunkIndicators = false
-	useUnicodeRuler = true
-	rulerWidth = 78
-
-# vim: tabstop=8 shiftwidth=8 noexpandtab
+[delta]
+	features = decorations navigate
+	light = true
+	line-numbers = true
+	# -+F will make make it work with less than one screen
+	# -+X will clear the terminal after quitting
+	# --clear-screen will clear terminal before starting
+	pager = less --tabs=8 -+F -+X --clear-screen
+	paging = always
+	tabs = 0
 [pull]
 	rebase = false
+
+# vim: tabstop=8 shiftwidth=8 noexpandtab
