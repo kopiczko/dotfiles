@@ -1,4 +1,7 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
 
 readonly dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
@@ -43,7 +46,7 @@ files="$files gitconfig"
 files="$files gitignore_global"
 files="$files tmux.conf"
 files="$files zshrc"
-files="$files lima"
+#files="$files lima"
 
 for f in $files; do
     s="$dir/$f"
@@ -52,4 +55,4 @@ for f in $files; do
     mk_link $s $t
 done
 
-mk_link $dir/usr/local/bin/mux /usr/local/bin/mux
+#mk_link $dir/usr/local/bin/mux /usr/local/bin/mux
