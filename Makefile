@@ -7,13 +7,19 @@ links:
 	@echo "====> $@"
 	./install.sh
 
+.PHONY: linksv2
+## linksv2: create symlinks V2
+linksv2:
+	@echo "====> $@"
+	./v2/install.sh
+
 .PHONY: brew
 ## brew: brew-up brew-bundle brew-post
 brew: brew-up brew-bundle brew-post
 
 .PHONY: brew-bundle
 ## brew-bundle: calls "brew bundle"
-brew-bundle: BREW_PREFIX := $(shell brew --prefix)
+brew-bundle: BREW_PREFIX = $(shell brew --prefix)
 brew-bundle: .sudo
 	@echo "====> $@"
 	brew install -q binutils coreutils findutils gnu-sed
@@ -51,7 +57,7 @@ brew-up: .sudo
 
 .PHONY: brew-post
 ## brew-post: runs manual actions after installing brew packages
-brew-post: BREW_PREFIX := $(shell brew --prefix)
+brew-post: BREW_PREFIX = $(shell brew --prefix)
 brew-post: /usr/local/bin/helm /usr/local/bin/helm2 /usr/local/bin/helm3
 	@echo "====> $@"
 	@echo "----> Setup node pnpm"
