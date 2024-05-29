@@ -3,7 +3,6 @@
 	email = kopiczko@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = nvim -c 'set spell'
 	pager = delta
 [init]
 	templatedir = ~/.git_template

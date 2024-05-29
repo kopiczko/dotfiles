@@ -9,7 +9,11 @@ if [[ "$LC_CTYPE" == 'UTF-8' ]]; then
 fi
 
 #export TERMINAL=xfce4-terminal
-export EDITOR=nvim
+if command -v code >/dev/null 2>&1 ; then
+    export EDITOR='code --wait'
+elif command -v nvim >/dev/null 2>&1 ; then
+    export EDITOR=nvim
+fi
 #export BROWSER=google-chrome
 
 
