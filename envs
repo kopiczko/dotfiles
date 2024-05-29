@@ -16,33 +16,31 @@ elif command -v nvim >/dev/null 2>&1 ; then
 fi
 #export BROWSER=google-chrome
 
-
 export PATH=$HOME/.local/bin:$PATH
 export MANPATH="$HOME/.local/man:$MANPATH"
 
-# For coreutils and other GNU tools on macOS.
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+# For MacPorts
+[[ -d /opt/local/bin ]] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH && export MANPATH=/opt/local/share/man:$MANPATH
+[[ -d /opt/local/libexec/gnubin ]] && export PATH="/opt/local/libexec/gnubin:${PATH}" && 
 
 # }}}
 
 # {{{ env: go
 
-export GOROOT=/usr/local/opt/go/libexec
 export GOTMPDIR=$HOME/go/tmp
 export GOCACHE=$HOME/go/cache
 export GOPATH=$HOME/go
 export GOBIN="$GOPATH/bin"
 export GO111MODULE="auto"
 
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$GOPATH/bin:$PATH
 
 # }}}
 #
 # {{{ env: node + pnpm
 
 export PNPM_HOME="${HOME}/.local/lib/pnpm/bin"
-export PATH=${PNPM_HOME}:$PATH
+[[ -d "${PNPM_HOME}" ]] && export PATH=${PNPM_HOME}:$PATH
 
 # }}}
 

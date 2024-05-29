@@ -35,11 +35,6 @@ done
 # Enable completion.
 autoload compinit && compinit
 
-if [[ $OSTYPE == darwin* ]]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-fi
-
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -53,31 +48,29 @@ fi
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Enable brew installed ruby.
-[[ -d /usr/local/opt/ruby/bin ]] && export PATH="/usr/local/opt/ruby/bin:$PATH"
-[[ -d $HOME/.gem/ruby/2.6.0/bin ]] && export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
 
 # Enable autosuggestions.
 [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.aliases
 source $HOME/.envs
 [ -f $HOME/.envs_volatile ] && source $HOME/.envs_volatile
 
-source $GOPATH/src/keybase.io/kopiczko/dotfiles/shrc
+source $HOME/src/kb/kopiczko/dotfiles/shrc
 
-function init_tmux () {
-    [[ -n $TMUX ]] && return 0
-    local session_name="home"
-    local session_dir="$HOME"
-    tmux attach-session -t "$session_name" 2>/dev/null && return 0
-    tmux new-session -c $session_dir -d -s $session_name
-    tmux attach-session -t $session_name
-}
+#function init_tmux () {
+#    [[ -n $TMUX ]] && return 0
+#    local session_name="home"
+#    local session_dir="$HOME"
+#    tmux attach-session -t "$session_name" 2>/dev/null && return 0
+#    tmux new-session -c $session_dir -d -s $session_name
+#    tmux attach-session -t $session_name
+#}
 
 # zoxide
 # To warm it up:
@@ -86,4 +79,4 @@ function init_tmux () {
 #
 command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
 
-init_tmux
+#init_tmux
