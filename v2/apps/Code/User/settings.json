@@ -163,4 +163,5 @@
     "search.quickOpen.includeHistory": false,
     "workbench.activityBar.location": "hidden",
     "clock.alignment": "Right",
+    "clock.format": "HH:MM",
 }
