@@ -14,22 +14,22 @@ mk_link() {
     local s=$1; shift
     local t=$1; shift
 
-    if [[ -h $t ]] && [[ "$(readlink $t)" == "$s" ]]; then
+    if [[ -h "$t" ]] && [[ "$(readlink "$t")" == "$s" ]]; then
         printf "I %-60s exists and links to %s\n" "$t" "$s"
         return 0
     fi
-    if [[ -h $t ]]; then
-        printf "E %-60s exists but links to $(readlink $t), needs to be FIXED manually\n" "$t"
+    if [[ -h "$t" ]]; then
+        printf "E %-60s exists but links to $(readlink "$t"), needs to be FIXED manually\n" "$t"
         return 1
     fi
-    if [[ -e $t ]]; then
+    if [[ -e "$t" ]]; then
         printf "E %-60s exists but it is not a link, needs to be FIXED manually\n" "$t"
         return 1
     fi
     printf "I %-60s does not exist, creating link to %s\n" "$s" "$t"
 
-    [[ ! -e $(dirname $t) ]] && mkdir -p $(dirname $t)
-    ln -s $s $t
+    [[ ! -e $(dirname "$t") ]] && mkdir -p $(dirname "$t")
+    ln -s "$s" "$t"
 }
 
 mkdir -p "${HOME}/.config"
