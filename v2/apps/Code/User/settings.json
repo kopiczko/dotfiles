@@ -1,6 +1,59 @@
 {
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.createTerminalEditorSameGroup",
+        "workbench.action.createTerminalEditor",
+        "workbench.action.focusAboveGroup",
+        "workbench.action.focusBelowGroup",
+        "workbench.action.focusLeftGroup",
+        "workbench.action.focusRightGroup",
+        "workbench.action.moveEditorToAboveGroup",
+        "workbench.action.moveEditorToBelowGroup",
+        "workbench.action.moveEditorToLeftGroup",
+        "workbench.action.moveEditorToRightGroup",
+        "workbench.action.toggleActivityBarVisibility",
+        "workbench.action.toggleMaximizeEditorGroup",
+        "workbench.action.toggleSidebarVisibility",
+    ],
+    // ${activeEditorShort}: the file name (e.g. myFile.txt).
+    // ${activeEditorMedium}: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
+    // ${activeEditorLong}: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
+    // ${activeFolderShort}: the name of the folder the file is contained in (e.g. myFileFolder).
+    // ${activeFolderMedium}: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
+    // ${activeFolderLong}: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
+    // ${folderName}: name of the workspace folder the file is contained in (e.g. myFolder).
+    // ${folderPath}: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
+    // ${rootName}: name of the workspace with optional remote name and workspace indicator if applicable (e.g. myFolder, myRemoteFolder [SSH] or myWorkspace (Workspace)).
+    // ${rootNameShort}: shortened name of the workspace without suffixes (e.g. myFolder, myRemoteFolder or myWorkspace).
+    // ${rootPath}: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
+    // ${profileName}: name of the profile in which the workspace is opened (e.g. Data Science (Profile)). Ignored if default profile is used.
+    // ${appName}: e.g. VS Code.
+    // ${remoteName}: e.g. SSH
+    // ${dirty}: an indicator for when the active editor has unsaved changes.
+    // ${focusedView}: the name of the view that is currently focused.
+    // ${activeRepositoryName}: the name of the active repository (e.g. vscode).
+    // ${activeRepositoryBranchName}: the name of the active branch in the active repository (e.g. main).
+    // ${separator}: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
+    "window.title": "${dirty}${activeRepositoryName} (${activeRepositoryBranchName})${separator}${activeEditorMedium}",
+    "window.titleSeparator": " · ",
+
+    // ${cwd}: the terminal's current working directory
+    // ${cwdFolder}: the terminal's current working directory, displayed for multi-root workspaces or in a single root workspace when the value differs from the initial working directory. On Windows, this will only be displayed when shell integration is enabled.
+    // ${workspaceFolder}: the workspace in which the terminal was launched
+    // ${local}: indicates a local terminal in a remote workspace
+    // ${process}: the name of the terminal process
+    // ${separator}: a conditional separator (-) that only shows when surrounded by variables with values or static text.
+    // ${sequence}: the name provided to the terminal by the process
+    // ${task}: indicates this terminal is associated with a task
+    "terminal.integrated.tabs.title": "${sequence}",
+
+    // Font & Size
+    //"window.zoomLevel": -0.7, // Good for macOS 1080p scaling.
+    "window.zoomLevel": 0.7, // Good for macOS 1440p scaling.
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.lineHeight": 1.1,
+
     "diffEditor.renderSideBySide": false,
-    "editor.minimap.enabled": false,
     "explorer.decorations.colors": false,
     "workbench.editor.showIcons": false,
     "workbench.editor.tabSizing": "shrink",
@@ -9,16 +62,12 @@
     "workbench.colorTheme": "Default Light Modern",
     "workbench.preferredLightColorTheme": "GitHub Light Default",
     "workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
-
-    "editor.fontSize": 13,
     "editor.fontFamily": "NotoSansM Nerd Font Mono",
     "terminal.integrated.fontFamily": "NotoSansM Nerd Font Mono",
     "terminal.integrated.customGlyphs": false,
-    "terminal.integrated.fontSize": 13,
 
     // Restoring terminal history.
     "terminal.integrated.persistentSessionReviveProcess": "never",
-    "terminal.integrated.enablePersistentSessions": false,
 
     "extensions.ignoreRecommendations": true,
 
@@ -48,9 +97,8 @@
     "diffEditor.codeLens": true,
     "editor.renderLineHighlight": "none",
     "editor.occurrencesHighlight": "off",
-    "workbench.iconTheme": "chalice-icon-theme",
-    "editor.wordWrap": "on",
-    "workbench.editor.showTabs": "single",
+    "editor.wordWrap": "off",
+    "workbench.editor.showTabs": "none",
    "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "terminal.integrated.localEchoExcludePrograms": [
         "vim",
@@ -58,20 +106,6 @@
         "nano",
         "tmux",
         "nvim"
-    ],
-    "terminal.integrated.commandsToSkipShell": [
-        "workbench.action.createTerminalEditor",
-        "workbench.action.focusAboveGroup",
-        "workbench.action.focusBelowGroup",
-        "workbench.action.focusLeftGroup",
-        "workbench.action.focusRightGroup",
-        "workbench.action.moveEditorToAboveGroup",
-        "workbench.action.moveEditorToBelowGroup",
-        "workbench.action.moveEditorToLeftGroup",
-        "workbench.action.moveEditorToRightGroup",
-        "workbench.action.toggleActivityBarVisibility",
-        "workbench.action.toggleMaximizeEditorGroup",
-        "workbench.action.toggleSidebarVisibility",
     ],
     "cSpell.userWords": [
         "accesskey",
@@ -139,6 +173,7 @@
         "tomap",
         "upsert",
         "userarn",
+        "vendir",
         "waitfor",
         "xlarge"
     ],
@@ -149,19 +184,35 @@
     ],
     "git.openRepositoryInParentFolders": "never",
     "workbench.startupEditor": "none",
-    "window.menuBarVisibility": "toggle",
-    "window.title": "${dirty}${rootNameShort}${separator}${activeEditorMedium}",
-    "window.titleSeparator": " · ",
-    "terminal.integrated.tabs.title": "${workspaceFolder}",
     "workbench.layoutControl.type": "menu",
-    "workbench.layoutControl.enabled": false,
-    "window.commandCenter": false,
     "editor.tabSize": 8,
-    "window.titleBarStyle": "native",
     "workbench.editor.editorActionsLocation": "hidden",
     "terminal.integrated.tabs.location": "right",
-    "search.quickOpen.includeHistory": false,
-    "workbench.activityBar.location": "hidden",
     "clock.alignment": "Right",
     "clock.format": "HH:MM",
+    "terminal.integrated.defaultLocation": "editor",
+    "debug.confirmOnExit": "always",
+    "window.confirmBeforeClose": "keyboardOnly",
+    "workbench.iconTheme": "chalice-icon-theme",
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "on"
+        },
+    },
+    "window.restoreFullscreen": true,
+    "editor.minimap.enabled": false,
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.confirmSaveUntitledWorkspace": false,
+    "window.newWindowDimensions": "maximized",
+    "search.quickOpen.includeHistory": false,
 }

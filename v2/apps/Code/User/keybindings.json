@@ -4,7 +4,7 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //
 //   When adding something to the terminal remember to add
-//   to "Integrated: Commands to Skip Shell"
+//   to "Integrated: Commands to Skip Shell" in settings.json
 //
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -14,11 +14,16 @@
     //
 
     { "key": "f1",     "command": "-workbench.action.showCommands" },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
+    { "key": "ctrl+b", "command": "-workbench.action.toggleSidebarVisibility" },
     { "key": "f1",     "command": "workbench.action.toggleSidebarVisibility" },
+    { "key": "f4", "command": "workbench.action.toggleActivityBarVisibility" },
+
+    // Project navigation.
+    { "key": "shift+cmd+p",  "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker", "when": "inFilesPicker && inQuickOpen" },
+    { "key": "shift+cmd+p",  "command": "-workbench.action.showCommands" },
+    { "key": "ctrl+r",       "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker", "when": "inQuickOpen && inRecentFilesPicker" },
+    { "key": "shift+cmd+p",  "command": "workbench.action.openRecent" },
+    { "key": "ctrl+r",       "command": "-workbench.action.openRecent" },
 
     //
     // Groups.
@@ -51,10 +56,10 @@
     { "key": "shift+alt+j", "command": "workbench.action.moveEditorToBelowGroup" },
     { "key": "shift+alt+k", "command": "workbench.action.moveEditorToAboveGroup" },
     { "key": "shift+alt+l", "command": "workbench.action.moveEditorToRightGroup" },
-    { "key": "shift+cmd+h", "command": "workbench.action.moveEditorToLeftGroup" },
-    { "key": "shift+cmd+j", "command": "workbench.action.moveEditorToBelowGroup" },
-    { "key": "shift+cmd+k", "command": "workbench.action.moveEditorToAboveGroup" },
-    { "key": "shift+cmd+l", "command": "workbench.action.moveEditorToRightGroup" },
+    { "key": "cmd+shift+h", "command": "workbench.action.moveEditorToLeftGroup" },
+    { "key": "cmd+shift+j", "command": "workbench.action.moveEditorToBelowGroup" },
+    { "key": "cmd+shift+k", "command": "workbench.action.moveEditorToAboveGroup" },
+    { "key": "cmd+shift+l", "command": "workbench.action.moveEditorToRightGroup" },
 
     // group creation
     { "key": "ctrl+s v", "command": "workbench.action.splitEditorRight" },
@@ -69,7 +74,7 @@
 
     /* remove */ { "key": "ctrl+`", "command": "-workbench.action.terminal.toggleTerminal", "when": "terminal.active" },
     { "key": "ctrl+`", "command": "workbench.action.createTerminalEditor" },
-    { "key": "cmd+f1", "command": "workbench.action.createTerminalEditor" },
+    { "key": "cmd+f1", "command": "workbench.action.createTerminalEditorSameGroup" },
 
     {
         "key": "alt+c",
@@ -135,14 +140,5 @@
         "key": "escape",
         "command": "-workbench.action.terminal.clearSelection",
         "when": "terminalFocusInAny && terminalHasBeenCreated && terminalTextSelected && !terminalFindVisible || terminalFocusInAny && terminalProcessSupported && terminalTextSelected && !terminalFindVisible"
-    },
-    {
-        "key": "f4",
-        "command": "workbench.action.toggleActivityBarVisibility"
-    },
-    {
-        "key": "f2",
-        "command": "-workbench.action.terminal.renameActiveTab",
-        "when": "terminalHasBeenCreated && terminalTabsFocus && terminalTabsSingularSelection || terminalProcessSupported && terminalTabsFocus && terminalTabsSingularSelection"
     },
 ]
