@@ -8,6 +8,8 @@ if [[ "$LC_CTYPE" == 'UTF-8' ]]; then
   export LC_CTYPE="en_US.UTF-8"
 fi
 
+export TMPDIR='/tmp'
+
 #export TERMINAL=xfce4-terminal
 if command -v code >/dev/null 2>&1 ; then
     export EDITOR='code --wait'
@@ -61,84 +63,20 @@ export LPASS_AGENT_TIMEOUT=0
 if ! command -v starship >/dev/null ; then
     echo "${0}: Error: starship command not found" >&2
 else
-    eval $(starship init zsh)
+    eval "$(starship init zsh)"
+
+    __pre_echo_blank_init=0
+    function pre_echo_blank() {
+        [ "${__pre_echo_blank_init}" -eq 0 ] && __pre_echo_blank_init=1 && return
+        echo
+    }
+
+    function pre_set_win_title(){
+        echo -ne "\033]0;${PWD/${HOME}/"~"}\007"
+    }
+
+    precmd_functions+=(pre_echo_blank pre_set_win_title)
 fi
-
-my_git_ref() {
-    local git_ref
-    git_ref=$(command git symbolic-ref --short --quiet HEAD 2> /dev/null)
-    local ret=$?
-
-    [[ $ret -eq 0 ]] && { echo $git_ref ; return 0 }
-    [[ $ret -eq 128 ]] && return $ret # 128 means not a git repo.
-
-    command git rev-parse --short HEAD 2> /dev/null
-}
-
-my_git_repo() {
-    local toplevel
-    toplevel=$(git rev-parse --show-toplevel 2> /dev/null)
-    local ret=$?
-
-    [[ $ret -ne 0 ]] && return $ret
-
-    ## Take last 2 segments.
-    #local d=$(dirname "$toplevel")
-    #local owner=$(basename "$d")
-    #local repo=$(basename "$toplevel")
-    #echo "$owner/$repo"
-
-    echo $(basename "$toplevel")
-}
-
-#PROMPT=''
-#setopt PROMPT_SUBST
-#
-#prompt_init() {
-#    # Check https://github.com/sindresorhus/pure/blob/master/pure.zsh.
-#    # Fancy prompt symbol: ❯
-#    # Nice grey color: %F{242}
-#
-#    readonly newline=$'\n'
-#
-#    local git_ref=$(my_git_ref)
-#
-#    local kube_ctx=''
-#    if command -v kubectx >/dev/null ; then
-#        kube_ctx="$(kubectx --current)"
-#    elif [[ -e  ~/.kube/config ]] ; then
-#        kube_ctx=$(cat ~/.kube/config | grep 'current-context:' | cut -d ' ' -f 2)
-#    fi
-#
-#    PROMPT="%(?.%F{green}.%F{red})%~%f (%F{blue}${git_ref}%f) (%F{blue}${kube_ctx}%f)${newline}$ "
-#}
-
-my_title() {
-    local git_repo
-    git_repo=$(my_git_repo)
-    local ret=$?
-
-    local t="$git_repo ($(my_git_ref))"
-    [[ $ret -ne 0 ]] && t="$(dirs)"
-    [[ $# -gt 0 ]] && t="$t - $@"
-
-    echo -n "$t"
-}
-
-tmux_title_init() {
-    printf '\033]2;%s\033\\' "$(my_title)"
-}
-
-__my_init_newline=0
-precmd() {
-    # Print empty line between each prompt but not before the first one.
-    #[[ -n "${PROMPT}" ]] && echo
-    [[ __my_init_newline -eq 1 ]] && echo
-    __my_init_newline=1
-
-    #prompt_init
-    tmux_title_init
-}
 
 # }}}
 

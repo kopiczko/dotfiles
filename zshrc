@@ -63,20 +63,5 @@ source $HOME/.envs
 
 source $HOME/src/kb/kopiczko/dotfiles/shrc
 
-#function init_tmux () {
-#    [[ -n $TMUX ]] && return 0
-#    local session_name="home"
-#    local session_dir="$HOME"
-#    tmux attach-session -t "$session_name" 2>/dev/null && return 0
-#    tmux new-session -c $session_dir -d -s $session_name
-#    tmux attach-session -t $session_name
-#}
-
 # zoxide
-# To warm it up:
-#
-#       find ~/src -type d -depth 2 | xargs zoxide add
-#
 command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"
-
-#init_tmux

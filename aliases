@@ -40,31 +40,3 @@ alias gcloud-init='docker run -ti --name gcloud-config gcr.io/google.com/cloudsd
 #alias gcloud=...
 
 alias youtube-dl-mp3='youtube-dl --extract-audio --audio-format mp3'
-
-function gotest() {
-    if [[ -f Makefile ]] ; then
-        make test
-    else
-        go test ./...
-
-    fi
-}
-
-clean-path() {
-    if [[ $# -ne 1 ]]; then
-        echo "usage: clean-path CONTENT" >&2
-        return 1
-    fi
-    local r=$(echo $1 | awk -v RS=':' -v ORS=':' '!a[$1]++' | head -1)
-    echo ${r%:}
-}
-clean-path-test() {
-    local p='App/bin:/usr/local/opt/go/bin:/usr/local/bin:App/bin:/bin:/bin:/usr/local/bin'
-    local want='App/bin:/usr/local/opt/go/bin:/usr/local/bin:/bin'
-    local got="$(clean-path $p)"
-    if [[ $want != $got ]]; then
-        echo "ERROR clean-path-test:\n\twant: $want\n\t got: $got" >&2
-        return 1
-    fi
-}
-clean-path-test
