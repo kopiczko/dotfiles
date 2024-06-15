@@ -1,0 +1,61 @@
+{
+	"top": {
+		"prefix": "top",
+		"body": [
+			"#!/usr/bin/env bash",
+			"",
+			"set -o errexit",
+			"set -o nounset",
+			"set -o pipefail",
+			"$1",
+		],
+		"description": "Log output to console",
+	},
+	"set -x": {
+		"prefix": "setx",
+		"body": [
+			"set -x",
+			"$1",
+			"{ set +x; } 2>/dev/null",
+		],
+		"description": "Log output to console",
+	},
+	"Script directory": {
+		"prefix": "dir",
+		"body": [
+			"dir=\\$( cd \"\\$( dirname \"\\${BASH_SOURCE[0]}\" )\" && pwd )",
+			"readonly dir",
+		],
+		"description": "Directory of the script",
+	},
+	"Temporary file": {
+		"prefix": "tmpfile",
+		"body": [
+			"${1:tmp}=$(mktemp \"\\${TMPDIR:-\"/tmp\"}/${2:file}.XXXXXXXX.${3:txt}\")",
+			"trap 'rm \"\\${${1}}\"' EXIT",
+		],
+		"description": "Directory of the script",
+	},
+	"Temporary directory": {
+		"prefix": "tmpdir",
+		"body": [
+			"${1:tmp}=$(mktemp -d \"\\${TMPDIR:-\"/tmp\"}/${2:file}.XXXXXXXX\")",
+			"trap 'rm \"\\${${1}}\"' EXIT",
+		],
+		"description": "Directory of the script",
+	},
+	"case ... in": {
+		"prefix": "case",
+		"body": [
+			"case ${1:var} in",
+			"\tpattern|pattern2*)",
+			"\t\tstatement",
+			"\t\t;;",
+			"\t*)",
+			"\t\tstatement",
+			"\t\t;;",
+			"esac",
+		],
+		"description": "Directory of the script",
+	},
+}
