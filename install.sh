@@ -44,9 +44,14 @@ files="$files envs"
 files="$files git_template"
 files="$files gitconfig"
 files="$files gitignore_global"
+files="$files starship.toml"
 files="$files tmux.conf"
 files="$files zshrc"
 #files="$files lima"
+
+for f in $(ls local/bin) ; do
+	files="$files local/bin/$f"
+done
 
 for f in $files; do
     s="$dir/$f"
@@ -54,5 +59,7 @@ for f in $files; do
 
     mk_link $s $t
 done
+
+mk_link "${dir}/home/config/nvim" "${HOME}/.config/nvim"
 
 #mk_link $dir/usr/local/bin/mux /usr/local/bin/mux

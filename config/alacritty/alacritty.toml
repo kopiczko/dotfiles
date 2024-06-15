@@ -1,0 +1,63 @@
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "#959da5"
+blue = "#2188ff"
+cyan = "#8a63d2"
+green = "#7ab18f"
+magenta = "#ec6cb9"
+red = "#ea4a5a"
+white = "#feffff"
+yellow = "#ffdf5d"
+
+[colors.normal]
+black = "#586069"
+blue = "#005cc5"
+cyan = "#5a32a3"
+green = "#22863a"
+magenta = "#d03592"
+red = "#cb2431"
+white = "#feffff"
+yellow = "#f9c513"
+
+[colors.primary]
+background = "#ffffff"
+foreground = "#24292e"
+
+[cursor]
+style = "Beam"
+
+[font]
+size = 9.5
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "NotoSansM Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 1
+y = 8
+
+[[keyboard.bindings]]
+chars = "\u0017"
+key = "Back"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\b"
+key = "Back"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+startup_mode = "Windowed"

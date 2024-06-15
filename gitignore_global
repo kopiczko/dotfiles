@@ -117,6 +117,7 @@ com_crashlytics_export_strings.xml
 # It's better to unpack these files and commit the raw source because
 # git has its own built in compression methods.
 
+*.log
 *.7z
 *.jar
 *.rar
@@ -198,3 +199,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Terraform
+terraform.tfstate*

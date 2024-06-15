@@ -10,13 +10,14 @@ fi
 
 export TMPDIR='/tmp'
 
-#export TERMINAL=xfce4-terminal
-if command -v code >/dev/null 2>&1 ; then
-    export EDITOR='code --wait'
-elif command -v nvim >/dev/null 2>&1 ; then
-    export EDITOR=nvim
+export EDITOR=nvim
+if [[ -n ${NVIM} ]] && command -v nvr >/dev/null ; then
+	export EDITOR="nvr -cc split --remote-wait"
 fi
-#export BROWSER=google-chrome
+if [[ "${TERM_PROGRAM}" == "vscode" ]] ; then
+	export EDITOR="code --wait"
+fi
+export GIT_EDITOR="${EDITOR}"
 
 export PATH=$HOME/.local/bin:$PATH
 export MANPATH="$HOME/.local/man:$MANPATH"
@@ -29,13 +30,13 @@ export MANPATH="$HOME/.local/man:$MANPATH"
 
 # {{{ env: go
 
-export GOTMPDIR=$HOME/go/tmp
-export GOCACHE=$HOME/go/cache
-export GOPATH=$HOME/go
-export GOBIN="$GOPATH/bin"
+export GOTMPDIR=$HOME/src/go/tmp
+export GOCACHE=$HOME/src/go/cache
+export GOPATH=$HOME/src/go
+export GOBIN="${HOME}/.local/bin"
 export GO111MODULE="auto"
 
-export PATH=$GOPATH/bin:$PATH
+export PATH=${GOBIN}:$PATH
 
 # }}}
 #
@@ -49,6 +50,7 @@ export PNPM_HOME="${HOME}/.local/lib/pnpm/bin"
 # {{{ env: fzf
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_OPTS='--height=100%'
 
 # }}}
 

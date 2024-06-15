@@ -3,6 +3,9 @@
 	email = kopiczko@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
+	# The editor is set with GIT_EDITOR env var in ~/.envs.
+	#editor = nvim -c 'set spell'
+	#editor = "/usr/bin/code --wait"
 	pager = delta
 [init]
 	templatedir = ~/.git_template

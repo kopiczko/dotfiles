@@ -48,6 +48,7 @@ autoload compinit && compinit
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
 
