@@ -59,7 +59,7 @@
     "workbench.editor.tabSizing": "shrink",
     "workbench.tree.indent": 20,
     "explorer.decorations.badges": false,
-    "workbench.colorTheme": "Default Light Modern",
+    "workbench.colorTheme": "GitHub Light Default",
     "workbench.preferredLightColorTheme": "GitHub Light Default",
     "workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
     "editor.fontFamily": "NotoSansM Nerd Font Mono",
@@ -109,6 +109,7 @@
     ],
     "cSpell.userWords": [
         "accesskey",
+        "alloc",
         "apimachinery",
         "apiserver",
         "appautoscaling",
@@ -135,6 +136,7 @@
         "helloworld",
         "hlsearch",
         "hostedzone",
+        "jsondecode",
         "jsonencode",
         "Karpenter",
         "kopiczko",
@@ -168,6 +170,7 @@
         "subchart",
         "tekton",
         "TMPDIR",
+        "tmpl",
         "todos",
         "tolist",
         "tomap",
@@ -175,7 +178,8 @@
         "userarn",
         "vendir",
         "waitfor",
-        "xlarge"
+        "xlarge",
+        "yamldecode"
     ],
     "terminal.integrated.gpuAcceleration": "on",
     "cSpell.enableFiletypes": [
@@ -209,10 +213,10 @@
     },
     "window.restoreFullscreen": true,
     "editor.minimap.enabled": false,
-    "window.commandCenter": false,
-    "workbench.layoutControl.enabled": false,
     "explorer.confirmDragAndDrop": false,
     "window.confirmSaveUntitledWorkspace": false,
     "window.newWindowDimensions": "maximized",
-    "search.quickOpen.includeHistory": false,
+    "workbench.activityBar.location": "hidden",
+    "window.commandCenter": false,
+    "workbench.layoutControl.enabled": false,
 }

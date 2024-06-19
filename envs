@@ -34,7 +34,6 @@ export GOTMPDIR=$HOME/src/go/tmp
 export GOCACHE=$HOME/src/go/cache
 export GOPATH=$HOME/src/go
 export GOBIN="${HOME}/.local/bin"
-export GO111MODULE="auto"
 
 export PATH=${GOBIN}:$PATH
 
