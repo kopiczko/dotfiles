@@ -9,6 +9,18 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 [
+
+    //
+    // ⌘ + p
+    //
+
+    // type "?" for help
+    // type "edt" to list editors (buffers)
+    // type "term" to list terminals
+    // type ">" for commands
+    //{ "key": "cmd+p", "command": "-workbench.action.quickOpen" },
+    //{ "key": "cmd+p", "command": "workbench.action.showAllEditors" },
+
     //
     // F keys.
     //
@@ -107,12 +119,23 @@
                 "workbench.action.terminal.selectAll",
                 "workbench.action.terminal.copySelection",
                 "workbench.action.terminal.clearSelection",
-                "workbench.action.files.newUntitledFile",
+                "workbench.action.files.newFile",
                 "editor.action.clipboardPasteAction",
             ]
         },
         "when": "terminalFocus"
     },
+
+
+    { "key": "ctrl+s y y",            "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y y",       "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+y",  "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s y c",            "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y c",       "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+c",  "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s y o",            "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y o",       "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+o",  "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
 
     //
     // Misc.

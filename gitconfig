@@ -1,5 +1,5 @@
 [user]
-	name = Paweł Kopiczko
+	name = Pawel Kopiczko
 	email = kopiczko@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
@@ -32,6 +32,8 @@
 	status = auto
 	branch = auto
 	ui = true
+[pager]
+	branch = false
 [push]
 	default = current
 	followTags = true
@@ -46,7 +48,7 @@
 	insteadOf = https://github.com/
 [delta]
 	features = decorations navigate
-	light = true
+	light = false
 	line-numbers = true
 	# -+F will make make it work with less than one screen
 	# -+X will clear the terminal after quitting
