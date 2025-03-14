@@ -1,0 +1,230 @@
+{
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.createTerminalEditorSameGroup",
+        "workbench.action.createTerminalEditor",
+        "workbench.action.focusAboveGroup",
+        "workbench.action.focusBelowGroup",
+        "workbench.action.focusLeftGroup",
+        "workbench.action.focusRightGroup",
+        "workbench.action.moveEditorToAboveGroup",
+        "workbench.action.moveEditorToBelowGroup",
+        "workbench.action.moveEditorToLeftGroup",
+        "workbench.action.moveEditorToRightGroup",
+        "workbench.action.toggleActivityBarVisibility",
+        "workbench.action.toggleMaximizeEditorGroup",
+        "workbench.action.toggleSidebarVisibility",
+    ],
+    // ${activeEditorShort}: the file name (e.g. myFile.txt).
+    // ${activeEditorMedium}: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
+    // ${activeEditorLong}: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
+    // ${activeFolderShort}: the name of the folder the file is contained in (e.g. myFileFolder).
+    // ${activeFolderMedium}: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
+    // ${activeFolderLong}: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
+    // ${folderName}: name of the workspace folder the file is contained in (e.g. myFolder).
+    // ${folderPath}: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
+    // ${rootName}: name of the workspace with optional remote name and workspace indicator if applicable (e.g. myFolder, myRemoteFolder [SSH] or myWorkspace (Workspace)).
+    // ${rootNameShort}: shortened name of the workspace without suffixes (e.g. myFolder, myRemoteFolder or myWorkspace).
+    // ${rootPath}: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
+    // ${profileName}: name of the profile in which the workspace is opened (e.g. Data Science (Profile)). Ignored if default profile is used.
+    // ${appName}: e.g. VS Code.
+    // ${remoteName}: e.g. SSH
+    // ${dirty}: an indicator for when the active editor has unsaved changes.
+    // ${focusedView}: the name of the view that is currently focused.
+    // ${activeRepositoryName}: the name of the active repository (e.g. vscode).
+    // ${activeRepositoryBranchName}: the name of the active branch in the active repository (e.g. main).
+    // ${separator}: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
+    "window.title": "${dirty}${activeRepositoryName} (${activeRepositoryBranchName})${separator}${activeEditorMedium}",
+    "window.titleSeparator": " · ",
+
+    // ${cwd}: the terminal's current working directory
+    // ${cwdFolder}: the terminal's current working directory, displayed for multi-root workspaces or in a single root workspace when the value differs from the initial working directory. On Windows, this will only be displayed when shell integration is enabled.
+    // ${workspaceFolder}: the workspace in which the terminal was launched
+    // ${local}: indicates a local terminal in a remote workspace
+    // ${process}: the name of the terminal process
+    // ${separator}: a conditional separator (-) that only shows when surrounded by variables with values or static text.
+    // ${sequence}: the name provided to the terminal by the process
+    // ${task}: indicates this terminal is associated with a task
+    "terminal.integrated.tabs.title": "${sequence}",
+
+    // Font & Size
+    //"window.zoomLevel": -0.7, // Good for macOS 1080p scaling.
+    "window.zoomLevel": 0.7, // Good for macOS 1440p scaling.
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.lineHeight": 1.1,
+
+    "diffEditor.renderSideBySide": false,
+    "explorer.decorations.colors": false,
+    "workbench.editor.showIcons": false,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.tree.indent": 20,
+    "explorer.decorations.badges": false,
+    "workbench.colorTheme": "GitHub Light Default",
+    "workbench.preferredLightColorTheme": "GitHub Light Default",
+    "workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
+    "editor.fontFamily": "NotoSansM Nerd Font Mono",
+    "terminal.integrated.fontFamily": "NotoSansM Nerd Font Mono",
+    "terminal.integrated.customGlyphs": false,
+
+    // Restoring terminal history.
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+
+    "extensions.ignoreRecommendations": true,
+
+    "cSpell.language": "en,en-GB,en-US,pl",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.handleKeys": {
+        "<C-[>": true,
+        "<C-]>": true,
+        "<C-r>": true,
+        "<C-i>": true,
+        "<C-o>": true,
+        "<C-v>": true,
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["<Enter>"], "commands": [ ":nohl", ], "silent": true },
+        { "before": [ "j" ], "after": [ "g", "j" ] },
+        { "before": [ "k" ], "after": [ "g", "k" ] },
+    ],
+    "vim.commandLineModeKeyBindingsNonRecursive": [
+        { "before": [ "q", "<cr>" ], "commands": [ "workbench.action.joinTwoGroups" ] },
+    ],
+    "diffEditor.codeLens": true,
+    "editor.renderLineHighlight": "none",
+    "editor.occurrencesHighlight": "off",
+    "editor.wordWrap": "off",
+    "workbench.editor.showTabs": "none",
+   "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "nvim"
+    ],
+    "cSpell.userWords": [
+        "accesskey",
+        "alloc",
+        "apimachinery",
+        "apiserver",
+        "appautoscaling",
+        "automount",
+        "autoscaler",
+        "azurecr",
+        "blackbox",
+        "bootstrappers",
+        "chdir",
+        "cidrsubnet",
+        "clusterissuer",
+        "configmap",
+        "containerd",
+        "coredns",
+        "creds",
+        "daemonset",
+        "DNAT",
+        "downscaler",
+        "dualstack",
+        "eksctl",
+        "fargate",
+        "finalizer",
+        "Fullscreen",
+        "genericclioptions",
+        "giantswarm",
+        "giantswarmpublic",
+        "helloworld",
+        "hlsearch",
+        "hostedzone",
+        "jsondecode",
+        "jsonencode",
+        "Karpenter",
+        "kopiczko",
+        "kubeconfig",
+        "kubeconfigs",
+        "kubelet",
+        "kubeproxy",
+        "Kustomization",
+        "kustomize",
+        "letsencrypt",
+        "libsodium",
+        "lpass",
+        "mylabel",
+        "natgw",
+        "Netpol",
+        "nodegroup",
+        "nodepool",
+        "nohl",
+        "nvim",
+        "oidc",
+        "pawel",
+        "paweltest",
+        "pflag",
+        "podsecuritypolicies",
+        "relref",
+        "rolearn",
+        "secretaccesskey",
+        "serviceaccount",
+        "servicemonitor",
+        "servicemonitors",
+        "subchart",
+        "tekton",
+        "TMPDIR",
+        "tmpl",
+        "todos",
+        "tolist",
+        "tomap",
+        "upsert",
+        "userarn",
+        "vendir",
+        "waitfor",
+        "xlarge",
+        "yamldecode"
+    ],
+    "terminal.integrated.gpuAcceleration": "on",
+    "cSpell.enableFiletypes": [
+        "terraform",
+        "terraform-vars"
+    ],
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.startupEditor": "none",
+    "workbench.layoutControl.type": "menu",
+    "editor.tabSize": 8,
+    "workbench.editor.editorActionsLocation": "hidden",
+    "terminal.integrated.tabs.location": "right",
+    "clock.alignment": "Right",
+    "clock.format": "HH:MM",
+    "terminal.integrated.defaultLocation": "editor",
+    "debug.confirmOnExit": "always",
+    "window.confirmBeforeClose": "keyboardOnly",
+    "workbench.iconTheme": "chalice-icon-theme",
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
+    "[markdown]": {
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "off",
+            "strings": "on"
+        },
+    },
+    "window.restoreFullscreen": true,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.confirmSaveUntitledWorkspace": false,
+    "window.newWindowDimensions": "maximized",
+    "workbench.activityBar.location": "hidden",
+    "window.commandCenter": false,
+    "editor.renderWhitespace": "none",
+    "search.quickOpen.includeHistory": false,
+    "zig.path": "zig",
+    "zig.zls.path": "/Users/kopiczko/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.initialSetupDone": true,
+    "workbench.layoutControl.enabled": false,
+}

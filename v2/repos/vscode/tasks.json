@@ -1,0 +1,84 @@
+{
+        "version": "2.0.0",
+        // https://code.visualstudio.com/docs/editor/tasks#_custom-tasks
+        "tasks": [
+                {
+                        "label": "Run: make grpc",
+                        "command": "make",
+                        "args": ["-j", "grpc"],
+                        "type": "process",
+                        "problemMatcher": [
+                                "$tsc"
+                        ],
+                        "presentation": {
+                                "reveal": "always",
+                                "panel": "dedicated",
+                                "clear": true,
+                                "close": false,
+                                "showReuseMessage": false,
+                        },
+                        "group": "build",
+                },
+                {
+                        "label": "Run: ./iter.sh",
+                        "command": "../../kopiczko/teleport-dev-terraform/scripts/iter.sh",
+                        "type": "shell",
+                        "args": [],
+                        "isBackground": true,
+                        "problemMatcher": [
+                                "$tsc",
+                                "$go",
+                        ],
+                        "presentation": {
+                                "panel": "dedicated",
+                                "clear": true,
+                                "close": false,
+                                "showReuseMessage": false,
+                        },
+                        "group": "none",
+                },
+                {
+                        "label": "Run: make teleport",
+                        "command": "make -C ./e -j build/teleport && e/build/teleport start --config e/pawel/teleport.yaml",
+                        "type": "shell",
+                        "args": [],
+                        "isBackground": true,
+                        "problemMatcher": [
+                                "$tsc",
+                                "$go",
+                        ],
+                        "presentation": {
+                                "panel": "dedicated",
+                                "clear": true,
+                                "close": false,
+                                "showReuseMessage": false,
+                        },
+                        "group": "build",
+                },
+                {
+                        "label": "Run: make tctl",
+                        "command": "make -C ./e -j build/tctl",
+                        "type": "shell",
+                        "args": [],
+                        "isBackground": true,
+                        "problemMatcher": [
+                                "$tsc",
+                                "$go",
+                        ],
+                        "presentation": {
+                                "panel": "dedicated",
+                                "clear": true,
+                                "close": false,
+                                "showReuseMessage": false,
+                        },
+                        "group": "build",
+                },
+                {
+                        "label": "Stop Teleport (on AWS instance)",
+                        "command": "ssh -o StrictHostKeychecking=no -o UserKnownHostsFile=/dev/null ubuntu@global1.gopawel.com sudo systemctl stop teleport",
+                        "type": "shell",
+                        "presentation": { "clear": true, "showReuseMessage": false },
+                        "group": "none",
+                },
+        ]
+}

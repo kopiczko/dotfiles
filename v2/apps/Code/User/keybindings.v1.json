@@ -1,0 +1,167 @@
+// Place your key bindings in this file to override the defaultsauto[]
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//
+//   When adding something to the terminal remember to add
+//   to "Integrated: Commands to Skip Shell" in settings.json
+//
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+[
+
+    //
+    // ⌘ + p
+    //
+
+    // type "?" for help
+    // type "edt" to list editors (buffers)
+    // type "term" to list terminals
+    // type ">" for commands
+    //{ "key": "cmd+p", "command": "-workbench.action.quickOpen" },
+    //{ "key": "cmd+p", "command": "workbench.action.showAllEditors" },
+
+    //
+    // F keys.
+    //
+
+    { "key": "f1",     "command": "-workbench.action.showCommands" },
+    { "key": "ctrl+b", "command": "-workbench.action.toggleSidebarVisibility" },
+    { "key": "f1",     "command": "workbench.action.toggleSidebarVisibility" },
+    { "key": "f4", "command": "workbench.action.toggleActivityBarVisibility" },
+
+    // Project navigation.
+    { "key": "shift+cmd+p",  "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker", "when": "inFilesPicker && inQuickOpen" },
+    { "key": "shift+cmd+p",  "command": "-workbench.action.showCommands" },
+    { "key": "ctrl+r",       "command": "-workbench.action.quickOpenNavigateNextInRecentFilesPicker", "when": "inQuickOpen && inRecentFilesPicker" },
+    { "key": "shift+cmd+p",  "command": "workbench.action.openRecent" },
+    { "key": "ctrl+r",       "command": "-workbench.action.openRecent" },
+
+    //
+    // Groups.
+    //
+
+    // group movement
+    /* remove */ { "key": "ctrl+k ctrl+up",    "command": "-workbench.action.focusAboveGroup" },
+    /* remove */ { "key": "ctrl+k ctrl+down",  "command": "-workbench.action.focusBelowGroup" },
+    /* remove */ { "key": "ctrl+k ctrl+left",  "command": "-workbench.action.focusLeftGroup" },
+    /* remove */ { "key": "ctrl+k ctrl+right", "command": "-workbench.action.focusRightGroup" },
+    { "key": "alt+k", "command": "workbench.action.focusAboveGroup" },
+    { "key": "alt+j", "command": "workbench.action.focusBelowGroup" },
+    { "key": "alt+h", "command": "workbench.action.focusLeftGroup" },
+    { "key": "alt+l", "command": "workbench.action.focusRightGroup" },
+    { "key": "cmd+k", "command": "workbench.action.focusAboveGroup" },
+    { "key": "cmd+j", "command": "workbench.action.focusBelowGroup" },
+    { "key": "cmd+h", "command": "workbench.action.focusLeftGroup" },
+    { "key": "cmd+l", "command": "workbench.action.focusRightGroup" },
+
+    // maximise group
+    /* remove */ { "key": "ctrl+k ctrl+m", "command": "-workbench.action.toggleMaximizeEditorGroup" },
+    { "key": "alt+enter",     "command": "workbench.action.toggleMaximizeEditorGroup" },
+    { "key": "cmd+enter",     "command": "workbench.action.toggleMaximizeEditorGroup" },
+
+
+    // moving editors
+    { "key": "ctrl+alt+left",  "command": "-workbench.action.moveEditorToPreviousGroup" },
+    { "key": "ctrl+alt+right", "command": "-workbench.action.moveEditorToNextGroup" },
+    { "key": "shift+alt+h", "command": "workbench.action.moveEditorToLeftGroup" },
+    { "key": "shift+alt+j", "command": "workbench.action.moveEditorToBelowGroup" },
+    { "key": "shift+alt+k", "command": "workbench.action.moveEditorToAboveGroup" },
+    { "key": "shift+alt+l", "command": "workbench.action.moveEditorToRightGroup" },
+    { "key": "cmd+shift+h", "command": "workbench.action.moveEditorToLeftGroup" },
+    { "key": "cmd+shift+j", "command": "workbench.action.moveEditorToBelowGroup" },
+    { "key": "cmd+shift+k", "command": "workbench.action.moveEditorToAboveGroup" },
+    { "key": "cmd+shift+l", "command": "workbench.action.moveEditorToRightGroup" },
+
+    // group creation
+    { "key": "ctrl+s v", "command": "workbench.action.splitEditorRight" },
+    { "key": "ctrl+s s", "command": "workbench.action.splitEditorDown" },
+
+    // group closing
+    { "key": "ctrl+s w", "command": "workbench.action.joinTwoGroups" },
+
+    //
+    // Terminal.
+    //
+
+    /* remove */ { "key": "ctrl+`", "command": "-workbench.action.terminal.toggleTerminal", "when": "terminal.active" },
+    { "key": "ctrl+`", "command": "workbench.action.createTerminalEditor" },
+    { "key": "cmd+f1", "command": "workbench.action.createTerminalEditorSameGroup" },
+
+    {
+        "key": "alt+c",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u0003"
+        },
+        "when": "terminalFocus"
+    },
+    { "key": "ctrl+c", "command": "workbench.action.terminal.copySelection", "when": "terminalTextSelectedInFocused || terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected || terminalFocus && terminalTextSelected && terminalTextSelectedInFocused || terminalHasBeenCreated && terminalTextSelected && terminalTextSelectedInFocused || terminalProcessSupported && terminalTextSelected && terminalTextSelectedInFocused" },
+
+
+    { "key": "ctrl+a", "command": "ctrl+a", "when": "terminalFocus" },
+    { "key": "ctrl+e", "command": "ctrl+e", "when": "terminalFocus" },
+    { "key": "ctrl+s [", "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.selectAll",
+                "workbench.action.terminal.copySelection",
+                "workbench.action.terminal.clearSelection",
+                "workbench.action.files.newUntitledFile",
+                "editor.action.clipboardPasteAction",
+            ]
+        },
+        "when": "terminalFocus"
+    },
+    { "key": "ctrl+s ctrl+[", "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.selectAll",
+                "workbench.action.terminal.copySelection",
+                "workbench.action.terminal.clearSelection",
+                "workbench.action.files.newFile",
+                "editor.action.clipboardPasteAction",
+            ]
+        },
+        "when": "terminalFocus"
+    },
+
+
+    { "key": "ctrl+s y y",            "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y y",       "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+y",  "command": "workbench.action.terminal.copyLastCommandAndLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s y c",            "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y c",       "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+c",  "command": "workbench.action.terminal.copyLastCommand", "when": "terminalFocus" },
+    { "key": "ctrl+s y o",            "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y o",       "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
+    { "key": "ctrl+s ctrl+y ctrl+o",  "command": "workbench.action.terminal.copyLastCommandOutput", "when": "terminalFocus" },
+
+    //
+    // Misc.
+    //
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.terminal.killEditor",
+        "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
+    },
+    {
+        "key": "ctrl+shift+w",
+        "command": "-workbench.action.closeWindow"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "workbench.action.terminal.paste",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-workbench.action.terminal.paste",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "escape",
+        "command": "-workbench.action.terminal.clearSelection",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && terminalTextSelected && !terminalFindVisible || terminalFocusInAny && terminalProcessSupported && terminalTextSelected && !terminalFindVisible"
+    },
+]
