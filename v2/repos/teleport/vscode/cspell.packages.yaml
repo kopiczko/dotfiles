@@ -1,0 +1,17 @@
+words:
+  - accesslist
+  - apievents
+  - eteleport
+  - libjwt
+  - logutils
+  - mapstructure
+  - oktaapi
+  - oktacommon
+  - oktapb
+  - oktasdk
+  - oktaservice
+  - oktav1
+  - ossteleport
+  - pluginspb
+  - pluginsv1
+  - samltypes

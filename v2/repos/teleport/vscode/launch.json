@@ -5,7 +5,7 @@
         "version": "0.2.0",
         "configurations": [
                 {
-                        "name": "Launch test function",
+                        "name": "Test function",
                         "type": "go",
                         "request": "launch",
                         "mode": "test",
@@ -21,13 +21,13 @@
                         "type": "go",
                         "request": "launch",
                         "mode": "debug",
-                        "program": "e/tool/teleport"
+                        "program": "e/tool/teleport",
                         "args": [
                                 "start",
                                 "--config",
                                 "../teleport/e/pawel/teleport.yaml",
                         ],
-                        "cwd": "/Users/kopiczko/src/gh/gravitational/teleport.hack",
+                        "cwd": "${workspaceFolder}",
                         // NOTE: check output of `make -C ./e -j build/teleport`
                         "buildFlags": [
                                 "-buildvcs=false",
@@ -40,6 +40,14 @@
                                 "CGO_ENABLED": "1",
                                 //"CGO_CFLAGS": "-mmacosx-version-min=11.0",
                         },
+                },
+                // make TELEPORT_DEBUG=true -C ./e -j build/teleport && e/build/teleport start --config ../teleport/e/pawel/teleport.yaml
+                {
+                        "name": "Attach ./e/tool/teleport",
+                        "type": "go",
+                        "request": "attach",
+                        "mode": "local",
+                        "cwd": "${workspaceFolder}",
                 }
         ]
 }
