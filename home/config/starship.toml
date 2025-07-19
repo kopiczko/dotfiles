@@ -37,7 +37,7 @@ time_format = "%T"
 
 [kubernetes]
 #format = '[$symbol$context( \($namespace\))]($style) in '
-format = '[$context( \($namespace\))]($style)'
+format = '[$context // $namespace]($style)'
 disabled = false
 style = "blue"
 

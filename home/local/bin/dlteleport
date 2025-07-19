@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+keep_tmpdir="no"
+
+function usage() {
+        echo >&2 "Usage: $(basename "$0") [--keep-temp] VERSION"
+}
+
+args=()
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -h) usage ; exit 0 ;;
+        --keep-tmpdir) keep_tmpdir="yes" ; shift ;;
+        --) shift ; args+=("$@") ; break ;;
+        -*) echo >&2 "error: unknown flag: $1" ; exit 2 ;;
+        *) args+=("$1") ; shift ;;
+    esac
+done
+
+if [ ${#args[@]} -ne 1 ]; then
+        echo >&2 "Error: single argument required"
+        usage
+        exit 2
+fi
+
+tmpdir=$(mktemp -d -t "dlteleport_XXXXXXXX")
+readonly tmpdir
+if [[ "${keep_tmpdir}" != "yes" ]]; then
+        trap 'echo "Cleaning up temporary directory: ${tmpdir}"; rm -rf ${tmpdir}' EXIT INT TERM HUP
+else
+        trap 'echo "Keeping temporary directory: ${tmpdir}"' EXIT INT TERM HUP
+fi
+cd "${tmpdir}"
+
+readonly version=${args[0]#v}
+readonly url="https://cdn.teleport.dev/teleport-v${version}-darwin-arm64-bin.tar.gz"
+
+echo "Downloading version ${version} from ${url}"
+curl -fsSL "${url}" | tar xz
+
+mkdir -p "${HOME}/.local/opt"
+rm -rf "${HOME}/.local/opt/teleport.${version}"
+mv "./teleport" "${HOME}/.local/opt/teleport.${version}"
+
+echo "Installing teleport.${version}"
+rm -f "${HOME}/.local/bin/teleport.${version}"
+ln -s "../opt/teleport.${version}/teleport" "${HOME}/.local/bin/teleport.${version}"
+
+echo "Installing tctl.${version}"
+rm -f "${HOME}/.local/bin/tctl.${version}"
+ln -s "../opt/teleport.${version}/tctl.app/Contents/MacOS/tctl" "${HOME}/.local/bin/tctl.${version}"
+
+echo "Installing tsh.${version}"
+rm -f "${HOME}/.local/bin/tsh.${version}"
+ln -s "../opt/teleport.${version}/tsh.app/Contents/MacOS/tsh" "${HOME}/.local/bin/tsh.${version}"
+

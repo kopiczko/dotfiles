@@ -9,15 +9,15 @@
                         "type": "go",
                         "request": "launch",
                         "mode": "test",
-                        "program": "e/lib/accesslist",
+                        "program": "./lib/services/local",
                         "args": [
                                 "-test.run",
-                                "TestOktaReadOnly",
-                        ],
+                                "TestAccessListService_Status_ownerOf_memberOf",
+                         ],
                         "showLog": true,
                 },
                 {
-                        "name": "Launch ./e/tool/teleport",
+                        "name": "Run ./e/tool/teleport",
                         "type": "go",
                         "request": "launch",
                         "mode": "debug",
@@ -25,7 +25,7 @@
                         "args": [
                                 "start",
                                 "--config",
-                                "../teleport/e/pawel/teleport.yaml",
+                                "/Users/kopiczko/.teleport/local1/teleport.yaml",
                         ],
                         "cwd": "${workspaceFolder}",
                         // NOTE: check output of `make -C ./e -j build/teleport`
@@ -39,6 +39,7 @@
                         "env": {
                                 "CGO_ENABLED": "1",
                                 //"CGO_CFLAGS": "-mmacosx-version-min=11.0",
+                                "TELEPORT_UNSTABLE_SKIP_VERSION_UPGRADE_CHECK": "yes",
                         },
                 },
                 // make TELEPORT_DEBUG=true -C ./e -j build/teleport && e/build/teleport start --config ../teleport/e/pawel/teleport.yaml
@@ -48,6 +49,21 @@
                         "request": "attach",
                         "mode": "local",
                         "cwd": "${workspaceFolder}",
-                }
+                },
+                // Terraform plugin debug
+                {
+                        "name": "Terraform provider",
+                        "type": "go",
+                        "request": "launch",
+                        "mode": "debug",
+                        "program": "integrations/terraform/main.go",
+                        "internalConsoleOptions": "openOnSessionStart",
+                        "args": [
+                                "-debug",
+                        ],
+                        "cwd": "${workspaceFolder}",
+                        // ./e/build/tctl --config ~/.teleport/local1/teleport.yaml terraform env | sed -e 's/^export //' -e '/^#/d' >/tmp/tf.env
+                        "envFile": "${workspaceFolder}/pawel.d/env"
+                },
         ]
 }

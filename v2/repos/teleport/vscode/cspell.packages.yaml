@@ -1,13 +1,18 @@
 words:
   - accesslist
+  - accesslists
   - apievents
+  - apitest
   - eteleport
   - libjwt
   - logutils
   - mapstructure
   - oktaapi
+  - oktaapitest
   - oktacommon
+  - oktaconvert
   - oktapb
+  - oktaplugin
   - oktasdk
   - oktaservice
   - oktav1

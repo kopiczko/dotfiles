@@ -23,47 +23,23 @@ setopt interactivecomments
 # Highlight selected completion.
 zstyle ':completion:*' menu select
 
-# Autoload functions from:
-#     - $HOME/.config/zsh/funcs
-#     - $HOME/.config/zsh/funcs_ephemenral
-fpath=($HOME/.config/zsh/funcs $fpath)
-fpath=($HOME/.config/zsh/funcs_ephemeral $fpath)
-for f in $(find $HOME/.config/zsh/funcs* -not -name '\.*' -type f); do
-    autoload -Uz $(basename $f)
-done
-
 # Enable completion.
 autoload compinit && compinit
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /opt/local/share/fzf/shell/key-bindings.zsh ] && source /opt/local/share/fzf/shell/key-bindings.zsh
-[ -f /opt/local/share/fzf/shell/completion.zsh ] && source /opt/local/share/fzf/shell/completion.zsh
+command -v fzf 2>&1 >/dev/null  && source <(fzf --zsh)
 
 # Enable autosuggestions.
-[[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[[ -f /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[[ -f /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#[[ -f /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#[[ -f /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source /opt/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.aliases
 source $HOME/.envs
 [ -f $HOME/.envs_volatile ] && source $HOME/.envs_volatile
 
-source $HOME/src/kb/kopiczko/dotfiles/shrc
+#source $HOME/src/kb/kopiczko/dotfiles/shrc
 
 # zoxide
 command -v zoxide 2>&1 >/dev/null && eval "$(zoxide init zsh)"

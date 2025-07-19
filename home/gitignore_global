@@ -8,6 +8,8 @@ tmp
 
 .vscode
 
+.pnpm-store
+
 # Emacs #
 #########
 
@@ -44,19 +46,6 @@ tramp
 
 .vagrant/
 
-# Scala #
-#######
-
-# I use such a file for quick tests
-___Main.java
-___Main.scala
-
-.ensime*
-
-# SBT #
-#######
-
-# -- https://github.com/github/gitignore/blob/master/Global/SBT.gitignore
 
 # recommended: http://code.google.com/p/simple-build-tool/wiki/Setup#Version_Control
 
@@ -164,16 +153,6 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-# CDT-specific
-.cproject
-
-# PDT-specific
-.buildpath
-
-# sbteclipse plugin 
-.target
-
-# TeXlipse plugin
 .texlipse
 
 # macosx #
