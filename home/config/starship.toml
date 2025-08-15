@@ -1,6 +1,6 @@
 add_newline = false
 
-format = '''$time( \($status\)) $directory \($git_branch$git_commit( \[$git_state\])\) \($kubernetes\)
+format = '''$time( \($status\)) $directory \($git_branch$git_commit( \[$git_state\])\) \(${custom.teleport}\) \($kubernetes\)
 $character'''
 
 [character]
@@ -44,4 +44,11 @@ style = "blue"
 [status]
 format = '[$symbol](bold red)[$status]($style)'
 symbol = 'err:'
+disabled = false
+
+[custom.teleport]
+command = "cat ${HOME}/.tsh/current-profile"
+when = 'test -f ${HOME}/.tsh/current-profile'
+format = "[$output]($style)"
+style = "blue"
 disabled = false

@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+tenant="pawel"
+release=""
+
+function usage() {
+        echo >&2 "Usage: $(basename "$0") [-r|--release RELEASE] TENANT:pawel"
+}
+
+args=()
+
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        -h) usage ; exit 0 ;;
+        -r|--release) release="$2" ; shift 2 ;;
+        --) shift ; args+=("$@") ; break ;;
+        -*) echo >&2 "error: unknown flag: $1" ; exit 2 ;;
+        *) args+=("$1") ; shift ;;
+    esac
+done
+
+if [ ${#args[@]} -gt 1 ]; then
+        echo >&2 "Error: 0 or 1 argument required"
+        usage
+        exit 2
+fi
+if [ ${#args[@]} -eq 1 ]; then
+        tenant=${args[0]}
+fi
+
+set +e -x
+make TENANT="${tenant}" RELEASE="${release}" CC="/opt/homebrew/bin/x86_64-unknown-linux-gnu-gcc" KUBE_AUTH_CLUSTER="tc-staging-cs-01-euc1" deploy-cloud
+res=$?
+{ set +x; } 2>/dev/null
+set -e
+
+if [[ $res -eq 0 ]]; then
+        echo
+        echo "-----------------------------------------------------------------"
+        echo
+        echo "Kubernetes context:    platform.teleport.sh-tc-staging-cs-01-euc1"
+        echo "Kubernetes namespace:  cloud-gravitational-io-${tenant}"
+        echo
+        echo "For docker tag:  look for \"Generated docker image tag\""
+        echo
+        echo "-----------------------------------------------------------------"
+else
+        echo
+        echo "-----------------------------------------------------------------"
+        echo "Look for the error above"
+        echo
+        echo "May need to login with:"
+        echo "    make deploy-cloud-login"
+        echo
+        echo "Make sure to be in ./e directory"
+        echo "-----------------------------------------------------------------"
+fi
+
+exit $res
