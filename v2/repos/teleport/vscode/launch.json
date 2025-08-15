@@ -9,10 +9,10 @@
                         "type": "go",
                         "request": "launch",
                         "mode": "test",
-                        "program": "./lib/services/local",
+                        "program": "./api/types/accesslist/convert/v1",
                         "args": [
                                 "-test.run",
-                                "TestAccessListService_Status_ownerOf_memberOf",
+                                "TestConvAccessList/audit_with_only_Recurrence.DayOfMonth_set",
                          ],
                         "showLog": true,
                 },

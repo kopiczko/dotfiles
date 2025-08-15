@@ -23,6 +23,9 @@ export PATH=$HOME/.local/bin:$PATH
 export MANPATH="$HOME/.local/man:$MANPATH"
 
 
+export PATH=/opt/homebrew/bin:$PATH
+export MANPATH="/opt/homebrew/bin:$MANPATH"
+
 # Coreutils form homebrew
 [[ -d /opt/homebrew/opt/coreutils/libexec/gnubin ]] && export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH" && export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 [[ -d /opt/homebrew/opt/findutils/libexec/gnubin ]] && export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH" && export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$MANPATH"

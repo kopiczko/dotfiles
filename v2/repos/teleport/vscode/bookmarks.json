@@ -1,0 +1,44 @@
+{
+	"files": [
+		{
+			"path": "e/lib/auth/usermonitor.go",
+			"bookmarks": [
+				{
+					"line": 289,
+					"column": 25,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "e/tests/integration/access_list_test.go",
+			"bookmarks": [
+				{
+					"line": 27,
+					"column": 0,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "e/web/teleport/src/AccessListManagement/ViewEditAccessList/Members/Members.tsx",
+			"bookmarks": [
+				{
+					"line": 48,
+					"column": 36,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "e/web/teleport/src/AccessListManagement/ViewEditAccessList/AuditAndReviews/EditAudit.tsx",
+			"bookmarks": [
+				{
+					"line": 88,
+					"column": 13,
+					"label": ""
+				}
+			]
+		}
+	]
+}

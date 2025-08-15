@@ -1,6 +1,6 @@
-[user]
-	name = Pawel Kopiczko
-	email = kopiczko@gmail.com
+[include]
+    path = ~/.gitconfig.user.inc
+
 [core]
 	excludesfile = ~/.gitignore_global
 	# The editor is set with GIT_EDITOR env var in ~/.envs.
@@ -20,7 +20,7 @@
 	co = checkout
 	d = diff
 	dc = diff --cached
-	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%cn%Creset %C(yellow)%d%Creset %s %Cgreen%cr%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen%an, %cr%Creset%C(yellow)%d%Creset' --abbrev-commit --date=relative
 	main = !git checkout "$(git branch -l main master | sed 's/.* //')"
 	s = status -uall
 	sp = --paginate status -uall
